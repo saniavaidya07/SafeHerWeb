@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Feedback & Support - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/feedback.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status"><i class="fa-solid fa-circle-check"></i> Protected</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item active"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-comment-dots"></i>
+              Feedback & Support
+            </h1>
+            <p class="page-subtitle">We're here to help you</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="btn-open-chat-header" id="btn-open-chat-header">
+            <i class="fa-solid fa-comments"></i>
+            <span>Live Chat</span>
+            <span class="chat-status-dot"></span>
+          </button>
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar"><span id="navbar-avatar-initial">U</span></div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar"><span id="dropdown-avatar-initial">U</span></div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- FEEDBACK CONTENT -->
+      <div class="feedback-content">
+
+        <!-- HERO SECTION -->
+        <section class="feedback-hero">
+          <div class="fb-hero-decor">
+            <div class="fb-orb fb-orb-1"></div>
+            <div class="fb-orb fb-orb-2"></div>
+            <div class="fb-orb fb-orb-3"></div>
+          </div>
+
+          <div class="fb-hero-content">
+            <div class="fb-hero-icon">
+              <i class="fa-solid fa-headset"></i>
+              <div class="icon-ping"></div>
+            </div>
+            <div class="fb-hero-badge">
+              <i class="fa-solid fa-heart"></i>
+              We Value Your Voice
+            </div>
+            <h2 class="fb-hero-title">How Can We Help You?</h2>
+            <p class="fb-hero-desc">
+              Your feedback shapes SafeHer. Whether it's a suggestion, complaint, or just a hello — 
+              we're always listening. Our support team is here 24/7 to assist you.
+            </p>
+
+            <!-- Support Options -->
+            <div class="support-quick-options">
+              <button class="support-quick-btn" data-scroll="feedback-form">
+                <i class="fa-solid fa-comment-dots"></i>
+                <span>Give Feedback</span>
+              </button>
+              <button class="support-quick-btn" data-scroll="faq-section">
+                <i class="fa-solid fa-circle-question"></i>
+                <span>Browse FAQs</span>
+              </button>
+              <button class="support-quick-btn" data-scroll="tickets-section">
+                <i class="fa-solid fa-ticket"></i>
+                <span>Support Tickets</span>
+              </button>
+              <button class="support-quick-btn" id="btn-open-chat-hero">
+                <i class="fa-solid fa-comments"></i>
+                <span>Live Chat</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Support Stats -->
+          <div class="support-stats">
+            <div class="support-stat">
+              <div class="stat-icon-fb gradient-green">
+                <i class="fa-solid fa-clock"></i>
+              </div>
+              <div class="stat-info-fb">
+                <p class="stat-value-fb">&lt; 2 hrs</p>
+                <p class="stat-label-fb">Response Time</p>
+              </div>
+            </div>
+            <div class="support-stat">
+              <div class="stat-icon-fb gradient-blue">
+                <i class="fa-solid fa-check-double"></i>
+              </div>
+              <div class="stat-info-fb">
+                <p class="stat-value-fb">98%</p>
+                <p class="stat-label-fb">Resolution Rate</p>
+              </div>
+            </div>
+            <div class="support-stat">
+              <div class="stat-icon-fb gradient-purple">
+                <i class="fa-solid fa-headset"></i>
+              </div>
+              <div class="stat-info-fb">
+                <p class="stat-value-fb">24/7</p>
+                <p class="stat-label-fb">Support Available</p>
+              </div>
+            </div>
+            <div class="support-stat">
+              <div class="stat-icon-fb gradient-orange">
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div class="stat-info-fb">
+                <p class="stat-value-fb">4.9/5</p>
+                <p class="stat-label-fb">User Rating</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TABS -->
+        <div class="feedback-tabs">
+          <button class="fb-tab active" data-tab="feedback">
+            <i class="fa-solid fa-comment-dots"></i>
+            <span>Give Feedback</span>
+          </button>
+          <button class="fb-tab" data-tab="faq">
+            <i class="fa-solid fa-circle-question"></i>
+            <span>FAQ</span>
+          </button>
+          <button class="fb-tab" data-tab="tickets">
+            <i class="fa-solid fa-ticket"></i>
+            <span>My Tickets</span>
+          </button>
+          <button class="fb-tab" data-tab="features">
+            <i class="fa-solid fa-lightbulb"></i>
+            <span>Feature Requests</span>
+          </button>
+          <button class="fb-tab" data-tab="contact">
+            <i class="fa-solid fa-address-book"></i>
+            <span>Contact Us</span>
+          </button>
+        </div>
+
+        <!-- TAB PANELS -->
+        <div class="fb-tab-panels">
+
+          <!-- ========== FEEDBACK TAB ========== -->
+          <div class="fb-tab-panel active" id="tab-feedback">
+            <div class="feedback-layout">
+              
+              <!-- Feedback Form -->
+              <div class="feedback-form-card" id="feedback-form">
+                <div class="fb-card-header">
+                  <div class="fb-card-icon gradient-purple">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </div>
+                  <div>
+                    <h3>Share Your Feedback</h3>
+                    <p>Help us improve SafeHer with your valuable input</p>
+                  </div>
+                </div>
+
+                <form id="feedback-submit-form">
+                  <!-- Rating -->
+                  <div class="fb-form-group">
+                    <label class="fb-label">
+                      How would you rate your experience? <span class="required">*</span>
+                    </label>
+                    <div class="rating-stars-wrapper">
+                      <div class="star-rating" id="star-rating">
+                        <button type="button" class="star-btn" data-rating="1">
+                          <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button type="button" class="star-btn" data-rating="2">
+                          <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button type="button" class="star-btn" data-rating="3">
+                          <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button type="button" class="star-btn" data-rating="4">
+                          <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button type="button" class="star-btn" data-rating="5">
+                          <i class="fa-solid fa-star"></i>
+                        </button>
+                      </div>
+                      <p class="rating-label" id="rating-label">Click to rate</p>
+                    </div>
+                  </div>
+
+                  <!-- Emoji Feedback -->
+                  <div class="fb-form-group">
+                    <label class="fb-label">
+                      How do you feel about SafeHer?
+                    </label>
+                    <div class="emoji-feedback">
+                      <button type="button" class="emoji-btn" data-emoji="terrible">
+                        <span class="emoji">😞</span>
+                        <span>Terrible</span>
+                      </button>
+                      <button type="button" class="emoji-btn" data-emoji="bad">
+                        <span class="emoji">😕</span>
+                        <span>Bad</span>
+                      </button>
+                      <button type="button" class="emoji-btn" data-emoji="okay">
+                        <span class="emoji">😐</span>
+                        <span>Okay</span>
+                      </button>
+                      <button type="button" class="emoji-btn" data-emoji="good">
+                        <span class="emoji">😊</span>
+                        <span>Good</span>
+                      </button>
+                      <button type="button" class="emoji-btn" data-emoji="amazing">
+                        <span class="emoji">🤩</span>
+                        <span>Amazing</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Category -->
+                  <div class="fb-form-group">
+                    <label class="fb-label">
+                      Category <span class="required">*</span>
+                    </label>
+                    <div class="fb-category-picker">
+                      <label class="fb-cat-option" for="cat-general">
+                        <input type="radio" name="fbCategory" id="cat-general" value="general" hidden />
+                        <i class="fa-solid fa-comment"></i>
+                        <span>General</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-bug">
+                        <input type="radio" name="fbCategory" id="cat-bug" value="bug" hidden />
+                        <i class="fa-solid fa-bug"></i>
+                        <span>Bug Report</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-feature">
+                        <input type="radio" name="fbCategory" id="cat-feature" value="feature" hidden />
+                        <i class="fa-solid fa-lightbulb"></i>
+                        <span>Feature</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-ui">
+                        <input type="radio" name="fbCategory" id="cat-ui" value="ui" hidden />
+                        <i class="fa-solid fa-palette"></i>
+                        <span>Design/UI</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-performance">
+                        <input type="radio" name="fbCategory" id="cat-performance" value="performance" hidden />
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span>Performance</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-complaint">
+                        <input type="radio" name="fbCategory" id="cat-complaint" value="complaint" hidden />
+                        <i class="fa-solid fa-face-frown"></i>
+                        <span>Complaint</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-praise">
+                        <input type="radio" name="fbCategory" id="cat-praise" value="praise" hidden />
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Praise</span>
+                      </label>
+                      <label class="fb-cat-option" for="cat-other">
+                        <input type="radio" name="fbCategory" id="cat-other" value="other" hidden />
+                        <i class="fa-solid fa-ellipsis"></i>
+                        <span>Other</span>
+                      </label>
+                    </div>
+                  </div>
+
+                  <!-- Subject -->
+                  <div class="fb-form-group">
+                    <label class="fb-label" for="fb-subject">
+                      Subject <span class="required">*</span>
+                    </label>
+                    <input 
+                      type="text" 
+                      id="fb-subject" 
+                      class="fb-input" 
+                      placeholder="Brief summary of your feedback" 
+                      maxlength="100"
+                      required
+                    />
+                    <div class="input-counter"><span id="subject-count">0</span>/100</div>
+                  </div>
+
+                  <!-- Message -->
+                  <div class="fb-form-group">
+                    <label class="fb-label" for="fb-message">
+                      Your Message <span class="required">*</span>
+                    </label>
+                    <textarea 
+                      id="fb-message" 
+                      class="fb-textarea" 
+                      rows="6" 
+                      placeholder="Tell us more about your experience..." 
+                      maxlength="1000"
+                      required
+                    ></textarea>
+                    <div class="input-counter"><span id="message-count">0</span>/1000</div>
+                  </div>
+
+                  <!-- Attachment -->
+                  <div class="fb-form-group">
+                    <label class="fb-label">
+                      Attach Screenshot <span class="fb-optional">(Optional)</span>
+                    </label>
+                    <div class="attachment-zone" id="attachment-zone">
+                      <input type="file" id="fb-attachment" hidden accept="image/*" />
+                      <div class="attachment-icon">
+                        <i class="fa-solid fa-image"></i>
+                      </div>
+                      <p><strong>Click to upload</strong> or drag & drop</p>
+                      <small>PNG, JPG up to 5MB</small>
+                    </div>
+                    <div class="attachment-preview" id="attachment-preview" style="display: none;"></div>
+                  </div>
+
+                  <!-- Contact Option -->
+                  <div class="fb-form-group">
+                    <label class="fb-checkbox-option">
+                      <input type="checkbox" id="fb-contact-me" checked />
+                      <span class="fb-checkbox-visual"></span>
+                      <div>
+                        <p><strong>Contact me about this feedback</strong></p>
+                        <small>We may reach out for clarification or follow-up</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Anonymous -->
+                  <div class="fb-form-group">
+                    <label class="fb-checkbox-option">
+                      <input type="checkbox" id="fb-anonymous" />
+                      <span class="fb-checkbox-visual"></span>
+                      <div>
+                        <p><strong>Submit anonymously</strong></p>
+                        <small>Your name and email won't be shared</small>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Submit -->
+                  <button type="submit" class="btn-submit-feedback" id="btn-submit-fb">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    <span>Submit Feedback</span>
+                  </button>
+                </form>
+              </div>
+
+              <!-- Sidebar Info -->
+              <div class="feedback-sidebar">
+                <!-- Why Feedback -->
+                <div class="fb-info-card">
+                  <div class="fb-info-icon gradient-purple">
+                    <i class="fa-solid fa-lightbulb"></i>
+                  </div>
+                  <h4>Why Your Feedback Matters</h4>
+                  <p>Every piece of feedback helps us improve SafeHer to better serve women worldwide. Your voice shapes our future.</p>
+                </div>
+
+                <!-- Response Time -->
+                <div class="fb-info-card">
+                  <div class="fb-info-icon gradient-green">
+                    <i class="fa-solid fa-clock"></i>
+                  </div>
+                  <h4>Quick Response</h4>
+                  <p>We respond to all feedback within 24 hours. Critical issues get priority attention within 2 hours.</p>
+                </div>
+
+                <!-- Community -->
+                <div class="fb-info-card">
+                  <div class="fb-info-icon gradient-pink">
+                    <i class="fa-solid fa-users"></i>
+                  </div>
+                  <h4>Join Community</h4>
+                  <p>Connect with 10,000+ women using SafeHer. Share experiences and grow together.</p>
+                  <button class="btn-info-action">
+                    Join Community
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+
+                <!-- Recent Updates -->
+                <div class="fb-info-card">
+                  <div class="fb-info-icon gradient-blue">
+                    <i class="fa-solid fa-bullhorn"></i>
+                  </div>
+                  <h4>Recent Updates</h4>
+                  <ul class="updates-list">
+                    <li>
+                      <span class="update-tag new">NEW</span>
+                      <span>Voice recording feature added</span>
+                    </li>
+                    <li>
+                      <span class="update-tag improved">IMPROVED</span>
+                      <span>Faster SOS response time</span>
+                    </li>
+                    <li>
+                      <span class="update-tag fixed">FIXED</span>
+                      <span>Location sharing bug</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ========== FAQ TAB ========== -->
+          <div class="fb-tab-panel" id="tab-faq">
+            <!-- FAQ Header -->
+            <div class="faq-header-section" id="faq-section">
+              <div class="fb-card-header">
+                <div class="fb-card-icon gradient-blue">
+                  <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <div>
+                  <h3>Frequently Asked Questions</h3>
+                  <p>Find answers to common questions about SafeHer</p>
+                </div>
+              </div>
+
+              <div class="faq-search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input 
+                  type="text" 
+                  id="faq-search" 
+                  placeholder="Search FAQs..."
+                />
+              </div>
+
+              <!-- FAQ Categories -->
+              <div class="faq-categories">
+                <button class="faq-cat-btn active" data-cat="all">
+                  <i class="fa-solid fa-th-list"></i>
+                  All
+                </button>
+                <button class="faq-cat-btn" data-cat="general">
+                  <i class="fa-solid fa-info-circle"></i>
+                  General
+                </button>
+                <button class="faq-cat-btn" data-cat="account">
+                  <i class="fa-solid fa-user"></i>
+                  Account
+                </button>
+                <button class="faq-cat-btn" data-cat="emergency">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  Emergency
+                </button>
+                <button class="faq-cat-btn" data-cat="privacy">
+                  <i class="fa-solid fa-user-shield"></i>
+                  Privacy
+                </button>
+                <button class="faq-cat-btn" data-cat="technical">
+                  <i class="fa-solid fa-gear"></i>
+                  Technical
+                </button>
+                <button class="faq-cat-btn" data-cat="billing">
+                  <i class="fa-solid fa-credit-card"></i>
+                  Billing
+                </button>
+              </div>
+            </div>
+
+            <!-- FAQ Accordion -->
+            <div class="faq-list" id="faq-list">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- No Results -->
+            <div class="faq-empty" id="faq-empty" style="display: none;">
+              <div class="empty-icon-fb">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </div>
+              <h3>No FAQs found</h3>
+              <p>Try different keywords or contact us directly</p>
+            </div>
+
+            <!-- Still Need Help -->
+            <div class="still-need-help">
+              <div class="need-help-content">
+                <div class="need-help-icon">
+                  <i class="fa-solid fa-headset"></i>
+                </div>
+                <h3>Still need help?</h3>
+                <p>Can't find the answer you're looking for? Our support team is ready to help.</p>
+                <div class="need-help-actions">
+                  <button class="btn-need-help primary" id="btn-open-chat-help">
+                    <i class="fa-solid fa-comments"></i>
+                    Start Live Chat
+                  </button>
+                  <button class="btn-need-help secondary" onclick="Feedback.switchTab('contact')">
+                    <i class="fa-solid fa-envelope"></i>
+                    Contact Support
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========== TICKETS TAB ========== -->
+          <div class="fb-tab-panel" id="tab-tickets">
+            <div class="tickets-header" id="tickets-section">
+              <div class="fb-card-header">
+                <div class="fb-card-icon gradient-orange">
+                  <i class="fa-solid fa-ticket"></i>
+                </div>
+                <div>
+                  <h3>My Support Tickets</h3>
+                  <p>Track and manage your support requests</p>
+                </div>
+                <button class="btn-new-ticket" id="btn-new-ticket">
+                  <i class="fa-solid fa-plus"></i>
+                  New Ticket
+                </button>
+              </div>
+
+              <!-- Filters -->
+              <div class="ticket-filters">
+                <button class="ticket-filter-btn active" data-status="all">
+                  <span>All</span>
+                  <span class="filter-badge" id="filter-all-count">0</span>
+                </button>
+                <button class="ticket-filter-btn" data-status="open">
+                  <span class="status-dot dot-open"></span>
+                  <span>Open</span>
+                  <span class="filter-badge" id="filter-open-count">0</span>
+                </button>
+                <button class="ticket-filter-btn" data-status="in-progress">
+                  <span class="status-dot dot-progress"></span>
+                  <span>In Progress</span>
+                  <span class="filter-badge" id="filter-progress-count">0</span>
+                </button>
+                <button class="ticket-filter-btn" data-status="resolved">
+                  <span class="status-dot dot-resolved"></span>
+                  <span>Resolved</span>
+                  <span class="filter-badge" id="filter-resolved-count">0</span>
+                </button>
+                <button class="ticket-filter-btn" data-status="closed">
+                  <span class="status-dot dot-closed"></span>
+                  <span>Closed</span>
+                  <span class="filter-badge" id="filter-closed-count">0</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Tickets List -->
+            <div class="tickets-list" id="tickets-list">
+              <!-- Populated by JS -->
+            </div>
+
+            <!-- No Tickets -->
+            <div class="tickets-empty" id="tickets-empty" style="display: none;">
+              <div class="empty-icon-fb">
+                <i class="fa-solid fa-ticket"></i>
+              </div>
+              <h3>No tickets found</h3>
+              <p>You don't have any tickets in this category</p>
+              <button class="btn-empty-action" onclick="Feedback.openNewTicketModal()">
+                <i class="fa-solid fa-plus"></i>
+                Create Your First Ticket
+              </button>
+            </div>
+          </div>
+
+          <!-- ========== FEATURE REQUESTS TAB ========== -->
+          <div class="fb-tab-panel" id="tab-features">
+            <div class="features-header">
+              <div class="fb-card-header">
+                <div class="fb-card-icon gradient-pink">
+                  <i class="fa-solid fa-lightbulb"></i>
+                </div>
+                <div>
+                  <h3>Feature Requests</h3>
+                  <p>Vote on ideas or suggest new features</p>
+                </div>
+                <button class="btn-new-feature" id="btn-suggest-feature">
+                  <i class="fa-solid fa-plus"></i>
+                  Suggest Feature
+                </button>
+              </div>
+
+              <!-- Filter -->
+              <div class="features-filters">
+                <div class="filter-tabs-fb">
+                  <button class="filter-tab-fb active" data-feature-filter="trending">
+                    <i class="fa-solid fa-fire"></i>
+                    Trending
+                  </button>
+                  <button class="filter-tab-fb" data-feature-filter="popular">
+                    <i class="fa-solid fa-star"></i>
+                    Most Voted
+                  </button>
+                  <button class="filter-tab-fb" data-feature-filter="recent">
+                    <i class="fa-solid fa-clock"></i>
+                    Recent
+                  </button>
+                  <button class="filter-tab-fb" data-feature-filter="planned">
+                    <i class="fa-solid fa-calendar"></i>
+                    Planned
+                  </button>
+                  <button class="filter-tab-fb" data-feature-filter="completed">
+                    <i class="fa-solid fa-check"></i>
+                    Completed
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Features List -->
+            <div class="features-grid" id="features-grid">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+
+          <!-- ========== CONTACT TAB ========== -->
+          <div class="fb-tab-panel" id="tab-contact">
+            <div class="contact-layout">
+              
+              <!-- Contact Info -->
+              <div class="contact-info-section">
+                <div class="fb-card-header">
+                  <div class="fb-card-icon gradient-green">
+                    <i class="fa-solid fa-address-book"></i>
+                  </div>
+                  <div>
+                    <h3>Get In Touch</h3>
+                    <p>Multiple ways to reach us</p>
+                  </div>
+                </div>
+
+                <div class="contact-methods">
+                  <div class="contact-method">
+                    <div class="contact-method-icon gradient-purple">
+                      <i class="fa-solid fa-envelope"></i>
+                    </div>
+                    <div class="contact-method-info">
+                      <h4>Email Support</h4>
+                      <p>support@safeher.com</p>
+                      <small>Response within 24 hours</small>
+                    </div>
+                    <a href="mailto:support@safeher.com" class="contact-method-btn">
+                      <i class="fa-solid fa-paper-plane"></i>
+                    </a>
+                  </div>
+
+                  <div class="contact-method">
+                    <div class="contact-method-icon gradient-green">
+                      <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <div class="contact-method-info">
+                      <h4>Phone Support</h4>
+                      <p>+91 1800-SAFE-HER</p>
+                      <small>Mon-Fri, 9 AM - 9 PM</small>
+                    </div>
+                    <a href="tel:+911800723343" class="contact-method-btn">
+                      <i class="fa-solid fa-phone"></i>
+                    </a>
+                  </div>
+
+                  <div class="contact-method">
+                    <div class="contact-method-icon gradient-blue">
+                      <i class="fa-solid fa-comments"></i>
+                    </div>
+                    <div class="contact-method-info">
+                      <h4>Live Chat</h4>
+                      <p>Chat with our support team</p>
+                      <small>Available 24/7</small>
+                    </div>
+                    <button class="contact-method-btn" id="btn-open-chat-contact">
+                      <i class="fa-solid fa-message"></i>
+                    </button>
+                  </div>
+
+                  <div class="contact-method">
+                    <div class="contact-method-icon gradient-orange">
+                      <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="contact-method-info">
+                      <h4>Office Address</h4>
+                      <p>SafeHer HQ, Bangalore, India</p>
+                      <small>By appointment only</small>
+                    </div>
+                    <a href="#" class="contact-method-btn">
+                      <i class="fa-solid fa-map"></i>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Social Media -->
+                <div class="social-connect">
+                  <h4>Follow Us</h4>
+                  <div class="social-icons-row">
+                    <a href="#" class="social-icon" style="--color: #E1306C;">
+                      <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="--color: #1DA1F2;">
+                      <i class="fa-brands fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="--color: #1877F2;">
+                      <i class="fa-brands fa-facebook"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="--color: #0A66C2;">
+                      <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-icon" style="--color: #FF0000;">
+                      <i class="fa-brands fa-youtube"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Emergency Notice -->
+              <div class="emergency-notice">
+                <div class="emergency-notice-icon">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <h3>In Case of Emergency</h3>
+                <p>If you're in immediate danger, don't wait for support. Use these emergency numbers:</p>
+                <div class="emergency-numbers">
+                  <a href="tel:112" class="emergency-num-card">
+                    <span class="em-num">112</span>
+                    <span class="em-label">National Emergency</span>
+                  </a>
+                  <a href="tel:1091" class="emergency-num-card">
+                    <span class="em-num">1091</span>
+                    <span class="em-label">Women Helpline</span>
+                  </a>
+                  <a href="tel:100" class="emergency-num-card">
+                    <span class="em-num">100</span>
+                    <span class="em-label">Police</span>
+                  </a>
+                </div>
+                <button class="btn-emergency-sos">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  Activate SOS Now
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="safety-tools.html" class="bottom-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety</span></a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos"><i class="fa-solid fa-triangle-exclamation"></i></button>
+      <a href="find-help.html" class="bottom-nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Help</span></a>
+      <a href="profile.html" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </nav>
+
+  </div>
+
+  <!-- ============================================
+       LIVE CHAT WIDGET
+  ============================================ -->
+  <div class="chat-widget" id="chat-widget">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-agent-avatar">
+          <span>S</span>
+          <div class="agent-status"></div>
+        </div>
+        <div>
+          <h4>SafeHer Support</h4>
+          <p><span class="status-dot dot-open"></span> Online now</p>
+        </div>
+      </div>
+      <div class="chat-header-actions">
+        <button class="chat-minimize" id="chat-minimize">
+          <i class="fa-solid fa-minus"></i>
+        </button>
+        <button class="chat-close" id="chat-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="chat-body" id="chat-body">
+      <!-- Welcome Message -->
+      <div class="chat-message agent">
+        <div class="msg-avatar">S</div>
+        <div class="msg-content">
+          <div class="msg-bubble">
+            👋 Hi there! I'm Sara from SafeHer support. How can I help you today?
+          </div>
+          <div class="msg-time">Just now</div>
+        </div>
+      </div>
+
+      <!-- Quick Options -->
+      <div class="chat-message agent">
+        <div class="msg-avatar">S</div>
+        <div class="msg-content">
+          <div class="msg-bubble">Here are some quick options to get started:</div>
+          <div class="quick-replies">
+            <button class="quick-reply-btn" data-msg="I need help with SOS feature">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              SOS Help
+            </button>
+            <button class="quick-reply-btn" data-msg="How do I add emergency contacts?">
+              <i class="fa-solid fa-users"></i>
+              Add Contacts
+            </button>
+            <button class="quick-reply-btn" data-msg="I want to report a bug">
+              <i class="fa-solid fa-bug"></i>
+              Report Bug
+            </button>
+            <button class="quick-reply-btn" data-msg="Account & Privacy help">
+              <i class="fa-solid fa-user-shield"></i>
+              Privacy
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-typing" id="chat-typing" style="display: none;">
+      <div class="typing-dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <p>Sara is typing...</p>
+    </div>
+
+    <div class="chat-footer">
+      <button class="chat-attach" title="Attach file">
+        <i class="fa-solid fa-paperclip"></i>
+      </button>
+      <input 
+        type="text" 
+        id="chat-input" 
+        placeholder="Type your message..." 
+      />
+      <button class="chat-emoji" title="Emoji">
+        <i class="fa-regular fa-face-smile"></i>
+      </button>
+      <button class="chat-send" id="chat-send">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Chat Bubble (When Closed) -->
+  <button class="chat-bubble" id="chat-bubble">
+    <i class="fa-solid fa-comments"></i>
+    <span class="chat-bubble-badge">1</span>
+  </button>
+
+  <!-- ============================================
+       NEW TICKET MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="ticket-modal">
+    <div class="modal-container ticket-modal">
+      <div class="ticket-modal-header">
+        <button class="modal-close-btn" id="btn-close-ticket-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="ticket-modal-icon">
+          <i class="fa-solid fa-ticket"></i>
+        </div>
+        <h2>Create Support Ticket</h2>
+        <p>Get personalized help from our support team</p>
+      </div>
+
+      <form class="ticket-modal-body" id="ticket-form">
+        <div class="fb-form-group">
+          <label class="fb-label">Priority <span class="required">*</span></label>
+          <div class="priority-picker-fb">
+            <label class="pri-option-fb" for="pri-low-fb">
+              <input type="radio" name="ticketPriority" id="pri-low-fb" value="low" hidden />
+              <span class="pri-dot low"></span>
+              <span>Low</span>
+            </label>
+            <label class="pri-option-fb" for="pri-medium-fb">
+              <input type="radio" name="ticketPriority" id="pri-medium-fb" value="medium" hidden />
+              <span class="pri-dot medium"></span>
+              <span>Medium</span>
+            </label>
+            <label class="pri-option-fb" for="pri-high-fb">
+              <input type="radio" name="ticketPriority" id="pri-high-fb" value="high" hidden />
+              <span class="pri-dot high"></span>
+              <span>High</span>
+            </label>
+            <label class="pri-option-fb" for="pri-urgent-fb">
+              <input type="radio" name="ticketPriority" id="pri-urgent-fb" value="urgent" hidden />
+              <span class="pri-dot urgent"></span>
+              <span>Urgent</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="fb-form-group">
+          <label class="fb-label" for="ticket-subject">Subject <span class="required">*</span></label>
+          <input type="text" id="ticket-subject" class="fb-input" placeholder="Brief description of issue" required />
+        </div>
+
+        <div class="fb-form-group">
+          <label class="fb-label" for="ticket-category">Category <span class="required">*</span></label>
+          <select id="ticket-category" class="fb-input" required>
+            <option value="">Select category</option>
+            <option>Account Issues</option>
+            <option>Technical Problems</option>
+            <option>Feature Requests</option>
+            <option>Billing/Payment</option>
+            <option>Privacy Concerns</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="fb-form-group">
+          <label class="fb-label" for="ticket-description">Description <span class="required">*</span></label>
+          <textarea id="ticket-description" class="fb-textarea" rows="5" placeholder="Please describe your issue in detail..." required></textarea>
+        </div>
+
+        <div class="modal-actions-row">
+          <button type="button" class="btn-cancel-modal" onclick="document.getElementById('ticket-modal').classList.remove('show')">
+            Cancel
+          </button>
+          <button type="submit" class="btn-submit-modal">
+            <i class="fa-solid fa-paper-plane"></i>
+            Submit Ticket
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/feedback.js"></script>
+</body>
+</html>

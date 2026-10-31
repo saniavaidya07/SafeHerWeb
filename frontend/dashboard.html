@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Dashboard - SafeHer</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/dashboard.css" />
+</head>
+<body>
+
+  <!-- ============================================
+       APP CONTAINER
+  ============================================ -->
+  <div class="app-container">
+
+    <!-- ============================================
+         SIDEBAR (Desktop)
+    ============================================ -->
+    <aside class="sidebar" id="sidebar">
+      
+      <!-- Sidebar Header -->
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close" aria-label="Close sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <!-- User Profile Card -->
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status">
+            <i class="fa-solid fa-circle-check"></i> Protected
+          </p>
+        </div>
+      </div>
+
+      <!-- Navigation Menu -->
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li>
+              <a href="dashboard.html" class="nav-item active">
+                <i class="fa-solid fa-house"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="safety-tools.html" class="nav-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Safety Tools</span>
+                <span class="nav-badge nav-badge-emergency">SOS</span>
+              </a>
+            </li>
+            <li>
+              <a href="report-incident.html" class="nav-item">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Report Incident</span>
+              </a>
+            </li>
+            <li>
+              <a href="find-help.html" class="nav-item">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span>Find Help</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li>
+              <a href="unsafe-areas.html" class="nav-item">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Unsafe Areas</span>
+              </a>
+            </li>
+            <li>
+              <a href="emergency-contacts.html" class="nav-item">
+                <i class="fa-solid fa-users"></i>
+                <span>Contacts</span>
+              </a>
+            </li>
+            <li>
+              <a href="resources.html" class="nav-item">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Resources</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li>
+              <a href="profile.html" class="nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li>
+              <a href="feedback.html" class="nav-item">
+                <i class="fa-solid fa-comment-dots"></i>
+                <span>Feedback</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Sidebar Footer: Emergency SOS -->
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+          </div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ============================================
+         MAIN CONTENT AREA
+    ============================================ -->
+    <main class="main-content">
+
+      <!-- ============================================
+           TOP NAVBAR
+      ============================================ -->
+      <header class="top-navbar">
+        
+        <!-- Left: Menu toggle + Search -->
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+
+          <div class="navbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search features, contacts, resources..." />
+            <kbd>⌘K</kbd>
+          </div>
+        </div>
+
+        <!-- Right: Notifications + Profile -->
+        <div class="navbar-right">
+          
+          <!-- Quick SOS Button -->
+          <button class="navbar-quick-sos" id="navbar-quick-sos" title="Quick SOS">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+
+          <!-- Notification Bell -->
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn" aria-label="Notifications">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+
+            <!-- Notification Dropdown -->
+            <div class="notification-dropdown" id="notification-dropdown">
+              <div class="notification-header">
+                <h4>Notifications</h4>
+                <button class="notification-mark-all">Mark all as read</button>
+              </div>
+              <div class="notification-list">
+                <div class="notification-item unread">
+                  <div class="notification-icon icon-emergency">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-text"><strong>Safety Alert</strong> in your area</p>
+                    <span class="notification-time">2 mins ago</span>
+                  </div>
+                </div>
+                <div class="notification-item unread">
+                  <div class="notification-icon icon-info">
+                    <i class="fa-solid fa-user-plus"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-text">New emergency contact added</p>
+                    <span class="notification-time">1 hour ago</span>
+                  </div>
+                </div>
+                <div class="notification-item unread">
+                  <div class="notification-icon icon-success">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-text">Your report has been reviewed</p>
+                    <span class="notification-time">3 hours ago</span>
+                  </div>
+                </div>
+                <div class="notification-item">
+                  <div class="notification-icon icon-warning">
+                    <i class="fa-solid fa-book-open"></i>
+                  </div>
+                  <div class="notification-content">
+                    <p class="notification-text">New safety article published</p>
+                    <span class="notification-time">Yesterday</span>
+                  </div>
+                </div>
+              </div>
+              <div class="notification-footer">
+                <a href="#">View all notifications</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile Dropdown -->
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar">
+                <span id="navbar-avatar-initial">U</span>
+              </div>
+              <div class="navbar-user">
+                <p class="navbar-user-name" id="navbar-user-name">User</p>
+                <p class="navbar-user-role">Verified</p>
+              </div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+
+            <!-- Profile Dropdown Menu -->
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar">
+                  <span id="dropdown-avatar-initial">U</span>
+                </div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li><a href="profile.html"><i class="fa-solid fa-gear"></i> Settings</a></li>
+                <li><a href="emergency-contacts.html"><i class="fa-solid fa-users"></i> My Contacts</a></li>
+                <li><a href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </header>
+
+      <!-- ============================================
+           DASHBOARD CONTENT
+      ============================================ -->
+      <div class="dashboard-content">
+
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+          <div class="welcome-text">
+            <p class="welcome-greeting" id="welcome-greeting">Good Morning</p>
+            <h1 class="welcome-title">
+              Hello, <span class="welcome-name" id="welcome-name">User</span>! 👋
+            </h1>
+            <p class="welcome-subtitle">
+              Stay safe and stay strong. Your safety dashboard is fully active.
+            </p>
+          </div>
+          <div class="welcome-illustration">
+            <div class="welcome-shield">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="welcome-ring"></div>
+          </div>
+        </section>
+
+        <!-- Status Bar -->
+        <section class="status-bar">
+          <div class="status-item">
+            <div class="status-icon icon-success">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="status-info">
+              <p class="status-label">Safety Status</p>
+              <p class="status-value">Protected</p>
+            </div>
+          </div>
+          <div class="status-item">
+            <div class="status-icon icon-info">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="status-info">
+              <p class="status-label">Location</p>
+              <p class="status-value" id="location-status">Detecting...</p>
+            </div>
+          </div>
+          <div class="status-item">
+            <div class="status-icon icon-warning">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="status-info">
+              <p class="status-label">Trusted Contacts</p>
+              <p class="status-value">3 Active</p>
+            </div>
+          </div>
+          <div class="status-item">
+            <div class="status-icon icon-primary">
+              <i class="fa-solid fa-battery-full"></i>
+            </div>
+            <div class="status-info">
+              <p class="status-label">System</p>
+              <p class="status-value">Online</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Big SOS Card -->
+        <section class="big-sos-section">
+          <div class="big-sos-card">
+            <div class="sos-card-bg">
+              <div class="sos-orb"></div>
+              <div class="sos-orb sos-orb-2"></div>
+            </div>
+            <div class="sos-card-content">
+              <div class="sos-card-left">
+                <div class="sos-badge">
+                  <i class="fa-solid fa-bolt"></i> Emergency Ready
+                </div>
+                <h2 class="sos-card-title">In Danger? Get Help Now</h2>
+                <p class="sos-card-subtitle">
+                  Press the SOS button to instantly alert your trusted contacts 
+                  and share your live location.
+                </p>
+                <div class="sos-card-features">
+                  <span><i class="fa-solid fa-bolt"></i> Instant Alert</span>
+                  <span><i class="fa-solid fa-location-dot"></i> Live Location</span>
+                  <span><i class="fa-solid fa-users"></i> Auto-notify Contacts</span>
+                </div>
+              </div>
+              <div class="sos-card-right">
+                <button class="big-sos-btn" id="big-sos-btn">
+                  <div class="sos-ripple"></div>
+                  <div class="sos-ripple sos-ripple-2"></div>
+                  <div class="sos-btn-inner">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>SOS</span>
+                  </div>
+                </button>
+                <p class="sos-btn-hint">Tap and hold for 2s</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section Title -->
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fa-solid fa-grip"></i>
+            Quick Actions
+          </h2>
+          <p class="section-subtitle">Access all safety features from one place</p>
+        </div>
+
+        <!-- Feature Grid -->
+        <section class="feature-grid">
+          
+          <!-- Safety Tools -->
+          <a href="safety-tools.html" class="feature-card" style="--delay: 0.1s;">
+            <div class="feature-icon-wrap gradient-purple">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Safety Tools</h3>
+              <p class="feature-desc">SOS button, location sharing, voice recording & alerts</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Report Incident -->
+          <a href="report-incident.html" class="feature-card" style="--delay: 0.2s;">
+            <div class="feature-icon-wrap gradient-pink">
+              <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Report Incident</h3>
+              <p class="feature-desc">File an incident report with evidence upload</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Find Help -->
+          <a href="find-help.html" class="feature-card" style="--delay: 0.3s;">
+            <div class="feature-icon-wrap gradient-blue">
+              <i class="fa-solid fa-location-crosshairs"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Find Help</h3>
+              <p class="feature-desc">Nearby police, hospitals, NGOs and helplines</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Unsafe Areas -->
+          <a href="unsafe-areas.html" class="feature-card" style="--delay: 0.4s;">
+            <div class="feature-icon-wrap gradient-red">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Unsafe Areas</h3>
+              <p class="feature-desc">View & report unsafe locations in your city</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Emergency Contacts -->
+          <a href="emergency-contacts.html" class="feature-card" style="--delay: 0.5s;">
+            <div class="feature-icon-wrap gradient-orange">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Emergency Contacts</h3>
+              <p class="feature-desc">Manage your trusted contacts & family circle</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Resources -->
+          <a href="resources.html" class="feature-card" style="--delay: 0.6s;">
+            <div class="feature-icon-wrap gradient-green">
+              <i class="fa-solid fa-book-open"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Safety Resources</h3>
+              <p class="feature-desc">Articles, tips, legal rights & mental wellbeing</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Profile -->
+          <a href="profile.html" class="feature-card" style="--delay: 0.7s;">
+            <div class="feature-icon-wrap gradient-cyan">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">My Profile</h3>
+              <p class="feature-desc">Update profile, privacy & notification settings</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+          <!-- Feedback -->
+          <a href="feedback.html" class="feature-card" style="--delay: 0.8s;">
+            <div class="feature-icon-wrap gradient-yellow">
+              <i class="fa-solid fa-comment-dots"></i>
+            </div>
+            <div class="feature-content">
+              <h3 class="feature-title">Feedback & Help</h3>
+              <p class="feature-desc">Share feedback, FAQs & support</p>
+            </div>
+            <div class="feature-arrow">
+              <i class="fa-solid fa-arrow-right"></i>
+            </div>
+          </a>
+
+        </section>
+
+        <!-- Two Column Layout: Recent Activity + Safety Tip -->
+        <div class="dashboard-two-col">
+
+          <!-- Recent Activity -->
+          <section class="dashboard-card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                Recent Activity
+              </h3>
+              <a href="#" class="card-link">View all</a>
+            </div>
+            <div class="activity-list">
+              <div class="activity-item">
+                <div class="activity-icon icon-success">
+                  <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-title">Added new trusted contact</p>
+                  <p class="activity-desc">Mom added to emergency list</p>
+                </div>
+                <span class="activity-time">2h ago</span>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon icon-info">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-title">Location shared</p>
+                  <p class="activity-desc">Live location shared with 2 contacts</p>
+                </div>
+                <span class="activity-time">5h ago</span>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon icon-warning">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-title">Report submitted</p>
+                  <p class="activity-desc">Incident report under review</p>
+                </div>
+                <span class="activity-time">1d ago</span>
+              </div>
+              <div class="activity-item">
+                <div class="activity-icon icon-primary">
+                  <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div class="activity-content">
+                  <p class="activity-title">Read safety article</p>
+                  <p class="activity-desc">"Safe Travel Tips for Women"</p>
+                </div>
+                <span class="activity-time">2d ago</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Safety Tip of the Day -->
+          <section class="dashboard-card safety-tip-card">
+            <div class="tip-decoration">
+              <i class="fa-solid fa-lightbulb"></i>
+            </div>
+            <div class="card-header">
+              <h3 class="card-title">
+                <i class="fa-solid fa-lightbulb"></i>
+                Safety Tip of the Day
+              </h3>
+            </div>
+            <div class="tip-content">
+              <div class="tip-image">
+                <i class="fa-solid fa-shield-heart"></i>
+              </div>
+              <h4 class="tip-title">Trust Your Instincts</h4>
+              <p class="tip-text">
+                If a situation feels unsafe, trust your gut. Move to a well-lit, 
+                public area and don't hesitate to call for help. Your safety 
+                comes first.
+              </p>
+              <div class="tip-actions">
+                <button class="btn-tip-primary">
+                  <i class="fa-solid fa-book-open"></i>
+                  Read More
+                </button>
+                <button class="btn-tip-secondary">
+                  <i class="fa-solid fa-share-nodes"></i>
+                  Share
+                </button>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- Helpline Numbers -->
+        <section class="helpline-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fa-solid fa-phone-volume"></i>
+              Important Helpline Numbers
+            </h2>
+            <p class="section-subtitle">Save these numbers for emergencies</p>
+          </div>
+          <div class="helpline-grid">
+            <a href="tel:112" class="helpline-card">
+              <div class="helpline-icon icon-emergency">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="helpline-info">
+                <p class="helpline-name">Emergency</p>
+                <p class="helpline-number">112</p>
+              </div>
+            </a>
+            <a href="tel:1091" class="helpline-card">
+              <div class="helpline-icon icon-secondary">
+                <i class="fa-solid fa-venus"></i>
+              </div>
+              <div class="helpline-info">
+                <p class="helpline-name">Women Helpline</p>
+                <p class="helpline-number">1091</p>
+              </div>
+            </a>
+            <a href="tel:100" class="helpline-card">
+              <div class="helpline-icon icon-info">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <div class="helpline-info">
+                <p class="helpline-name">Police</p>
+                <p class="helpline-number">100</p>
+              </div>
+            </a>
+            <a href="tel:108" class="helpline-card">
+              <div class="helpline-icon icon-success">
+                <i class="fa-solid fa-truck-medical"></i>
+              </div>
+              <div class="helpline-info">
+                <p class="helpline-name">Ambulance</p>
+                <p class="helpline-number">108</p>
+              </div>
+            </a>
+            <a href="tel:1098" class="helpline-card">
+              <div class="helpline-icon icon-warning">
+                <i class="fa-solid fa-child"></i>
+              </div>
+              <div class="helpline-info">
+                <p class="helpline-name">Child Helpline</p>
+                <p class="helpline-number">1098</p>
+              </div>
+            </a>
+            <a href="tel:181" class="helpline-card">
+              <div class="helpline-icon icon-primary">
+                <i class="fa-solid fa-hand-holding-heart"></i>
+              </div>
+              <div class="helpline-info">
+                <p class="helpline-name">Women Distress</p>
+                <p class="helpline-number">181</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- ============================================
+         MOBILE BOTTOM NAVIGATION
+    ============================================ -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item active">
+        <i class="fa-solid fa-house"></i>
+        <span>Home</span>
+      </a>
+      <a href="safety-tools.html" class="bottom-nav-item">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>Safety</span>
+      </a>
+      
+      <!-- Center Emergency Button -->
+      <button class="bottom-nav-sos" id="bottom-nav-sos">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </button>
+
+      <a href="find-help.html" class="bottom-nav-item">
+        <i class="fa-solid fa-location-crosshairs"></i>
+        <span>Help</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item">
+        <i class="fa-solid fa-user"></i>
+        <span>Profile</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

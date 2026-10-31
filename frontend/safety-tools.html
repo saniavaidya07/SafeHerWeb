@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Safety Tools - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/safety-tools.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- ============================================
+         SIDEBAR (Same as dashboard)
+    ============================================ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status">
+            <i class="fa-solid fa-circle-check"></i> Protected
+          </p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item active"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- ============================================
+         MAIN CONTENT
+    ============================================ -->
+    <main class="main-content">
+
+      <!-- Top Navbar (Same as dashboard) -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-shield-halved"></i>
+              Safety Tools
+            </h1>
+            <p class="page-subtitle">Your emergency response arsenal</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar">
+                <span id="navbar-avatar-initial">U</span>
+              </div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar">
+                  <span id="dropdown-avatar-initial">U</span>
+                </div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li><a href="emergency-contacts.html"><i class="fa-solid fa-users"></i> Contacts</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- ============================================
+           SAFETY TOOLS CONTENT
+      ============================================ -->
+      <div class="safety-content">
+
+        <!-- HERO SOS SECTION -->
+        <section class="sos-hero">
+          <div class="sos-hero-bg">
+            <div class="sos-hero-orb orb-a"></div>
+            <div class="sos-hero-orb orb-b"></div>
+          </div>
+
+          <div class="sos-hero-content">
+            <!-- Status Badge -->
+            <div class="sos-status-badge" id="sos-status-badge">
+              <div class="status-indicator"></div>
+              <span id="sos-status-text">Emergency System Ready</span>
+            </div>
+
+            <!-- Title -->
+            <h2 class="sos-hero-title">Emergency SOS</h2>
+            <p class="sos-hero-desc">
+              Hold the button for <strong>3 seconds</strong> to trigger an emergency alert. 
+              Your live location will be shared with all trusted contacts instantly.
+            </p>
+
+            <!-- BIG SOS BUTTON -->
+            <div class="sos-main-button-wrapper">
+              <div class="sos-outer-ring"></div>
+              <div class="sos-middle-ring"></div>
+              <div class="sos-inner-ring"></div>
+              
+              <button class="sos-main-button" id="sos-main-button">
+                <div class="sos-button-progress" id="sos-button-progress">
+                  <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="46" stroke="rgba(255,255,255,0.2)" stroke-width="4" fill="none"/>
+                    <circle 
+                      cx="50" cy="50" r="46" 
+                      stroke="white" stroke-width="4" fill="none"
+                      stroke-dasharray="289"
+                      stroke-dashoffset="289"
+                      transform="rotate(-90 50 50)"
+                      id="progress-circle"
+                    />
+                  </svg>
+                </div>
+                <div class="sos-button-content">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <span class="sos-label" id="sos-label">SOS</span>
+                  <span class="sos-hint" id="sos-hint">Hold to activate</span>
+                </div>
+              </button>
+            </div>
+
+            <!-- Emergency Actions Row -->
+            <div class="sos-quick-actions">
+              <button class="quick-action-btn" data-action="call-112">
+                <i class="fa-solid fa-phone"></i>
+                <span>Call 112</span>
+              </button>
+              <button class="quick-action-btn" data-action="share-location">
+                <i class="fa-solid fa-location-dot"></i>
+                <span>Share Location</span>
+              </button>
+              <button class="quick-action-btn" data-action="fake-call">
+                <i class="fa-solid fa-phone-volume"></i>
+                <span>Fake Call</span>
+              </button>
+              <button class="quick-action-btn" data-action="alarm">
+                <i class="fa-solid fa-bell"></i>
+                <span>Panic Alarm</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION TITLE -->
+        <div class="section-header">
+          <h2 class="section-title">
+            <i class="fa-solid fa-toolbox"></i>
+            Safety Tools & Features
+          </h2>
+          <p class="section-subtitle">Powerful tools designed to keep you safe</p>
+        </div>
+
+        <!-- TOOLS GRID -->
+        <div class="tools-grid">
+
+          <!-- Live Location Sharing -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon gradient-blue">
+                <i class="fa-solid fa-location-dot"></i>
+              </div>
+              <div class="tool-status" id="location-tool-status">
+                <span class="status-dot"></span>
+                <span>Inactive</span>
+              </div>
+            </div>
+            <h3 class="tool-title">Live Location Sharing</h3>
+            <p class="tool-desc">
+              Share your real-time location with trusted contacts. They can track 
+              your journey and ensure your safety.
+            </p>
+            <div class="tool-info" id="location-info" style="display: none;">
+              <div class="info-row">
+                <span class="info-label">Latitude:</span>
+                <span class="info-value" id="loc-lat">--</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Longitude:</span>
+                <span class="info-value" id="loc-lng">--</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Accuracy:</span>
+                <span class="info-value" id="loc-accuracy">--</span>
+              </div>
+              <div class="info-row">
+                <span class="info-label">Updated:</span>
+                <span class="info-value" id="loc-updated">--</span>
+              </div>
+            </div>
+            <button class="tool-btn tool-btn-primary" id="btn-toggle-location">
+              <i class="fa-solid fa-play"></i>
+              <span>Start Sharing</span>
+            </button>
+          </div>
+
+          <!-- Voice Recording -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon gradient-red">
+                <i class="fa-solid fa-microphone"></i>
+              </div>
+              <div class="tool-status" id="recording-tool-status">
+                <span class="status-dot"></span>
+                <span>Inactive</span>
+              </div>
+            </div>
+            <h3 class="tool-title">Voice Recording</h3>
+            <p class="tool-desc">
+              Record audio evidence discreetly. Recordings are saved securely and 
+              can be shared with authorities if needed.
+            </p>
+            <div class="tool-info" id="recording-info" style="display: none;">
+              <div class="recording-visualizer">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+              </div>
+              <div class="recording-timer" id="recording-timer">00:00</div>
+            </div>
+            <button class="tool-btn tool-btn-danger" id="btn-toggle-recording">
+              <i class="fa-solid fa-microphone"></i>
+              <span>Start Recording</span>
+            </button>
+          </div>
+
+          <!-- Fake Call -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon gradient-green">
+                <i class="fa-solid fa-phone-volume"></i>
+              </div>
+              <div class="tool-status">
+                <span class="status-dot"></span>
+                <span>Ready</span>
+              </div>
+            </div>
+            <h3 class="tool-title">Fake Incoming Call</h3>
+            <p class="tool-desc">
+              Simulate a phone call to escape uncomfortable situations. 
+              Choose caller, delay, and ringtone.
+            </p>
+            <div class="fake-call-options">
+              <select class="tool-select" id="fake-call-timer">
+                <option value="5">Call in 5 seconds</option>
+                <option value="10" selected>Call in 10 seconds</option>
+                <option value="30">Call in 30 seconds</option>
+                <option value="60">Call in 1 minute</option>
+              </select>
+            </div>
+            <button class="tool-btn tool-btn-success" id="btn-fake-call">
+              <i class="fa-solid fa-phone"></i>
+              <span>Schedule Fake Call</span>
+            </button>
+          </div>
+
+          <!-- Safety Timer -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon gradient-orange">
+                <i class="fa-solid fa-stopwatch"></i>
+              </div>
+              <div class="tool-status" id="timer-tool-status">
+                <span class="status-dot"></span>
+                <span>Not Set</span>
+              </div>
+            </div>
+            <h3 class="tool-title">Safety Timer</h3>
+            <p class="tool-desc">
+              Set a check-in timer. If you don't confirm your safety when time 
+              runs out, an alert will be sent to your contacts.
+            </p>
+            <div class="timer-input-group">
+              <button class="timer-quick-btn" data-time="5">5m</button>
+              <button class="timer-quick-btn" data-time="15">15m</button>
+              <button class="timer-quick-btn" data-time="30">30m</button>
+              <button class="timer-quick-btn" data-time="60">1h</button>
+            </div>
+            <div class="timer-display" id="timer-display" style="display: none;">
+              <div class="timer-value" id="timer-value">00:00</div>
+              <p class="timer-label">Time Remaining</p>
+            </div>
+            <button class="tool-btn tool-btn-warning" id="btn-start-timer" disabled>
+              <i class="fa-solid fa-play"></i>
+              <span>Start Timer</span>
+            </button>
+          </div>
+
+          <!-- Panic Alarm -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon gradient-yellow">
+                <i class="fa-solid fa-bell"></i>
+              </div>
+              <div class="tool-status" id="alarm-tool-status">
+                <span class="status-dot"></span>
+                <span>Silent</span>
+              </div>
+            </div>
+            <h3 class="tool-title">Panic Alarm</h3>
+            <p class="tool-desc">
+              Trigger a loud, attention-grabbing alarm sound to scare off 
+              attackers and alert people nearby.
+            </p>
+            <div class="alarm-preview">
+              <div class="alarm-wave">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+            </div>
+            <button class="tool-btn tool-btn-primary" id="btn-toggle-alarm">
+              <i class="fa-solid fa-volume-high"></i>
+              <span>Activate Alarm</span>
+            </button>
+          </div>
+
+          <!-- Share with Contacts -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <div class="tool-icon gradient-purple">
+                <i class="fa-solid fa-share-nodes"></i>
+              </div>
+              <div class="tool-status">
+                <span class="status-dot"></span>
+                <span>Ready</span>
+              </div>
+            </div>
+            <h3 class="tool-title">Share with Contacts</h3>
+            <p class="tool-desc">
+              Instantly send your current location and status to selected 
+              trusted contacts via SMS or WhatsApp.
+            </p>
+            <div class="contact-list-mini">
+              <div class="contact-mini-item">
+                <div class="contact-mini-avatar" style="background: var(--gradient-primary);">M</div>
+                <span>Mom</span>
+              </div>
+              <div class="contact-mini-item">
+                <div class="contact-mini-avatar" style="background: var(--gradient-emergency);">D</div>
+                <span>Dad</span>
+              </div>
+              <div class="contact-mini-item">
+                <div class="contact-mini-avatar" style="background: var(--gradient-primary);">S</div>
+                <span>Sister</span>
+              </div>
+              <div class="contact-mini-item more">+2</div>
+            </div>
+            <button class="tool-btn tool-btn-primary" id="btn-share-contacts">
+              <i class="fa-solid fa-paper-plane"></i>
+              <span>Share Now</span>
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Safety Instructions -->
+        <section class="safety-instructions">
+          <div class="instructions-header">
+            <h2 class="section-title">
+              <i class="fa-solid fa-book"></i>
+              How SOS Works
+            </h2>
+          </div>
+          <div class="instructions-steps">
+            <div class="instruction-step">
+              <div class="step-number">1</div>
+              <div class="step-content">
+                <h4>Press & Hold</h4>
+                <p>Press and hold the SOS button for 3 seconds to activate</p>
+              </div>
+            </div>
+            <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="instruction-step">
+              <div class="step-number">2</div>
+              <div class="step-content">
+                <h4>Location Captured</h4>
+                <p>Your live location is automatically captured</p>
+              </div>
+            </div>
+            <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="instruction-step">
+              <div class="step-number">3</div>
+              <div class="step-content">
+                <h4>Contacts Alerted</h4>
+                <p>All trusted contacts receive instant SMS with your location</p>
+              </div>
+            </div>
+            <div class="step-arrow"><i class="fa-solid fa-arrow-right"></i></div>
+            <div class="instruction-step">
+              <div class="step-number">4</div>
+              <div class="step-content">
+                <h4>Help Arrives</h4>
+                <p>Emergency services and family members can track & help you</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item">
+        <i class="fa-solid fa-house"></i><span>Home</span>
+      </a>
+      <a href="safety-tools.html" class="bottom-nav-item active">
+        <i class="fa-solid fa-shield-halved"></i><span>Safety</span>
+      </a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </button>
+      <a href="find-help.html" class="bottom-nav-item">
+        <i class="fa-solid fa-location-crosshairs"></i><span>Help</span>
+      </a>
+      <a href="profile.html" class="bottom-nav-item">
+        <i class="fa-solid fa-user"></i><span>Profile</span>
+      </a>
+    </nav>
+
+  </div>
+
+  <!-- ============================================
+       SOS CONFIRMATION MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="sos-modal">
+    <div class="modal-container sos-modal">
+      <div class="sos-modal-header">
+        <div class="sos-alert-icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h2>SOS Alert Confirmation</h2>
+        <p>Are you sure you want to trigger an emergency alert?</p>
+      </div>
+
+      <div class="sos-modal-info">
+        <div class="modal-info-item">
+          <i class="fa-solid fa-users"></i>
+          <div>
+            <p class="info-title">3 Contacts will be notified</p>
+            <p class="info-desc">Mom, Dad, Sister</p>
+          </div>
+        </div>
+        <div class="modal-info-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div>
+            <p class="info-title">Location will be shared</p>
+            <p class="info-desc">Your live location will be sent</p>
+          </div>
+        </div>
+        <div class="modal-info-item">
+          <i class="fa-solid fa-phone"></i>
+          <div>
+            <p class="info-title">Emergency services alerted</p>
+            <p class="info-desc">Alert sent to nearest authorities</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sos-countdown" id="sos-countdown">
+        <p>Alert triggers in <span id="countdown-number">5</span> seconds</p>
+        <div class="countdown-bar">
+          <div class="countdown-fill" id="countdown-fill"></div>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn-modal-cancel" id="btn-cancel-sos">
+          <i class="fa-solid fa-xmark"></i>
+          Cancel
+        </button>
+        <button class="btn-modal-confirm" id="btn-confirm-sos">
+          <i class="fa-solid fa-check"></i>
+          Confirm SOS
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       SOS ACTIVE OVERLAY
+  ============================================ -->
+  <div class="sos-active-overlay" id="sos-active-overlay">
+    <div class="sos-active-content">
+      <div class="sos-active-icon">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+      </div>
+      <h1 class="sos-active-title">SOS ALERT ACTIVE</h1>
+      <p class="sos-active-subtitle">Help is on the way. Stay calm.</p>
+
+      <div class="sos-active-stats">
+        <div class="active-stat">
+          <div class="stat-icon-lg">
+            <i class="fa-solid fa-check"></i>
+          </div>
+          <div class="stat-info-lg">
+            <p class="stat-title">Alert Sent</p>
+            <p class="stat-desc" id="alert-time">Just now</p>
+          </div>
+        </div>
+        <div class="active-stat">
+          <div class="stat-icon-lg">
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <div class="stat-info-lg">
+            <p class="stat-title">Notified</p>
+            <p class="stat-desc">3 contacts</p>
+          </div>
+        </div>
+        <div class="active-stat">
+          <div class="stat-icon-lg">
+            <i class="fa-solid fa-location-dot"></i>
+          </div>
+          <div class="stat-info-lg">
+            <p class="stat-title">Location</p>
+            <p class="stat-desc">Sharing live</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sos-active-timer">
+        <p>Active for</p>
+        <div class="active-timer-value" id="active-timer">00:00</div>
+      </div>
+
+      <div class="sos-active-actions">
+        <button class="active-action-btn" onclick="window.location.href='tel:112'">
+          <i class="fa-solid fa-phone"></i>
+          Call Emergency
+        </button>
+        <button class="btn-deactivate-sos" id="btn-deactivate-sos">
+          <i class="fa-solid fa-xmark"></i>
+          Deactivate Alert
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       FAKE CALL SCREEN
+  ============================================ -->
+  <div class="fake-call-screen" id="fake-call-screen">
+    <div class="fake-call-content">
+      <p class="fake-call-label">Incoming call...</p>
+      <div class="fake-caller-avatar">
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <h1 class="fake-caller-name">Mom</h1>
+      <p class="fake-caller-number">+91 98765 43210</p>
+
+      <div class="fake-call-actions">
+        <button class="fake-call-btn decline" id="btn-decline-fake">
+          <i class="fa-solid fa-phone-slash"></i>
+        </button>
+        <button class="fake-call-btn accept" id="btn-accept-fake">
+          <i class="fa-solid fa-phone"></i>
+        </button>
+      </div>
+
+      <div class="fake-call-slide">
+        <p>Swipe up to answer</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/safety-tools.js"></script>
+</body>
+</html>

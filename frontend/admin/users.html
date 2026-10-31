@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Users Management - SafeHer Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/admin-pages.css" />
+</head>
+<body>
+  <div class="admin-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="dashboard.html" class="admin-sidebar-logo">
+          <div class="admin-sidebar-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <span class="admin-sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+            <p class="admin-portal-tag">Admin Portal</p>
+          </div>
+        </a>
+        <button class="admin-sidebar-close" id="admin-sidebar-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="admin-sidebar-profile">
+        <div class="admin-profile-avatar">
+          <span>A</span>
+          <div class="admin-avatar-badge"><i class="fa-solid fa-crown"></i></div>
+        </div>
+        <div class="admin-profile-info">
+          <p class="admin-profile-name">Admin User</p>
+          <p class="admin-profile-role"><i class="fa-solid fa-shield-halved"></i> Super Admin</p>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Overview</p>
+          <ul class="admin-nav-list">
+            <li><a href="dashboard.html" class="admin-nav-item"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a></li>
+            <li><a href="analytics.html" class="admin-nav-item"><i class="fa-solid fa-chart-line"></i><span>Analytics</span></a></li>
+          </ul>
+        </div>
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Management</p>
+          <ul class="admin-nav-list">
+            <li><a href="users.html" class="admin-nav-item active"><i class="fa-solid fa-users"></i><span>Users</span><span class="admin-nav-badge">12.4K</span></a></li>
+            <li><a href="reports.html" class="admin-nav-item"><i class="fa-solid fa-file-lines"></i><span>Reports</span><span class="admin-nav-badge urgent">23</span></a></li>
+            <li><a href="unsafe-areas.html" class="admin-nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="resources.html" class="admin-nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+            <li><a href="feedback.html" class="admin-nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span><span class="admin-nav-badge">8</span></a></li>
+          </ul>
+        </div>
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">System</p>
+          <ul class="admin-nav-list">
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a></li>
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-bell"></i><span>Notifications</span></a></li>
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Security Logs</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button class="admin-logout-btn" id="admin-logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="admin-sidebar-overlay" id="admin-sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-menu-toggle" id="admin-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div>
+            <h1 class="admin-page-title">Users Management</h1>
+            <p class="admin-breadcrumb"><a href="dashboard.html">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>Users</span></p>
+          </div>
+        </div>
+        <div class="admin-topbar-right">
+          <div class="admin-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search users..." />
+          </div>
+          <button class="admin-icon-btn"><i class="fa-solid fa-bell"></i><span class="admin-dot">5</span></button>
+          <div class="admin-topbar-profile">
+            <div class="admin-topbar-avatar">A</div>
+            <div class="admin-topbar-info">
+              <p class="admin-topbar-name">Admin</p>
+              <p class="admin-topbar-role">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+
+        <!-- Page Header -->
+        <div class="page-header-admin">
+          <div>
+            <h2 class="page-heading-admin">All Users</h2>
+            <p class="page-subheading-admin">Manage all registered users on SafeHer platform</p>
+          </div>
+          <button class="btn-add-admin">
+            <i class="fa-solid fa-user-plus"></i>
+            Add New User
+          </button>
+        </div>
+
+        <!-- Stats Row -->
+        <section class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-purple"><i class="fa-solid fa-users"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+            </div>
+            <p class="stat-value-a">12,458</p>
+            <p class="stat-label-a">Total Users</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-green"><i class="fa-solid fa-user-check"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 8%</span>
+            </div>
+            <p class="stat-value-a">11,892</p>
+            <p class="stat-label-a">Active Users</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-orange"><i class="fa-solid fa-user-plus"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 24%</span>
+            </div>
+            <p class="stat-value-a">845</p>
+            <p class="stat-label-a">New This Week</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-red"><i class="fa-solid fa-user-slash"></i></div>
+              <span class="stat-trend down"><i class="fa-solid fa-arrow-down"></i> 3%</span>
+            </div>
+            <p class="stat-value-a">45</p>
+            <p class="stat-label-a">Suspended</p>
+          </div>
+        </section>
+
+        <!-- Filters -->
+        <div class="admin-filters-bar">
+          <div class="filter-chips-admin">
+            <button class="filter-chip-a active">All Users</button>
+            <button class="filter-chip-a">Active</button>
+            <button class="filter-chip-a">Inactive</button>
+            <button class="filter-chip-a">Suspended</button>
+            <button class="filter-chip-a">Premium</button>
+          </div>
+          <div class="filter-actions-a">
+            <select class="filter-select-a">
+              <option>Sort by: Latest</option>
+              <option>Sort by: Name</option>
+              <option>Sort by: Reports</option>
+            </select>
+            <button class="btn-export-a">
+              <i class="fa-solid fa-download"></i>
+              Export
+            </button>
+          </div>
+        </div>
+
+        <!-- Users Table -->
+        <div class="admin-panel">
+          <div class="reports-table-container">
+            <table class="admin-table users-table">
+              <thead>
+                <tr>
+                  <th><input type="checkbox" /></th>
+                  <th>User</th>
+                  <th>Email</th>
+                  <th>Phone</th>
+                  <th>Reports</th>
+                  <th>Status</th>
+                  <th>Joined</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Pagination -->
+          <div class="admin-pagination">
+            <p class="pagination-info">Showing 1-10 of 12,458 users</p>
+            <div class="pagination-controls">
+              <button class="pagination-btn"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <span>...</span>
+              <button class="pagination-btn">1246</button>
+              <button class="pagination-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/toast.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/users.js"></script>
+</body>
+</html>

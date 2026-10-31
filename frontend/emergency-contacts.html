@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Emergency Contacts - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/emergency-contacts.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status"><i class="fa-solid fa-circle-check"></i> Protected</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item active"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-users"></i>
+              Emergency Contacts
+            </h1>
+            <p class="page-subtitle">Your trusted safety network</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="btn-add-contact-header" id="btn-add-contact-header">
+            <i class="fa-solid fa-user-plus"></i>
+            <span>Add Contact</span>
+          </button>
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar"><span id="navbar-avatar-initial">U</span></div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar"><span id="dropdown-avatar-initial">U</span></div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- CONTACTS CONTENT -->
+      <div class="contacts-content">
+
+        <!-- HERO SECTION -->
+        <section class="contacts-hero">
+          <div class="hero-bg-orbs">
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
+          </div>
+
+          <div class="hero-content">
+            <div class="hero-left">
+              <div class="hero-badge">
+                <i class="fa-solid fa-shield-heart"></i>
+                Your Safety Network
+              </div>
+              <h2 class="hero-title">Family Circle & Trusted Contacts</h2>
+              <p class="hero-desc">
+                These contacts will be automatically notified when you activate SOS. 
+                Add family, friends, and trusted individuals to your safety network.
+              </p>
+              
+              <div class="hero-stats">
+                <div class="hero-stat">
+                  <p class="hero-stat-num" id="hero-total">0</p>
+                  <p class="hero-stat-label">Total Contacts</p>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                  <p class="hero-stat-num" id="hero-trusted">0</p>
+                  <p class="hero-stat-label">Trusted</p>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                  <p class="hero-stat-num" id="hero-verified">0</p>
+                  <p class="hero-stat-label">Verified</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-right">
+              <!-- Circle Visualization -->
+              <div class="family-circle">
+                <div class="circle-center">
+                  <div class="circle-you">
+                    <span id="circle-user-initial">U</span>
+                    <p>You</p>
+                  </div>
+                </div>
+                <div class="circle-orbit">
+                  <div class="circle-member" style="--angle: 0deg;"><span>M</span></div>
+                  <div class="circle-member" style="--angle: 60deg;"><span>D</span></div>
+                  <div class="circle-member" style="--angle: 120deg;"><span>S</span></div>
+                  <div class="circle-member" style="--angle: 180deg;"><span>P</span></div>
+                  <div class="circle-member" style="--angle: 240deg;"><span>R</span></div>
+                  <div class="circle-member" style="--angle: 300deg;"><span>+</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTROLS -->
+        <section class="contacts-controls">
+          <div class="controls-left">
+            <div class="search-input-wrapper">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input 
+                type="text" 
+                id="contact-search" 
+                placeholder="Search contacts by name or phone..."
+              />
+            </div>
+          </div>
+
+          <div class="controls-right">
+            <div class="filter-tabs">
+              <button class="tab-btn active" data-filter="all">
+                <i class="fa-solid fa-users"></i>
+                <span>All</span>
+              </button>
+              <button class="tab-btn" data-filter="trusted">
+                <i class="fa-solid fa-star"></i>
+                <span>Trusted</span>
+              </button>
+              <button class="tab-btn" data-filter="family">
+                <i class="fa-solid fa-house-user"></i>
+                <span>Family</span>
+              </button>
+              <button class="tab-btn" data-filter="friends">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Friends</span>
+              </button>
+            </div>
+
+            <div class="view-toggle">
+              <button class="view-btn active" data-view="grid" title="Grid view">
+                <i class="fa-solid fa-grip"></i>
+              </button>
+              <button class="view-btn" data-view="list" title="List view">
+                <i class="fa-solid fa-list"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- QUICK ACTIONS -->
+        <section class="quick-actions-bar">
+          <button class="quick-action-item" id="btn-broadcast">
+            <div class="quick-action-icon gradient-red">
+              <i class="fa-solid fa-tower-broadcast"></i>
+            </div>
+            <div class="quick-action-text">
+              <p class="quick-action-title">Broadcast Alert</p>
+              <p class="quick-action-desc">Send to all contacts</p>
+            </div>
+          </button>
+
+          <button class="quick-action-item" id="btn-import-contacts">
+            <div class="quick-action-icon gradient-blue">
+              <i class="fa-solid fa-address-book"></i>
+            </div>
+            <div class="quick-action-text">
+              <p class="quick-action-title">Import Contacts</p>
+              <p class="quick-action-desc">From your device</p>
+            </div>
+          </button>
+
+          <button class="quick-action-item" id="btn-share-location-all">
+            <div class="quick-action-icon gradient-green">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="quick-action-text">
+              <p class="quick-action-title">Share Location</p>
+              <p class="quick-action-desc">With trusted contacts</p>
+            </div>
+          </button>
+
+          <button class="quick-action-item" id="btn-notification-prefs">
+            <div class="quick-action-icon gradient-purple">
+              <i class="fa-solid fa-bell"></i>
+            </div>
+            <div class="quick-action-text">
+              <p class="quick-action-title">Notifications</p>
+              <p class="quick-action-desc">Manage preferences</p>
+            </div>
+          </button>
+        </section>
+
+        <!-- CONTACTS GRID -->
+        <section class="contacts-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fa-solid fa-users"></i>
+              Your Contacts 
+              <span class="count-badge" id="contacts-count">0</span>
+            </h2>
+            <p class="section-subtitle">
+              <i class="fa-solid fa-info-circle"></i>
+              Drag cards to reorder priority. Higher priority = notified first
+            </p>
+          </div>
+
+          <div class="contacts-grid" id="contacts-grid">
+            <!-- Contact cards populated by JS -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="empty-contacts" id="empty-contacts" style="display: none;">
+            <div class="empty-icon-big">
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <h3>No contacts yet</h3>
+            <p>Add trusted contacts who will be alerted during emergencies</p>
+            <button class="btn-empty-add" onclick="EmergencyContacts.openContactModal()">
+              <i class="fa-solid fa-plus"></i>
+              Add Your First Contact
+            </button>
+          </div>
+        </section>
+
+        <!-- SOS PREFERENCES -->
+        <section class="sos-preferences">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fa-solid fa-gear"></i>
+              SOS Notification Preferences
+            </h2>
+            <p class="section-subtitle">Configure how emergency alerts are sent</p>
+          </div>
+
+          <div class="preferences-grid">
+            <!-- Delivery Methods -->
+            <div class="preference-card">
+              <div class="pref-card-header">
+                <div class="pref-icon gradient-purple">
+                  <i class="fa-solid fa-message"></i>
+                </div>
+                <h4>Delivery Methods</h4>
+              </div>
+              <div class="pref-toggles">
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">SMS Message</p>
+                    <p class="toggle-desc">Send text with location</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">WhatsApp</p>
+                    <p class="toggle-desc">Send via WhatsApp</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Auto Call</p>
+                    <p class="toggle-desc">Auto call highest priority</p>
+                  </div>
+                  <input type="checkbox" class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Email</p>
+                    <p class="toggle-desc">Send detailed email</p>
+                  </div>
+                  <input type="checkbox" class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Alert Content -->
+            <div class="preference-card">
+              <div class="pref-card-header">
+                <div class="pref-icon gradient-orange">
+                  <i class="fa-solid fa-file-lines"></i>
+                </div>
+                <h4>Alert Content</h4>
+              </div>
+              <div class="pref-toggles">
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Live Location</p>
+                    <p class="toggle-desc">Share real-time location</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Audio Recording</p>
+                    <p class="toggle-desc">Include audio if recording</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Battery Status</p>
+                    <p class="toggle-desc">Include device battery</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Custom Message</p>
+                    <p class="toggle-desc">Add personal message</p>
+                  </div>
+                  <input type="checkbox" class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Alert Behavior -->
+            <div class="preference-card">
+              <div class="pref-card-header">
+                <div class="pref-icon gradient-red">
+                  <i class="fa-solid fa-bell"></i>
+                </div>
+                <h4>Alert Behavior</h4>
+              </div>
+              <div class="pref-toggles">
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Repeat Alerts</p>
+                    <p class="toggle-desc">Every 5 mins until acknowledged</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Confirmation</p>
+                    <p class="toggle-desc">Require confirmation</p>
+                  </div>
+                  <input type="checkbox" checked class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Silent Mode</p>
+                    <p class="toggle-desc">Send without notification sound</p>
+                  </div>
+                  <input type="checkbox" class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+                <label class="pref-toggle">
+                  <div class="toggle-info">
+                    <p class="toggle-title">Group Chat</p>
+                    <p class="toggle-desc">Create emergency group</p>
+                  </div>
+                  <input type="checkbox" class="toggle-switch" />
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="safety-tools.html" class="bottom-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety</span></a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos"><i class="fa-solid fa-triangle-exclamation"></i></button>
+      <a href="find-help.html" class="bottom-nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Help</span></a>
+      <a href="profile.html" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </nav>
+
+  </div>
+
+  <!-- ============================================
+       ADD/EDIT CONTACT MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="contact-modal">
+    <div class="modal-container contact-modal">
+      <div class="contact-modal-header">
+        <button class="modal-close-btn" id="btn-close-contact-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="contact-modal-icon">
+          <i class="fa-solid fa-user-plus" id="modal-icon"></i>
+        </div>
+        <h2 id="modal-title">Add New Contact</h2>
+        <p id="modal-subtitle">Add someone to your emergency network</p>
+      </div>
+
+      <form class="contact-modal-body" id="contact-form">
+
+        <!-- Avatar Preview -->
+        <div class="avatar-preview-wrapper">
+          <div class="avatar-preview" id="avatar-preview">
+            <span id="avatar-preview-text">?</span>
+          </div>
+          <p class="avatar-hint">Avatar auto-generated from name</p>
+        </div>
+
+        <!-- Name -->
+        <div class="form-group-contact">
+          <label class="contact-label">
+            Full Name <span class="required">*</span>
+          </label>
+          <div class="input-wrapper-contact">
+            <i class="fa-solid fa-user"></i>
+            <input 
+              type="text" 
+              id="contact-name" 
+              class="contact-input" 
+              placeholder="e.g. Mom"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Relationship -->
+        <div class="form-group-contact">
+          <label class="contact-label">
+            Relationship <span class="required">*</span>
+          </label>
+          <div class="relationship-picker">
+            <label class="rel-option" for="rel-mother">
+              <input type="radio" name="relationship" id="rel-mother" value="Mother" hidden />
+              <div class="rel-icon">👩</div>
+              <span>Mother</span>
+            </label>
+            <label class="rel-option" for="rel-father">
+              <input type="radio" name="relationship" id="rel-father" value="Father" hidden />
+              <div class="rel-icon">👨</div>
+              <span>Father</span>
+            </label>
+            <label class="rel-option" for="rel-sibling">
+              <input type="radio" name="relationship" id="rel-sibling" value="Sibling" hidden />
+              <div class="rel-icon">👫</div>
+              <span>Sibling</span>
+            </label>
+            <label class="rel-option" for="rel-spouse">
+              <input type="radio" name="relationship" id="rel-spouse" value="Spouse" hidden />
+              <div class="rel-icon">💑</div>
+              <span>Spouse</span>
+            </label>
+            <label class="rel-option" for="rel-friend">
+              <input type="radio" name="relationship" id="rel-friend" value="Friend" hidden />
+              <div class="rel-icon">👭</div>
+              <span>Friend</span>
+            </label>
+            <label class="rel-option" for="rel-guardian">
+              <input type="radio" name="relationship" id="rel-guardian" value="Guardian" hidden />
+              <div class="rel-icon">🛡️</div>
+              <span>Guardian</span>
+            </label>
+            <label class="rel-option" for="rel-relative">
+              <input type="radio" name="relationship" id="rel-relative" value="Relative" hidden />
+              <div class="rel-icon">👪</div>
+              <span>Relative</span>
+            </label>
+            <label class="rel-option" for="rel-other">
+              <input type="radio" name="relationship" id="rel-other" value="Other" hidden />
+              <div class="rel-icon">👤</div>
+              <span>Other</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group-contact">
+          <label class="contact-label">
+            Phone Number <span class="required">*</span>
+          </label>
+          <div class="phone-input-group">
+            <select class="country-select" id="contact-country">
+              <option value="+91">🇮🇳 +91</option>
+              <option value="+1">🇺🇸 +1</option>
+              <option value="+44">🇬🇧 +44</option>
+              <option value="+61">🇦🇺 +61</option>
+              <option value="+81">🇯🇵 +81</option>
+            </select>
+            <div class="input-wrapper-contact phone-num">
+              <i class="fa-solid fa-phone"></i>
+              <input 
+                type="tel" 
+                id="contact-phone" 
+                class="contact-input" 
+                placeholder="9876543210"
+                required
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Email (Optional) -->
+        <div class="form-group-contact">
+          <label class="contact-label">
+            Email <span class="optional-tag">(Optional)</span>
+          </label>
+          <div class="input-wrapper-contact">
+            <i class="fa-solid fa-envelope"></i>
+            <input 
+              type="email" 
+              id="contact-email" 
+              class="contact-input" 
+              placeholder="email@example.com"
+            />
+          </div>
+        </div>
+
+        <!-- Priority -->
+        <div class="form-group-contact">
+          <label class="contact-label">
+            Priority Level <span class="required">*</span>
+          </label>
+          <div class="priority-picker">
+            <label class="priority-option" for="pri-highest">
+              <input type="radio" name="priority" id="pri-highest" value="1" hidden />
+              <div class="priority-badge highest">1</div>
+              <div>
+                <p class="pri-title">Highest</p>
+                <p class="pri-desc">Notified first, always called</p>
+              </div>
+            </label>
+            <label class="priority-option" for="pri-high">
+              <input type="radio" name="priority" id="pri-high" value="2" hidden />
+              <div class="priority-badge high">2</div>
+              <div>
+                <p class="pri-title">High</p>
+                <p class="pri-desc">Notified quickly</p>
+              </div>
+            </label>
+            <label class="priority-option" for="pri-medium">
+              <input type="radio" name="priority" id="pri-medium" value="3" hidden />
+              <div class="priority-badge medium">3</div>
+              <div>
+                <p class="pri-title">Medium</p>
+                <p class="pri-desc">Standard notification</p>
+              </div>
+            </label>
+            <label class="priority-option" for="pri-low">
+              <input type="radio" name="priority" id="pri-low" value="4" hidden />
+              <div class="priority-badge low">4</div>
+              <div>
+                <p class="pri-title">Low</p>
+                <p class="pri-desc">Backup contact</p>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Toggle Options -->
+        <div class="form-group-contact">
+          <div class="contact-toggles">
+            <label class="pref-toggle">
+              <div class="toggle-info">
+                <p class="toggle-title">
+                  <i class="fa-solid fa-star" style="color: var(--color-warning);"></i>
+                  Mark as Trusted
+                </p>
+                <p class="toggle-desc">Include in SOS emergency alerts</p>
+              </div>
+              <input type="checkbox" id="contact-trusted" checked class="toggle-switch" />
+              <span class="toggle-slider"></span>
+            </label>
+
+            <label class="pref-toggle">
+              <div class="toggle-info">
+                <p class="toggle-title">
+                  <i class="fa-solid fa-location-dot" style="color: var(--color-info);"></i>
+                  Share Location
+                </p>
+                <p class="toggle-desc">Automatically share location with this contact</p>
+              </div>
+              <input type="checkbox" id="contact-location" checked class="toggle-switch" />
+              <span class="toggle-slider"></span>
+            </label>
+
+            <label class="pref-toggle">
+              <div class="toggle-info">
+                <p class="toggle-title">
+                  <i class="fa-solid fa-message" style="color: var(--color-success);"></i>
+                  SMS Notifications
+                </p>
+                <p class="toggle-desc">Send SMS during emergencies</p>
+              </div>
+              <input type="checkbox" id="contact-sms" checked class="toggle-switch" />
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="modal-actions-row">
+          <button type="button" class="btn-cancel-contact" onclick="document.getElementById('contact-modal').classList.remove('show')">
+            Cancel
+          </button>
+          <button type="submit" class="btn-save-contact" id="btn-save-contact">
+            <i class="fa-solid fa-check"></i>
+            Save Contact
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================
+       DELETE CONFIRMATION MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="delete-modal">
+    <div class="modal-container delete-modal">
+      <div class="delete-modal-body">
+        <div class="delete-icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3>Delete Contact?</h3>
+        <p>Are you sure you want to remove <strong id="delete-contact-name">this contact</strong> from your emergency network?</p>
+        <p class="delete-warning">This action cannot be undone.</p>
+        <div class="modal-actions-row">
+          <button class="btn-cancel-contact" id="btn-cancel-delete">
+            Cancel
+          </button>
+          <button class="btn-confirm-delete" id="btn-confirm-delete">
+            <i class="fa-solid fa-trash"></i>
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/emergency-contacts.js"></script>
+</body>
+</html>

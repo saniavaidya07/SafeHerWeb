@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Unsafe Areas - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/unsafe-areas.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status"><i class="fa-solid fa-circle-check"></i> Protected</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item active"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              Unsafe Area Reports
+            </h1>
+            <p class="page-subtitle">Community-driven safety intelligence</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="btn-report-area-header" id="btn-report-area-header">
+            <i class="fa-solid fa-plus"></i>
+            <span>Report Area</span>
+          </button>
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar"><span id="navbar-avatar-initial">U</span></div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar"><span id="dropdown-avatar-initial">U</span></div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- UNSAFE AREAS CONTENT -->
+      <div class="unsafe-content">
+
+        <!-- STATS OVERVIEW -->
+        <section class="stats-overview">
+          <div class="stat-card gradient-red">
+            <div class="stat-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="stat-info">
+              <p class="stat-value" id="stat-total">0</p>
+              <p class="stat-label">Total Reports</p>
+              <p class="stat-change">
+                <i class="fa-solid fa-arrow-up"></i>
+                12% from last week
+              </p>
+            </div>
+          </div>
+
+          <div class="stat-card gradient-orange">
+            <div class="stat-icon"><i class="fa-solid fa-fire"></i></div>
+            <div class="stat-info">
+              <p class="stat-value" id="stat-critical">0</p>
+              <p class="stat-label">Critical Zones</p>
+              <p class="stat-change danger">
+                <i class="fa-solid fa-arrow-up"></i>
+                Alert level
+              </p>
+            </div>
+          </div>
+
+          <div class="stat-card gradient-blue">
+            <div class="stat-icon"><i class="fa-solid fa-check-double"></i></div>
+            <div class="stat-info">
+              <p class="stat-value" id="stat-verified">0</p>
+              <p class="stat-label">Verified Reports</p>
+              <p class="stat-change">
+                <i class="fa-solid fa-shield-check"></i>
+                Community verified
+              </p>
+            </div>
+          </div>
+
+          <div class="stat-card gradient-green">
+            <div class="stat-icon"><i class="fa-solid fa-users"></i></div>
+            <div class="stat-info">
+              <p class="stat-value">2.4K</p>
+              <p class="stat-label">Contributors</p>
+              <p class="stat-change">
+                <i class="fa-solid fa-arrow-up"></i>
+                Growing daily
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- MAIN LAYOUT -->
+        <div class="unsafe-layout">
+
+          <!-- MAP SECTION -->
+          <div class="unsafe-map-section">
+            <div class="map-header">
+              <div class="map-title-group">
+                <h3 class="map-heading">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                  Safety Heatmap
+                </h3>
+                <p class="map-subheading">Click on markers to view details</p>
+              </div>
+              <div class="map-view-toggle">
+                <button class="view-toggle-btn active" data-view="markers">
+                  <i class="fa-solid fa-location-dot"></i>
+                  Markers
+                </button>
+                <button class="view-toggle-btn" data-view="heatmap">
+                  <i class="fa-solid fa-fire"></i>
+                  Heatmap
+                </button>
+              </div>
+            </div>
+
+            <div class="unsafe-map-wrapper">
+              <div id="unsafe-map"></div>
+
+              <!-- Legend -->
+              <div class="map-legend">
+                <p class="legend-title">Severity</p>
+                <div class="legend-items">
+                  <div class="legend-item">
+                    <div class="legend-dot severity-critical"></div>
+                    <span>Critical</span>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-dot severity-high"></div>
+                    <span>High</span>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-dot severity-medium"></div>
+                    <span>Medium</span>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-dot severity-low"></div>
+                    <span>Low</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Map Controls -->
+              <div class="unsafe-map-controls">
+                <button class="map-ctrl-btn" id="btn-locate-me" title="My location">
+                  <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+                <button class="map-ctrl-btn primary" id="btn-add-area" title="Add unsafe area">
+                  <i class="fa-solid fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- FILTERS & LIST -->
+          <div class="unsafe-list-section">
+            
+            <!-- Filters -->
+            <div class="filters-panel">
+              <h3 class="panel-heading">
+                <i class="fa-solid fa-filter"></i>
+                Filters
+              </h3>
+
+              <!-- Severity Filter -->
+              <div class="filter-group">
+                <p class="filter-group-label">Severity</p>
+                <div class="severity-filters">
+                  <button class="sev-filter-btn active" data-severity="all">
+                    <span>All</span>
+                  </button>
+                  <button class="sev-filter-btn" data-severity="critical">
+                    <span class="sev-dot severity-critical"></span>
+                    <span>Critical</span>
+                  </button>
+                  <button class="sev-filter-btn" data-severity="high">
+                    <span class="sev-dot severity-high"></span>
+                    <span>High</span>
+                  </button>
+                  <button class="sev-filter-btn" data-severity="medium">
+                    <span class="sev-dot severity-medium"></span>
+                    <span>Medium</span>
+                  </button>
+                  <button class="sev-filter-btn" data-severity="low">
+                    <span class="sev-dot severity-low"></span>
+                    <span>Low</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Status Filter -->
+              <div class="filter-group">
+                <p class="filter-group-label">Status</p>
+                <select class="filter-select" id="status-filter">
+                  <option value="all">All Statuses</option>
+                  <option value="verified">Verified</option>
+                  <option value="review">Under Review</option>
+                  <option value="reported">User Reported</option>
+                  <option value="resolved">Resolved</option>
+                </select>
+              </div>
+
+              <!-- Time Filter -->
+              <div class="filter-group">
+                <p class="filter-group-label">Time of Day</p>
+                <div class="time-filters">
+                  <button class="time-filter-btn" data-time="all">
+                    <i class="fa-solid fa-clock"></i>
+                    All
+                  </button>
+                  <button class="time-filter-btn" data-time="day">
+                    <i class="fa-solid fa-sun"></i>
+                    Day
+                  </button>
+                  <button class="time-filter-btn" data-time="evening">
+                    <i class="fa-solid fa-cloud-sun"></i>
+                    Evening
+                  </button>
+                  <button class="time-filter-btn" data-time="night">
+                    <i class="fa-solid fa-moon"></i>
+                    Night
+                  </button>
+                </div>
+              </div>
+
+              <!-- Distance Filter -->
+              <div class="filter-group">
+                <p class="filter-group-label">Distance</p>
+                <div class="range-wrapper">
+                  <input type="range" id="distance-range" min="1" max="20" value="10" class="filter-range" />
+                  <div class="range-value">
+                    <span id="distance-value">10</span> km
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn-clear-filters" id="btn-clear-filters">
+                <i class="fa-solid fa-rotate-left"></i>
+                Clear Filters
+              </button>
+            </div>
+
+            <!-- Areas List -->
+            <div class="areas-list-wrapper">
+              <div class="list-header">
+                <h3 class="panel-heading">
+                  <i class="fa-solid fa-list"></i>
+                  Reported Areas 
+                  <span class="results-count" id="results-count">0</span>
+                </h3>
+              </div>
+              <div class="areas-list" id="areas-list">
+                <!-- Areas populated by JS -->
+              </div>
+
+              <!-- Empty state -->
+              <div class="empty-state" id="areas-empty" style="display:none;">
+                <div class="empty-icon">
+                  <i class="fa-solid fa-map-location-dot"></i>
+                </div>
+                <h3>No areas found</h3>
+                <p>Try adjusting your filters</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- SAFETY INSIGHTS -->
+        <section class="insights-section">
+          <div class="section-header">
+            <h2 class="section-title">
+              <i class="fa-solid fa-chart-line"></i>
+              Safety Insights
+            </h2>
+            <p class="section-subtitle">Understand safety patterns in your area</p>
+          </div>
+
+          <div class="insights-grid">
+            <!-- Time Pattern -->
+            <div class="insight-card">
+              <div class="insight-header">
+                <div class="insight-icon gradient-purple">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <h4>Peak Unsafe Hours</h4>
+                  <p>Most reports occur during</p>
+                </div>
+              </div>
+              <div class="insight-value">
+                <span class="value-large">10 PM - 2 AM</span>
+                <p class="insight-tip">
+                  <i class="fa-solid fa-lightbulb"></i>
+                  Avoid isolated areas during night hours
+                </p>
+              </div>
+              <div class="insight-bar">
+                <div class="bar-segment" style="width: 20%; background: var(--color-success);" title="Morning"></div>
+                <div class="bar-segment" style="width: 30%; background: var(--color-warning);" title="Evening"></div>
+                <div class="bar-segment" style="width: 50%; background: var(--color-emergency);" title="Night"></div>
+              </div>
+              <div class="bar-labels">
+                <span>Morning</span>
+                <span>Evening</span>
+                <span>Night</span>
+              </div>
+            </div>
+
+            <!-- Top Locations -->
+            <div class="insight-card">
+              <div class="insight-header">
+                <div class="insight-icon gradient-red">
+                  <i class="fa-solid fa-location-dot"></i>
+                </div>
+                <div>
+                  <h4>Top Reported Areas</h4>
+                  <p>Highest reported zones</p>
+                </div>
+              </div>
+              <ul class="top-locations">
+                <li>
+                  <span class="rank">1</span>
+                  <span class="location-name">MG Road Metro</span>
+                  <span class="report-count">24 reports</span>
+                </li>
+                <li>
+                  <span class="rank">2</span>
+                  <span class="location-name">Silk Board Junction</span>
+                  <span class="report-count">18 reports</span>
+                </li>
+                <li>
+                  <span class="rank">3</span>
+                  <span class="location-name">Marathahalli Bridge</span>
+                  <span class="report-count">15 reports</span>
+                </li>
+                <li>
+                  <span class="rank">4</span>
+                  <span class="location-name">Koramangala 5th Block</span>
+                  <span class="report-count">12 reports</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Safety Tips -->
+            <div class="insight-card">
+              <div class="insight-header">
+                <div class="insight-icon gradient-green">
+                  <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <div>
+                  <h4>Safety Recommendations</h4>
+                  <p>Based on community data</p>
+                </div>
+              </div>
+              <ul class="safety-tips-list">
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Travel in groups after 9 PM
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Use verified transportation apps
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Share live location with contacts
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Keep SOS button accessible
+                </li>
+                <li>
+                  <i class="fa-solid fa-check"></i>
+                  Trust your instincts always
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="safety-tools.html" class="bottom-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety</span></a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos"><i class="fa-solid fa-triangle-exclamation"></i></button>
+      <a href="find-help.html" class="bottom-nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Help</span></a>
+      <a href="profile.html" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </nav>
+
+  </div>
+
+  <!-- ============================================
+       AREA DETAILS MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="area-modal">
+    <div class="modal-container area-modal">
+      <div class="area-modal-header" id="area-modal-header">
+        <button class="modal-close-btn" id="btn-close-area-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="modal-severity-badge" id="modal-severity-badge">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Critical</span>
+        </div>
+        <h2 class="area-modal-title" id="modal-area-name">Area Name</h2>
+        <p class="area-modal-location" id="modal-area-location">
+          <i class="fa-solid fa-location-dot"></i>
+          Address here
+        </p>
+      </div>
+
+      <div class="area-modal-body">
+        <!-- Stats -->
+        <div class="area-stats">
+          <div class="area-stat">
+            <p class="stat-num" id="modal-reports-count">12</p>
+            <p class="stat-name">Reports</p>
+          </div>
+          <div class="area-stat">
+            <p class="stat-num" id="modal-verified-count">8</p>
+            <p class="stat-name">Verified</p>
+          </div>
+          <div class="area-stat">
+            <p class="stat-num" id="modal-distance">2.5 km</p>
+            <p class="stat-name">Distance</p>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">
+            <i class="fa-solid fa-align-left"></i>
+            Description
+          </h4>
+          <p class="modal-description-text" id="modal-description">
+            Description will appear here.
+          </p>
+        </div>
+
+        <!-- Reported Issues -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">
+            <i class="fa-solid fa-list-check"></i>
+            Reported Issues
+          </h4>
+          <div class="reported-issues" id="modal-issues">
+            <span class="issue-tag">Poor lighting</span>
+            <span class="issue-tag">Harassment</span>
+            <span class="issue-tag">Isolated area</span>
+          </div>
+        </div>
+
+        <!-- Time Pattern -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">
+            <i class="fa-solid fa-clock"></i>
+            Peak Unsafe Times
+          </h4>
+          <div class="time-pattern">
+            <div class="pattern-time">
+              <i class="fa-solid fa-sun"></i>
+              <span>Morning</span>
+              <div class="pattern-bar">
+                <div class="pattern-fill" style="width: 15%; background: var(--color-success);"></div>
+              </div>
+              <span class="pattern-pct">15%</span>
+            </div>
+            <div class="pattern-time">
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span>Evening</span>
+              <div class="pattern-bar">
+                <div class="pattern-fill" style="width: 40%; background: var(--color-warning);"></div>
+              </div>
+              <span class="pattern-pct">40%</span>
+            </div>
+            <div class="pattern-time">
+              <i class="fa-solid fa-moon"></i>
+              <span>Night</span>
+              <div class="pattern-bar">
+                <div class="pattern-fill" style="width: 85%; background: var(--color-emergency);"></div>
+              </div>
+              <span class="pattern-pct">85%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="modal-actions-row">
+          <button class="btn-verify" id="btn-verify-area">
+            <i class="fa-solid fa-check"></i>
+            Confirm This Area
+          </button>
+          <button class="btn-share-area" id="btn-share-area">
+            <i class="fa-solid fa-share-nodes"></i>
+            Share Warning
+          </button>
+        </div>
+
+        <!-- Recent Reports -->
+        <div class="modal-section">
+          <h4 class="modal-section-title">
+            <i class="fa-solid fa-comments"></i>
+            Recent Reports
+          </h4>
+          <div class="recent-comments" id="modal-recent-reports">
+            <div class="comment-item">
+              <div class="comment-avatar">A</div>
+              <div class="comment-content">
+                <div class="comment-header">
+                  <span class="comment-user">Anonymous</span>
+                  <span class="comment-time">2 days ago</span>
+                </div>
+                <p class="comment-text">Very poorly lit area at night. Multiple incidents reported.</p>
+              </div>
+            </div>
+            <div class="comment-item">
+              <div class="comment-avatar">S</div>
+              <div class="comment-content">
+                <div class="comment-header">
+                  <span class="comment-user">Sneha</span>
+                  <span class="comment-time">1 week ago</span>
+                </div>
+                <p class="comment-text">Avoid this area after 9 PM. Always take a different route.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       REPORT NEW AREA MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="report-area-modal">
+    <div class="modal-container report-area-modal">
+      <div class="report-area-header">
+        <button class="modal-close-btn" id="btn-close-report-modal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="report-area-icon">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h2>Report an Unsafe Area</h2>
+        <p>Help protect others by sharing safety concerns</p>
+      </div>
+
+      <form class="report-area-body" id="report-area-form">
+
+        <!-- Location -->
+        <div class="form-group-report">
+          <label class="report-label">
+            Location <span class="required">*</span>
+          </label>
+          <div class="location-input-wrapper">
+            <input 
+              type="text" 
+              id="area-location" 
+              class="report-input" 
+              placeholder="Search or use current location"
+              required
+            />
+            <button type="button" class="btn-detect-location" id="btn-detect-area-location">
+              <i class="fa-solid fa-location-crosshairs"></i>
+              <span>Detect</span>
+            </button>
+          </div>
+          <p class="input-hint">
+            <i class="fa-solid fa-info-circle"></i>
+            You can also click on the map to pick a location
+          </p>
+        </div>
+
+        <!-- Mini map for location picking -->
+        <div class="mini-map-wrapper">
+          <div id="mini-map"></div>
+        </div>
+
+        <!-- Severity -->
+        <div class="form-group-report">
+          <label class="report-label">
+            Severity Level <span class="required">*</span>
+          </label>
+          <div class="severity-picker">
+            <label class="sev-picker-option" for="rep-sev-low">
+              <input type="radio" name="repSeverity" id="rep-sev-low" value="low" hidden />
+              <div class="sev-picker-dot severity-low"></div>
+              <span>Low</span>
+              <small>Minor concern</small>
+            </label>
+            <label class="sev-picker-option" for="rep-sev-medium">
+              <input type="radio" name="repSeverity" id="rep-sev-medium" value="medium" hidden />
+              <div class="sev-picker-dot severity-medium"></div>
+              <span>Medium</span>
+              <small>Be cautious</small>
+            </label>
+            <label class="sev-picker-option" for="rep-sev-high">
+              <input type="radio" name="repSeverity" id="rep-sev-high" value="high" hidden />
+              <div class="sev-picker-dot severity-high"></div>
+              <span>High</span>
+              <small>Avoid area</small>
+            </label>
+            <label class="sev-picker-option" for="rep-sev-critical">
+              <input type="radio" name="repSeverity" id="rep-sev-critical" value="critical" hidden />
+              <div class="sev-picker-dot severity-critical"></div>
+              <span>Critical</span>
+              <small>Dangerous</small>
+            </label>
+          </div>
+        </div>
+
+        <!-- Issue Type -->
+        <div class="form-group-report">
+          <label class="report-label">
+            Type of Issues <span class="required">*</span>
+          </label>
+          <div class="issue-tags-picker">
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="poor_lighting" hidden />
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>Poor Lighting</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="isolated" hidden />
+              <i class="fa-solid fa-tree"></i>
+              <span>Isolated Area</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="harassment" hidden />
+              <i class="fa-solid fa-user-slash"></i>
+              <span>Harassment</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="stalking" hidden />
+              <i class="fa-solid fa-eye"></i>
+              <span>Stalking</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="theft" hidden />
+              <i class="fa-solid fa-mask"></i>
+              <span>Theft/Snatching</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="drugs" hidden />
+              <i class="fa-solid fa-cannabis"></i>
+              <span>Drug Activity</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="no_police" hidden />
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>No Police Presence</span>
+            </label>
+            <label class="issue-tag-option">
+              <input type="checkbox" name="issues" value="crowded" hidden />
+              <i class="fa-solid fa-users-slash"></i>
+              <span>Overcrowded</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Time of Day -->
+        <div class="form-group-report">
+          <label class="report-label">
+            Unsafe Time <span class="required">*</span>
+          </label>
+          <div class="time-picker">
+            <label class="time-picker-option">
+              <input type="checkbox" name="unsafeTime" value="morning" hidden />
+              <i class="fa-solid fa-sun"></i>
+              <span>Morning</span>
+            </label>
+            <label class="time-picker-option">
+              <input type="checkbox" name="unsafeTime" value="afternoon" hidden />
+              <i class="fa-solid fa-cloud-sun"></i>
+              <span>Afternoon</span>
+            </label>
+            <label class="time-picker-option">
+              <input type="checkbox" name="unsafeTime" value="evening" hidden />
+              <i class="fa-solid fa-mountain-sun"></i>
+              <span>Evening</span>
+            </label>
+            <label class="time-picker-option">
+              <input type="checkbox" name="unsafeTime" value="night" hidden />
+              <i class="fa-solid fa-moon"></i>
+              <span>Night</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group-report">
+          <label class="report-label">
+            Description <span class="required">*</span>
+          </label>
+          <textarea 
+            id="area-description" 
+            class="report-textarea" 
+            placeholder="Describe why this area is unsafe. Any specific incidents, timings, or concerns..."
+            rows="4"
+            maxlength="500"
+          ></textarea>
+          <div class="char-counter">
+            <span id="area-char-count">0</span> / 500 characters
+          </div>
+        </div>
+
+        <!-- Anonymous -->
+        <div class="form-group-report">
+          <label class="report-checkbox">
+            <input type="checkbox" id="area-anonymous" checked />
+            <div class="checkbox-visual"></div>
+            <div class="checkbox-text">
+              <strong>Report anonymously</strong>
+              <p>Your identity will not be shared</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Actions -->
+        <div class="modal-actions-row">
+          <button type="button" class="btn-cancel-report" onclick="document.getElementById('report-area-modal').classList.remove('show')">
+            Cancel
+          </button>
+          <button type="submit" class="btn-submit-area-report">
+            <i class="fa-solid fa-paper-plane"></i>
+            Submit Report
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/unsafe-areas.js"></script>
+</body>
+</html>

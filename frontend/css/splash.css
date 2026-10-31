@@ -1,0 +1,562 @@
+/* ============================================
+   SafeHer - Splash Screen Styles
+   ============================================ */
+
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: var(--gradient-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: var(--z-splash);
+  overflow: hidden;
+  perspective: 1000px;
+}
+
+/* Fade Out Class */
+.splash-screen.fade-out {
+  animation: fadeOut 0.6s ease-out forwards;
+}
+
+/* ============================================
+   ANIMATED BACKGROUND ORBS
+   ============================================ */
+.animated-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.5;
+  animation: floatOrb 15s infinite ease-in-out;
+}
+
+.orb-1 {
+  width: 500px;
+  height: 500px;
+  background: var(--color-primary);
+  top: -150px;
+  left: -150px;
+  animation-delay: 0s;
+}
+
+.orb-2 {
+  width: 450px;
+  height: 450px;
+  background: var(--color-secondary);
+  bottom: -150px;
+  right: -150px;
+  animation-delay: 5s;
+}
+
+.orb-3 {
+  width: 350px;
+  height: 350px;
+  background: var(--color-emergency);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: 10s;
+  opacity: 0.3;
+}
+
+.orb-4 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-info);
+  top: 20%;
+  right: 15%;
+  animation-delay: 7s;
+  opacity: 0.3;
+}
+
+/* ============================================
+   GRID OVERLAY
+   ============================================ */
+.grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(124, 58, 237, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+}
+
+/* ============================================
+   PARTICLES
+   ============================================ */
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particles span {
+  position: absolute;
+  display: block;
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary-light);
+  border-radius: 50%;
+  opacity: 0;
+  animation: floatParticle 20s infinite linear;
+  box-shadow: 0 0 10px currentColor;
+}
+
+.particles span:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 18s; }
+.particles span:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 22s; color: var(--color-secondary-light); background: var(--color-secondary-light); }
+.particles span:nth-child(3) { left: 25%; animation-delay: 4s; animation-duration: 15s; width: 4px; height: 4px; }
+.particles span:nth-child(4) { left: 35%; animation-delay: 6s; animation-duration: 25s; color: var(--color-secondary-light); background: var(--color-secondary-light); width: 8px; height: 8px; }
+.particles span:nth-child(5) { left: 45%; animation-delay: 8s; animation-duration: 20s; }
+.particles span:nth-child(6) { left: 55%; animation-delay: 10s; animation-duration: 17s; color: var(--color-secondary-light); background: var(--color-secondary-light); }
+.particles span:nth-child(7) { left: 65%; animation-delay: 12s; animation-duration: 23s; width: 5px; height: 5px; }
+.particles span:nth-child(8) { left: 75%; animation-delay: 14s; animation-duration: 19s; color: var(--color-secondary-light); background: var(--color-secondary-light); }
+.particles span:nth-child(9) { left: 85%; animation-delay: 3s; animation-duration: 21s; }
+.particles span:nth-child(10) { left: 92%; animation-delay: 5s; animation-duration: 16s; color: var(--color-secondary-light); background: var(--color-secondary-light); width: 7px; height: 7px; }
+.particles span:nth-child(11) { left: 10%; animation-delay: 7s; animation-duration: 24s; }
+.particles span:nth-child(12) { left: 88%; animation-delay: 9s; animation-duration: 18s; color: var(--color-secondary-light); background: var(--color-secondary-light); }
+
+/* ============================================
+   SPLASH CONTENT
+   ============================================ */
+.splash-content {
+  position: relative;
+  z-index: var(--z-content);
+  text-align: center;
+  padding: var(--spacing-lg);
+  max-width: 700px;
+  animation: fadeInUp 1s ease-out;
+}
+
+/* ============================================
+   3D SHIELD LOGO
+   ============================================ */
+.logo-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto var(--spacing-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.shield-3d {
+  position: relative;
+  z-index: 2;
+  width: 140px;
+  height: 140px;
+  transform-style: preserve-3d;
+  animation: float 3s ease-in-out infinite;
+}
+
+.shield-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 70px;
+  color: white;
+}
+
+.shield-front {
+  background: var(--gradient-primary);
+  box-shadow: 
+    0 0 40px var(--color-primary-glow),
+    0 0 80px var(--color-secondary-glow),
+    inset 0 0 40px rgba(255, 255, 255, 0.1);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.shield-front i {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Pulse Rings */
+.pulse-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  border: 2px solid var(--color-primary-light);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulseRing 2.5s infinite ease-out;
+  opacity: 0;
+}
+
+.pulse-ring-2 {
+  animation-delay: 0.8s;
+  border-color: var(--color-secondary-light);
+}
+
+.pulse-ring-3 {
+  animation-delay: 1.6s;
+  border-color: var(--color-emergency);
+}
+
+/* ============================================
+   BRAND NAME (Letter Animation)
+   ============================================ */
+.brand-name {
+  font-size: 5rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  perspective: 400px;
+}
+
+.brand-name .letter {
+  display: inline-block;
+  background: linear-gradient(180deg, #FFFFFF 0%, #A78BFA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: letterReveal 0.6s ease-out backwards;
+  text-shadow: 0 4px 20px rgba(124, 58, 237, 0.5);
+}
+
+.brand-name .letter.highlight {
+  background: var(--gradient-emergency);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.brand-name .letter:nth-child(1) { animation-delay: 0.1s; }
+.brand-name .letter:nth-child(2) { animation-delay: 0.2s; }
+.brand-name .letter:nth-child(3) { animation-delay: 0.3s; }
+.brand-name .letter:nth-child(4) { animation-delay: 0.4s; }
+.brand-name .letter:nth-child(5) { animation-delay: 0.5s; }
+.brand-name .letter:nth-child(6) { animation-delay: 0.6s; }
+.brand-name .letter:nth-child(7) { animation-delay: 0.7s; }
+
+/* ============================================
+   TAGLINE & SUBTITLE
+   ============================================ */
+.tagline {
+  font-size: 1.5rem;
+  color: var(--color-light);
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: 0.05em;
+  animation: fadeInUp 1s ease-out 0.8s backwards;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--color-gray-light);
+  font-weight: 400;
+  margin-bottom: var(--spacing-xl);
+  animation: fadeInUp 1s ease-out 1s backwards;
+}
+
+/* ============================================
+   FEATURE ICONS
+   ============================================ */
+.feature-icons {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+  animation: fadeInUp 1s ease-out 1.2s backwards;
+}
+
+.feature-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: var(--color-primary-light);
+  transition: var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-primary);
+  opacity: 0;
+  transition: var(--transition-normal);
+  z-index: -1;
+}
+
+.feature-icon:hover {
+  transform: translateY(-5px) scale(1.05);
+  color: white;
+  box-shadow: var(--shadow-glow);
+  border-color: var(--color-primary);
+}
+
+.feature-icon:hover::before {
+  opacity: 1;
+}
+
+.feature-icon:nth-child(1) { animation: fadeInUp 0.5s ease-out 1.3s backwards; }
+.feature-icon:nth-child(2) { animation: fadeInUp 0.5s ease-out 1.4s backwards; }
+.feature-icon:nth-child(3) { animation: fadeInUp 0.5s ease-out 1.5s backwards; }
+.feature-icon:nth-child(4) { animation: fadeInUp 0.5s ease-out 1.6s backwards; }
+
+/* ============================================
+   SPLASH ACTION (Loading / Button)
+   ============================================ */
+.splash-action {
+  margin-top: var(--spacing-lg);
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeInUp 1s ease-out 1.8s backwards;
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  width: 100%;
+  max-width: 300px;
+}
+
+.loading-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--color-dark-3);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  position: relative;
+}
+
+.loading-progress {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  animation: loadingBar 2.5s ease-in-out forwards;
+  box-shadow: 0 0 10px var(--color-primary-glow);
+}
+
+.loading-text {
+  color: var(--color-gray-light);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+/* Get Started Button */
+.btn-get-started {
+  padding: 16px 40px;
+  background: var(--gradient-primary);
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition-normal);
+  box-shadow: var(--shadow-glow);
+  animation: zoomIn 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-get-started::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-get-started:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 40px var(--color-primary-glow), var(--shadow-glow-pink);
+}
+
+.btn-get-started:hover::before {
+  left: 100%;
+}
+
+.btn-get-started:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.btn-get-started i {
+  transition: var(--transition-fast);
+}
+
+.btn-get-started:hover i {
+  transform: translateX(5px);
+}
+
+/* ============================================
+   VERSION INFO
+   ============================================ */
+.version-info {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-gray);
+  font-size: 0.8rem;
+  animation: fadeIn 2s ease-out 2s backwards;
+  z-index: var(--z-content);
+}
+
+.version-info i {
+  color: var(--color-primary-light);
+  margin-right: 5px;
+}
+
+/* ============================================
+   BOTTOM WAVE
+   ============================================ */
+.bottom-wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.bottom-wave svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .brand-name {
+    font-size: 3.5rem;
+  }
+
+  .tagline {
+    font-size: 1.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+    padding: 0 var(--spacing-md);
+  }
+
+  .logo-container {
+    width: 150px;
+    height: 150px;
+  }
+
+  .shield-3d {
+    width: 120px;
+    height: 120px;
+  }
+
+  .shield-face {
+    font-size: 60px;
+  }
+
+  .pulse-ring {
+    width: 150px;
+    height: 150px;
+  }
+
+  .feature-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+  }
+
+  .feature-icons {
+    gap: var(--spacing-sm);
+  }
+
+  .btn-get-started {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-name {
+    font-size: 2.8rem;
+  }
+
+  .tagline {
+    font-size: 1rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+
+  .gradient-orb {
+    filter: blur(60px);
+  }
+
+  .logo-container {
+    width: 130px;
+    height: 130px;
+  }
+
+  .shield-3d {
+    width: 100px;
+    height: 100px;
+  }
+
+  .shield-face {
+    font-size: 50px;
+  }
+
+  .pulse-ring {
+    width: 130px;
+    height: 130px;
+  }
+}

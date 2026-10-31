@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reports Management - SafeHer Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/admin-pages.css" />
+</head>
+<body>
+  <div class="admin-container">
+    
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="dashboard.html" class="admin-sidebar-logo">
+          <div class="admin-sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <span class="admin-sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+            <p class="admin-portal-tag">Admin Portal</p>
+          </div>
+        </a>
+        <button class="admin-sidebar-close" id="admin-sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="admin-sidebar-profile">
+        <div class="admin-profile-avatar"><span>A</span><div class="admin-avatar-badge"><i class="fa-solid fa-crown"></i></div></div>
+        <div class="admin-profile-info">
+          <p class="admin-profile-name">Admin User</p>
+          <p class="admin-profile-role"><i class="fa-solid fa-shield-halved"></i> Super Admin</p>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Overview</p>
+          <ul class="admin-nav-list">
+            <li><a href="dashboard.html" class="admin-nav-item"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a></li>
+            <li><a href="analytics.html" class="admin-nav-item"><i class="fa-solid fa-chart-line"></i><span>Analytics</span></a></li>
+          </ul>
+        </div>
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Management</p>
+          <ul class="admin-nav-list">
+            <li><a href="users.html" class="admin-nav-item"><i class="fa-solid fa-users"></i><span>Users</span><span class="admin-nav-badge">12.4K</span></a></li>
+            <li><a href="reports.html" class="admin-nav-item active"><i class="fa-solid fa-file-lines"></i><span>Reports</span><span class="admin-nav-badge urgent">23</span></a></li>
+            <li><a href="unsafe-areas.html" class="admin-nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="resources.html" class="admin-nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+            <li><a href="feedback.html" class="admin-nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span><span class="admin-nav-badge">8</span></a></li>
+          </ul>
+        </div>
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">System</p>
+          <ul class="admin-nav-list">
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a></li>
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-bell"></i><span>Notifications</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button class="admin-logout-btn" id="admin-logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="admin-sidebar-overlay" id="admin-sidebar-overlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-menu-toggle" id="admin-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div>
+            <h1 class="admin-page-title">Reports Management</h1>
+            <p class="admin-breadcrumb"><a href="dashboard.html">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>Reports</span></p>
+          </div>
+        </div>
+        <div class="admin-topbar-right">
+          <div class="admin-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search reports..." />
+          </div>
+          <button class="admin-icon-btn"><i class="fa-solid fa-bell"></i><span class="admin-dot">5</span></button>
+          <div class="admin-topbar-profile">
+            <div class="admin-topbar-avatar">A</div>
+            <div class="admin-topbar-info">
+              <p class="admin-topbar-name">Admin</p>
+              <p class="admin-topbar-role">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <div class="page-header-admin">
+          <div>
+            <h2 class="page-heading-admin">Incident Reports</h2>
+            <p class="page-subheading-admin">Review and manage all incident reports</p>
+          </div>
+          <button class="btn-add-admin">
+            <i class="fa-solid fa-download"></i>
+            Export Reports
+          </button>
+        </div>
+
+        <section class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-red"><i class="fa-solid fa-file-lines"></i></div>
+              <span class="stat-trend up urgent"><i class="fa-solid fa-arrow-up"></i> 8%</span>
+            </div>
+            <p class="stat-value-a">1,234</p>
+            <p class="stat-label-a">Total Reports</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-orange"><i class="fa-solid fa-clock"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 5%</span>
+            </div>
+            <p class="stat-value-a">23</p>
+            <p class="stat-label-a">Pending Review</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-blue"><i class="fa-solid fa-check-double"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 12%</span>
+            </div>
+            <p class="stat-value-a">847</p>
+            <p class="stat-label-a">Verified</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-green"><i class="fa-solid fa-shield-check"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 15%</span>
+            </div>
+            <p class="stat-value-a">364</p>
+            <p class="stat-label-a">Resolved</p>
+          </div>
+        </section>
+
+        <div class="admin-filters-bar">
+          <div class="filter-chips-admin">
+            <button class="filter-chip-a active">All (1234)</button>
+            <button class="filter-chip-a">Pending (23)</button>
+            <button class="filter-chip-a">Under Review (89)</button>
+            <button class="filter-chip-a">Verified (847)</button>
+            <button class="filter-chip-a">Resolved (364)</button>
+            <button class="filter-chip-a">Rejected (12)</button>
+          </div>
+        </div>
+
+        <div class="admin-panel">
+          <div class="reports-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Report ID</th>
+                  <th>Type</th>
+                  <th>User</th>
+                  <th>Location</th>
+                  <th>Priority</th>
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="reports-tbody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div class="admin-pagination">
+            <p class="pagination-info">Showing 1-10 of 1,234 reports</p>
+            <div class="pagination-controls">
+              <button class="pagination-btn"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/toast.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    // Reports Data
+    const reports = [
+      { id: '#RPT-2024-1234', type: 'Harassment', user: 'Priya S.', location: 'MG Road', priority: 'critical', status: 'pending', date: '2024-02-15' },
+      { id: '#RPT-2024-1233', type: 'Stalking', user: 'Anjali K.', location: 'Koramangala', priority: 'high', status: 'review', date: '2024-02-14' },
+      { id: '#RPT-2024-1232', type: 'Threat', user: 'Meera P.', location: 'HSR Layout', priority: 'high', status: 'verified', date: '2024-02-13' },
+      { id: '#RPT-2024-1231', type: 'Suspicious', user: 'Kavita R.', location: 'Whitefield', priority: 'medium', status: 'resolved', date: '2024-02-12' },
+      { id: '#RPT-2024-1230', type: 'Harassment', user: 'Divya M.', location: 'Bellandur', priority: 'critical', status: 'pending', date: '2024-02-11' },
+      { id: '#RPT-2024-1229', type: 'Stalking', user: 'Sneha R.', location: 'Marathahalli', priority: 'medium', status: 'review', date: '2024-02-10' },
+      { id: '#RPT-2024-1228', type: 'Threat', user: 'Ritu S.', location: 'JP Nagar', priority: 'high', status: 'verified', date: '2024-02-09' },
+      { id: '#RPT-2024-1227', type: 'Suspicious', user: 'Nishtha G.', location: 'Electronic City', priority: 'low', status: 'resolved', date: '2024-02-08' }
+    ];
+
+    const tbody = document.getElementById('reports-tbody');
+    if (tbody) {
+      tbody.innerHTML = reports.map(r => `
+        <tr>
+          <td><span class="table-report-id">${r.id}</span></td>
+          <td><span class="table-type-badge type-${r.type.toLowerCase()}">${r.type}</span></td>
+          <td>
+            <div class="table-user">
+              <div class="table-user-avatar">${r.user.charAt(0)}</div>
+              <span>${r.user}</span>
+            </div>
+          </td>
+          <td>${r.location}</td>
+          <td><span class="table-priority-badge priority-${r.priority}-t">${r.priority}</span></td>
+          <td><span class="table-status-badge status-${r.status}-t">${r.status}</span></td>
+          <td>${new Date(r.date).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</td>
+          <td>
+            <div class="table-actions">
+              <button class="table-action-btn"><i class="fa-solid fa-eye"></i></button>
+              <button class="table-action-btn"><i class="fa-solid fa-check"></i></button>
+              <button class="table-action-btn danger"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    document.querySelectorAll('.filter-chip-a').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip-a').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        Toast.info(`Filter: ${chip.textContent.trim()}`);
+      });
+    });
+  </script>
+</body>
+</html>

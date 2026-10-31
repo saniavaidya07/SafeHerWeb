@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Report Incident - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/report-incident.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status"><i class="fa-solid fa-circle-check"></i> Protected</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item active"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-file-lines"></i>
+              Report Incident
+            </h1>
+            <p class="page-subtitle">File a report and take action</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar"><span id="navbar-avatar-initial">U</span></div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar"><span id="dropdown-avatar-initial">U</span></div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- REPORT CONTENT -->
+      <div class="report-content">
+
+        <!-- Info Banner -->
+        <div class="info-banner">
+          <div class="info-banner-icon">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="info-banner-content">
+            <h3>Your Report Matters</h3>
+            <p>All reports are handled with utmost confidentiality. You can choose to report anonymously. In case of immediate danger, please use the SOS feature or call 112.</p>
+          </div>
+          <button class="info-banner-close" id="info-banner-close">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="report-layout">
+
+          <!-- LEFT: Report Form -->
+          <div class="report-form-section">
+
+            <!-- Form Steps Indicator -->
+            <div class="report-steps">
+              <div class="report-step active" data-step="1">
+                <div class="step-icon"><i class="fa-solid fa-list-check"></i></div>
+                <div>
+                  <p class="step-num">Step 1</p>
+                  <p class="step-name">Incident Type</p>
+                </div>
+              </div>
+              <div class="step-connector"></div>
+              <div class="report-step" data-step="2">
+                <div class="step-icon"><i class="fa-solid fa-pen"></i></div>
+                <div>
+                  <p class="step-num">Step 2</p>
+                  <p class="step-name">Details</p>
+                </div>
+              </div>
+              <div class="step-connector"></div>
+              <div class="report-step" data-step="3">
+                <div class="step-icon"><i class="fa-solid fa-eye"></i></div>
+                <div>
+                  <p class="step-num">Step 3</p>
+                  <p class="step-name">Review</p>
+                </div>
+              </div>
+            </div>
+
+            <form id="report-form" novalidate>
+
+              <!-- ============ STEP 1: Incident Type ============ -->
+              <div class="form-step-panel active" id="panel-1">
+                
+                <h3 class="form-section-title">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  What type of incident would you like to report?
+                </h3>
+
+                <div class="incident-types-grid">
+                  
+                  <label class="incident-type-card" for="type-harassment">
+                    <input type="radio" name="incidentType" id="type-harassment" value="harassment" hidden />
+                    <div class="incident-type-icon gradient-red">
+                      <i class="fa-solid fa-user-slash"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Harassment</h4>
+                      <p>Verbal, physical or online harassment</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-stalking">
+                    <input type="radio" name="incidentType" id="type-stalking" value="stalking" hidden />
+                    <div class="incident-type-icon gradient-purple">
+                      <i class="fa-solid fa-eye"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Stalking</h4>
+                      <p>Being followed or watched</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-transport">
+                    <input type="radio" name="incidentType" id="type-transport" value="unsafe_transport" hidden />
+                    <div class="incident-type-icon gradient-orange">
+                      <i class="fa-solid fa-car"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Unsafe Transport</h4>
+                      <p>Issues with cab, auto, bus</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-threat">
+                    <input type="radio" name="incidentType" id="type-threat" value="threat" hidden />
+                    <div class="incident-type-icon gradient-red">
+                      <i class="fa-solid fa-hand-fist"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Threat</h4>
+                      <p>Verbal or physical threats</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-suspicious">
+                    <input type="radio" name="incidentType" id="type-suspicious" value="suspicious" hidden />
+                    <div class="incident-type-icon gradient-yellow">
+                      <i class="fa-solid fa-user-secret"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Suspicious Activity</h4>
+                      <p>Unusual or concerning behavior</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-domestic">
+                    <input type="radio" name="incidentType" id="type-domestic" value="domestic" hidden />
+                    <div class="incident-type-icon gradient-pink">
+                      <i class="fa-solid fa-house-chimney-crack"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Domestic Concern</h4>
+                      <p>Safety issues at home</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-cyber">
+                    <input type="radio" name="incidentType" id="type-cyber" value="cyber" hidden />
+                    <div class="incident-type-icon gradient-blue">
+                      <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Cyber Crime</h4>
+                      <p>Online harassment, blackmail</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                  <label class="incident-type-card" for="type-other">
+                    <input type="radio" name="incidentType" id="type-other" value="other" hidden />
+                    <div class="incident-type-icon gradient-cyan">
+                      <i class="fa-solid fa-ellipsis"></i>
+                    </div>
+                    <div class="incident-type-info">
+                      <h4>Other</h4>
+                      <p>Any other safety concern</p>
+                    </div>
+                    <div class="incident-type-check">
+                      <i class="fa-solid fa-check"></i>
+                    </div>
+                  </label>
+
+                </div>
+
+                <!-- Severity -->
+                <h3 class="form-section-title" style="margin-top: var(--spacing-lg);">
+                  <i class="fa-solid fa-gauge-high"></i>
+                  How severe is this incident?
+                </h3>
+
+                <div class="severity-selector">
+                  <label class="severity-option" for="sev-low">
+                    <input type="radio" name="severity" id="sev-low" value="low" hidden />
+                    <div class="severity-dot low"></div>
+                    <span>Low</span>
+                    <small>Minor concern</small>
+                  </label>
+                  <label class="severity-option" for="sev-medium">
+                    <input type="radio" name="severity" id="sev-medium" value="medium" hidden />
+                    <div class="severity-dot medium"></div>
+                    <span>Medium</span>
+                    <small>Needs attention</small>
+                  </label>
+                  <label class="severity-option" for="sev-high">
+                    <input type="radio" name="severity" id="sev-high" value="high" hidden />
+                    <div class="severity-dot high"></div>
+                    <span>High</span>
+                    <small>Serious threat</small>
+                  </label>
+                  <label class="severity-option" for="sev-critical">
+                    <input type="radio" name="severity" id="sev-critical" value="critical" hidden />
+                    <div class="severity-dot critical"></div>
+                    <span>Critical</span>
+                    <small>Immediate danger</small>
+                  </label>
+                </div>
+
+                <!-- Next Button -->
+                <div class="step-actions">
+                  <button type="button" class="btn-step-next" id="btn-to-step-2">
+                    <span>Continue</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+
+              </div>
+
+              <!-- ============ STEP 2: Details ============ -->
+              <div class="form-step-panel" id="panel-2">
+
+                <h3 class="form-section-title">
+                  <i class="fa-solid fa-pen"></i>
+                  Provide incident details
+                </h3>
+
+                <!-- Description -->
+                <div class="form-group-report">
+                  <label for="description" class="report-label">
+                    Description <span class="required">*</span>
+                  </label>
+                  <textarea 
+                    id="description" 
+                    class="report-textarea" 
+                    placeholder="Describe what happened in detail. Include what you saw, heard, or experienced..."
+                    rows="6"
+                    maxlength="2000"
+                  ></textarea>
+                  <div class="char-counter">
+                    <span id="char-count">0</span> / 2000 characters
+                  </div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="form-row">
+                  <div class="form-group-report">
+                    <label for="incident-date" class="report-label">
+                      Date <span class="required">*</span>
+                    </label>
+                    <input type="date" id="incident-date" class="report-input" />
+                  </div>
+                  <div class="form-group-report">
+                    <label for="incident-time" class="report-label">
+                      Time <span class="required">*</span>
+                    </label>
+                    <input type="time" id="incident-time" class="report-input" />
+                  </div>
+                </div>
+
+                <!-- Location -->
+                <div class="form-group-report">
+                  <label class="report-label">
+                    Location <span class="required">*</span>
+                  </label>
+                  <div class="location-input-wrapper">
+                    <input 
+                      type="text" 
+                      id="incident-location" 
+                      class="report-input" 
+                      placeholder="Enter address or location details"
+                    />
+                    <button type="button" class="btn-detect-location" id="btn-detect-location">
+                      <i class="fa-solid fa-location-crosshairs"></i>
+                      <span>Detect</span>
+                    </button>
+                  </div>
+                  <div class="location-preview" id="location-preview" style="display: none;">
+                    <div class="location-preview-icon">
+                      <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <div class="location-preview-info">
+                      <p class="loc-coords" id="loc-coords">--</p>
+                      <p class="loc-address" id="loc-address">Detecting address...</p>
+                    </div>
+                    <button type="button" class="btn-remove-location" id="btn-remove-location">
+                      <i class="fa-solid fa-xmark"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Evidence Upload -->
+                <div class="form-group-report">
+                  <label class="report-label">
+                    Upload Evidence <span class="optional-tag">(Optional)</span>
+                  </label>
+                  <div class="upload-zone" id="upload-zone">
+                    <input 
+                      type="file" 
+                      id="file-input" 
+                      multiple 
+                      accept="image/*,video/*,audio/*"
+                      hidden 
+                    />
+                    <div class="upload-icon">
+                      <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <h4 class="upload-title">Drag & drop files here</h4>
+                    <p class="upload-desc">or <span class="upload-link">click to browse</span></p>
+                    <p class="upload-hint">Images, videos, audio (Max 10MB each, up to 5 files)</p>
+                  </div>
+
+                  <!-- Uploaded Files List -->
+                  <div class="uploaded-files" id="uploaded-files"></div>
+                </div>
+
+                <!-- Anonymous Option -->
+                <div class="form-group-report">
+                  <label class="report-checkbox">
+                    <input type="checkbox" id="anonymous" />
+                    <div class="checkbox-visual"></div>
+                    <div class="checkbox-text">
+                      <strong>Submit anonymously</strong>
+                      <p>Your identity will not be shared with authorities</p>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Consent -->
+                <div class="form-group-report">
+                  <label class="report-checkbox">
+                    <input type="checkbox" id="consent" />
+                    <div class="checkbox-visual"></div>
+                    <div class="checkbox-text">
+                      <strong>I confirm the information is accurate</strong>
+                      <p>False reporting is a punishable offense</p>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Actions -->
+                <div class="step-actions">
+                  <button type="button" class="btn-step-back" id="btn-to-step-1">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back</span>
+                  </button>
+                  <button type="button" class="btn-step-next" id="btn-to-step-3">
+                    <span>Review Report</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
+
+              </div>
+
+              <!-- ============ STEP 3: Review ============ -->
+              <div class="form-step-panel" id="panel-3">
+
+                <h3 class="form-section-title">
+                  <i class="fa-solid fa-eye"></i>
+                  Review your report before submitting
+                </h3>
+
+                <div class="review-card">
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-triangle-exclamation"></i>
+                      Incident Type
+                    </p>
+                    <p class="review-value" id="review-type">--</p>
+                  </div>
+
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-gauge-high"></i>
+                      Severity
+                    </p>
+                    <p class="review-value" id="review-severity">--</p>
+                  </div>
+
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-align-left"></i>
+                      Description
+                    </p>
+                    <p class="review-value review-desc" id="review-desc">--</p>
+                  </div>
+
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-calendar"></i>
+                      Date & Time
+                    </p>
+                    <p class="review-value" id="review-datetime">--</p>
+                  </div>
+
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-location-dot"></i>
+                      Location
+                    </p>
+                    <p class="review-value" id="review-location">--</p>
+                  </div>
+
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-paperclip"></i>
+                      Evidence
+                    </p>
+                    <p class="review-value" id="review-evidence">No files attached</p>
+                  </div>
+
+                  <div class="review-item">
+                    <p class="review-label">
+                      <i class="fa-solid fa-user-shield"></i>
+                      Anonymous
+                    </p>
+                    <p class="review-value" id="review-anonymous">No</p>
+                  </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="step-actions">
+                  <button type="button" class="btn-step-back" id="btn-to-step-2-back">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    <span>Back to Edit</span>
+                  </button>
+                  <button type="submit" class="btn-submit-report" id="btn-submit-report">
+                    <span class="btn-text">Submit Report</span>
+                    <span class="btn-loader hidden">
+                      <i class="fa-solid fa-spinner fa-spin"></i>
+                    </span>
+                    <i class="fa-solid fa-paper-plane btn-arrow"></i>
+                  </button>
+                </div>
+
+              </div>
+
+            </form>
+
+          </div>
+
+          <!-- RIGHT: Sidebar -->
+          <div class="report-sidebar">
+
+            <!-- Emergency Card -->
+            <div class="emergency-card">
+              <div class="emergency-card-header">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <h4>In Immediate Danger?</h4>
+              </div>
+              <p>If you're in immediate danger, please call emergency services or use the SOS feature.</p>
+              <div class="emergency-actions">
+                <a href="tel:112" class="btn-emergency-call">
+                  <i class="fa-solid fa-phone"></i>
+                  Call 112
+                </a>
+                <button class="btn-emergency-sos" id="btn-emergency-sos-side">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  Activate SOS
+                </button>
+              </div>
+            </div>
+
+            <!-- Recent Reports -->
+            <div class="recent-reports-card">
+              <div class="card-header">
+                <h4 class="card-title">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  Your Recent Reports
+                </h4>
+              </div>
+              <div class="recent-reports-list">
+                <div class="recent-report">
+                  <div class="recent-report-header">
+                    <span class="report-id">#RPT-2024-0342</span>
+                    <span class="report-badge status-verified">Verified</span>
+                  </div>
+                  <p class="report-summary">Suspicious activity near MG Road</p>
+                  <div class="recent-report-footer">
+                    <span><i class="fa-solid fa-calendar"></i> 2 days ago</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Bangalore</span>
+                  </div>
+                </div>
+
+                <div class="recent-report">
+                  <div class="recent-report-header">
+                    <span class="report-id">#RPT-2024-0338</span>
+                    <span class="report-badge status-review">Under Review</span>
+                  </div>
+                  <p class="report-summary">Harassment at metro station</p>
+                  <div class="recent-report-footer">
+                    <span><i class="fa-solid fa-calendar"></i> 5 days ago</span>
+                    <span><i class="fa-solid fa-location-dot"></i> MG Metro</span>
+                  </div>
+                </div>
+
+                <div class="recent-report">
+                  <div class="recent-report-header">
+                    <span class="report-id">#RPT-2024-0301</span>
+                    <span class="report-badge status-resolved">Resolved</span>
+                  </div>
+                  <p class="report-summary">Unsafe auto driver</p>
+                  <div class="recent-report-footer">
+                    <span><i class="fa-solid fa-calendar"></i> 2 weeks ago</span>
+                    <span><i class="fa-solid fa-location-dot"></i> Koramangala</span>
+                  </div>
+                </div>
+              </div>
+              <a href="#" class="view-all-link">
+                View all reports <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <!-- Tips Card -->
+            <div class="tips-card">
+              <div class="card-header">
+                <h4 class="card-title">
+                  <i class="fa-solid fa-lightbulb"></i>
+                  Reporting Tips
+                </h4>
+              </div>
+              <ul class="tips-list">
+                <li><i class="fa-solid fa-check"></i> Be as detailed as possible</li>
+                <li><i class="fa-solid fa-check"></i> Include date, time, and location</li>
+                <li><i class="fa-solid fa-check"></i> Upload photos or videos if safe</li>
+                <li><i class="fa-solid fa-check"></i> Note any witnesses or descriptions</li>
+                <li><i class="fa-solid fa-check"></i> Report even if unsure - authorities decide</li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="safety-tools.html" class="bottom-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety</span></a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos"><i class="fa-solid fa-triangle-exclamation"></i></button>
+      <a href="find-help.html" class="bottom-nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Help</span></a>
+      <a href="profile.html" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </nav>
+
+  </div>
+
+  <!-- ============================================
+       SUCCESS MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-container success-modal">
+      <div class="success-icon">
+        <div class="success-check">
+          <i class="fa-solid fa-check"></i>
+        </div>
+        <div class="success-ring"></div>
+      </div>
+      <h2 class="success-title">Report Submitted!</h2>
+      <p class="success-desc">
+        Your report has been successfully submitted. Our team will review it and take action.
+      </p>
+      <div class="success-info">
+        <div class="success-info-item">
+          <p class="info-label-sm">Report ID</p>
+          <p class="info-value-lg" id="new-report-id">#RPT-2024-XXXX</p>
+        </div>
+        <div class="success-info-item">
+          <p class="info-label-sm">Status</p>
+          <p class="info-value-lg">
+            <span class="report-badge status-review">Pending Review</span>
+          </p>
+        </div>
+      </div>
+      <div class="success-actions">
+        <button class="btn-outline" onclick="window.location.href='dashboard.html'">
+          <i class="fa-solid fa-house"></i>
+          Back to Dashboard
+        </button>
+        <button class="btn-filled" id="btn-view-report">
+          <i class="fa-solid fa-eye"></i>
+          View Report
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/report-incident.js"></script>
+</body>
+</html>

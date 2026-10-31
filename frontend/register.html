@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Register - SafeHer</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body>
+
+  <div class="auth-container">
+    
+    <!-- Left Side: Branding -->
+    <div class="auth-left">
+      
+      <div class="auth-bg-orbs">
+        <div class="auth-orb auth-orb-1"></div>
+        <div class="auth-orb auth-orb-2"></div>
+        <div class="auth-orb auth-orb-3"></div>
+      </div>
+
+      <div class="auth-particles">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      <div class="auth-brand-content">
+        
+        <a href="index.html" class="auth-logo">
+          <div class="auth-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="auth-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+
+        <div class="auth-illustration">
+          <div class="illustration-shield">
+            <div class="illustration-ring ring-1"></div>
+            <div class="illustration-ring ring-2"></div>
+            <div class="illustration-ring ring-3"></div>
+            <div class="illustration-center">
+              <i class="fa-solid fa-user-plus"></i>
+            </div>
+            <div class="orbit-icon orbit-1">
+              <i class="fa-solid fa-shield"></i>
+            </div>
+            <div class="orbit-icon orbit-2">
+              <i class="fa-solid fa-users"></i>
+            </div>
+            <div class="orbit-icon orbit-3">
+              <i class="fa-solid fa-map-location-dot"></i>
+            </div>
+            <div class="orbit-icon orbit-4">
+              <i class="fa-solid fa-heart"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-welcome">
+          <h1 class="auth-welcome-title">Join SafeHer Today!</h1>
+          <p class="auth-welcome-subtitle">
+            Create your account and become part of a community that stands 
+            together for women's safety and empowerment.
+          </p>
+        </div>
+
+        <!-- Benefits List -->
+        <div class="auth-benefits">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <span>Free SOS emergency alerts</span>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <span>Live location sharing</span>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <span>Trusted contacts network</span>
+          </div>
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <span>24/7 safety resources</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Right Side: Register Form -->
+    <div class="auth-right">
+      
+      <a href="index.html" class="auth-mobile-logo">
+        <div class="auth-logo-icon">
+          <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <span class="auth-logo-text">Safe<span class="highlight">Her</span></span>
+      </a>
+
+      <div class="auth-form-wrapper">
+        
+        <div class="auth-form-header">
+          <h2 class="auth-form-title">Create Account</h2>
+          <p class="auth-form-subtitle">
+            Start your safety journey with SafeHer today
+          </p>
+        </div>
+
+        <!-- Progress Steps -->
+        <div class="form-steps">
+          <div class="step active" data-step="1">
+            <div class="step-circle">1</div>
+            <span class="step-label">Personal</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" data-step="2">
+            <div class="step-circle">2</div>
+            <span class="step-label">Security</span>
+          </div>
+        </div>
+
+        <form class="auth-form" id="register-form" novalidate>
+          
+          <!-- ============ STEP 1: Personal Info ============ -->
+          <div class="form-step-content active" id="step-1">
+            
+            <!-- Full Name -->
+            <div class="form-group">
+              <label for="fullName" class="form-label">
+                <i class="fa-solid fa-user"></i>
+                Full Name
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-input"
+                  placeholder="Enter your full name"
+                  autocomplete="name"
+                  required
+                />
+                <span class="input-icon-right">
+                  <i class="fa-solid fa-check-circle valid-icon"></i>
+                  <i class="fa-solid fa-times-circle invalid-icon"></i>
+                </span>
+              </div>
+              <span class="form-error" id="fullName-error"></span>
+            </div>
+
+            <!-- Email -->
+            <div class="form-group">
+              <label for="regEmail" class="form-label">
+                <i class="fa-solid fa-envelope"></i>
+                Email Address
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="email"
+                  id="regEmail"
+                  name="email"
+                  class="form-input"
+                  placeholder="you@example.com"
+                  autocomplete="email"
+                  required
+                />
+                <span class="input-icon-right">
+                  <i class="fa-solid fa-check-circle valid-icon"></i>
+                  <i class="fa-solid fa-times-circle invalid-icon"></i>
+                </span>
+              </div>
+              <span class="form-error" id="regEmail-error"></span>
+            </div>
+
+            <!-- Phone Number -->
+            <div class="form-group">
+              <label for="phone" class="form-label">
+                <i class="fa-solid fa-phone"></i>
+                Phone Number
+              </label>
+              <div class="input-wrapper phone-wrapper">
+                <select class="country-code" id="countryCode">
+                  <option value="+91">🇮🇳 +91</option>
+                  <option value="+1">🇺🇸 +1</option>
+                  <option value="+44">🇬🇧 +44</option>
+                  <option value="+61">🇦🇺 +61</option>
+                  <option value="+81">🇯🇵 +81</option>
+                </select>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  class="form-input phone-input"
+                  placeholder="9876543210"
+                  autocomplete="tel"
+                  required
+                />
+              </div>
+              <span class="form-error" id="phone-error"></span>
+            </div>
+
+            <!-- Date of Birth (Optional) -->
+            <div class="form-group">
+              <label for="dob" class="form-label">
+                <i class="fa-solid fa-cake-candles"></i>
+                Date of Birth <span class="optional">(Optional)</span>
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  class="form-input"
+                />
+              </div>
+            </div>
+
+            <!-- Next Button -->
+            <button type="button" class="btn-auth-submit" id="btn-next-step">
+              <span class="btn-text">Continue</span>
+              <i class="fa-solid fa-arrow-right btn-arrow"></i>
+            </button>
+
+          </div>
+
+          <!-- ============ STEP 2: Security ============ -->
+          <div class="form-step-content" id="step-2">
+            
+            <!-- Password -->
+            <div class="form-group">
+              <label for="regPassword" class="form-label">
+                <i class="fa-solid fa-lock"></i>
+                Create Password
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="password"
+                  id="regPassword"
+                  name="password"
+                  class="form-input"
+                  placeholder="Create a strong password"
+                  autocomplete="new-password"
+                  required
+                />
+                <button type="button" class="password-toggle" data-target="regPassword">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+              
+              <!-- Password Strength Meter -->
+              <div class="password-strength" id="password-strength">
+                <div class="strength-bar">
+                  <div class="strength-fill" id="strength-fill"></div>
+                </div>
+                <span class="strength-text" id="strength-text">Password strength</span>
+              </div>
+
+              <!-- Password Requirements -->
+              <ul class="password-requirements" id="password-requirements">
+                <li data-req="length"><i class="fa-solid fa-circle"></i> At least 8 characters</li>
+                <li data-req="uppercase"><i class="fa-solid fa-circle"></i> One uppercase letter</li>
+                <li data-req="lowercase"><i class="fa-solid fa-circle"></i> One lowercase letter</li>
+                <li data-req="number"><i class="fa-solid fa-circle"></i> One number</li>
+                <li data-req="special"><i class="fa-solid fa-circle"></i> One special character</li>
+              </ul>
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="form-group">
+              <label for="confirmPassword" class="form-label">
+                <i class="fa-solid fa-lock"></i>
+                Confirm Password
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  class="form-input"
+                  placeholder="Re-enter your password"
+                  autocomplete="new-password"
+                  required
+                />
+                <button type="button" class="password-toggle" data-target="confirmPassword">
+                  <i class="fa-solid fa-eye"></i>
+                </button>
+              </div>
+              <span class="form-error" id="confirmPassword-error"></span>
+            </div>
+
+            <!-- Emergency Contact Setup -->
+            <div class="form-group">
+              <label class="form-label">
+                <i class="fa-solid fa-user-shield"></i>
+                Emergency Contact <span class="optional">(Highly Recommended)</span>
+              </label>
+              <div class="input-wrapper">
+                <input
+                  type="tel"
+                  id="emergencyContact"
+                  name="emergencyContact"
+                  class="form-input"
+                  placeholder="Emergency contact phone number"
+                />
+              </div>
+              <p class="form-hint">
+                <i class="fa-solid fa-info-circle"></i>
+                This person will be notified during SOS emergencies
+              </p>
+            </div>
+
+            <!-- Terms & Conditions -->
+            <div class="form-group">
+              <label class="checkbox-wrapper terms-checkbox">
+                <input type="checkbox" id="agreeTerms" required />
+                <span class="checkbox-custom"></span>
+                <span class="checkbox-label">
+                  I agree to the <a href="#">Terms of Service</a> and 
+                  <a href="#">Privacy Policy</a>
+                </span>
+              </label>
+              <span class="form-error" id="agreeTerms-error"></span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="form-buttons">
+              <button type="button" class="btn-auth-back" id="btn-back-step">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back</span>
+              </button>
+              <button type="submit" class="btn-auth-submit" id="btn-register">
+                <span class="btn-text">Create Account</span>
+                <span class="btn-loader hidden">
+                  <i class="fa-solid fa-spinner fa-spin"></i>
+                </span>
+                <i class="fa-solid fa-shield-halved btn-arrow"></i>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Login Link -->
+          <p class="auth-switch">
+            Already have an account? 
+            <a href="login.html" class="auth-switch-link">Sign In</a>
+          </p>
+
+        </form>
+
+      </div>
+
+      <div class="auth-footer">
+        <p>&copy; 2024 SafeHer. Your safety is our priority.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/auth.js"></script>
+</body>
+</html>

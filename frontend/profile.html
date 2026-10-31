@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Profile & Settings - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/profile.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status"><i class="fa-solid fa-circle-check"></i> Protected</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item active"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-user"></i>
+              Profile & Settings
+            </h1>
+            <p class="page-subtitle">Manage your account and preferences</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar"><span id="navbar-avatar-initial">U</span></div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar"><span id="dropdown-avatar-initial">U</span></div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- PROFILE CONTENT -->
+      <div class="profile-content">
+
+        <!-- PROFILE HEADER CARD -->
+        <section class="profile-hero">
+          <div class="hero-cover">
+            <div class="cover-orbs">
+              <div class="cover-orb orb-a"></div>
+              <div class="cover-orb orb-b"></div>
+            </div>
+            <button class="btn-change-cover">
+              <i class="fa-solid fa-camera"></i>
+              <span>Change Cover</span>
+            </button>
+          </div>
+
+          <div class="hero-body">
+            <div class="profile-avatar-wrapper">
+              <div class="profile-avatar" id="main-profile-avatar">
+                <span id="main-avatar-text">U</span>
+                <img id="main-avatar-img" style="display: none;" alt="Profile" />
+              </div>
+              <label class="btn-change-avatar" for="avatar-upload">
+                <i class="fa-solid fa-camera"></i>
+                <input type="file" id="avatar-upload" accept="image/*" hidden />
+              </label>
+              <div class="verified-badge-big">
+                <i class="fa-solid fa-check"></i>
+              </div>
+            </div>
+
+            <div class="hero-info">
+              <h2 class="hero-user-name" id="hero-name">User Name</h2>
+              <p class="hero-user-email" id="hero-email">user@safeher.com</p>
+              
+              <div class="hero-badges">
+                <span class="hero-badge verified">
+                  <i class="fa-solid fa-check-circle"></i>
+                  Verified Account
+                </span>
+                <span class="hero-badge premium">
+                  <i class="fa-solid fa-crown"></i>
+                  Premium
+                </span>
+                <span class="hero-badge member">
+                  <i class="fa-solid fa-shield"></i>
+                  Member since 2024
+                </span>
+              </div>
+            </div>
+
+            <div class="hero-quick-stats">
+              <div class="quick-stat">
+                <p class="stat-value">12</p>
+                <p class="stat-label">Reports</p>
+              </div>
+              <div class="quick-stat">
+                <p class="stat-value">5</p>
+                <p class="stat-label">Contacts</p>
+              </div>
+              <div class="quick-stat">
+                <p class="stat-value">98%</p>
+                <p class="stat-label">Safety Score</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TABS NAVIGATION -->
+        <div class="profile-tabs">
+          <button class="profile-tab active" data-tab="personal">
+            <i class="fa-solid fa-user"></i>
+            <span>Personal Info</span>
+          </button>
+          <button class="profile-tab" data-tab="security">
+            <i class="fa-solid fa-lock"></i>
+            <span>Security</span>
+          </button>
+          <button class="profile-tab" data-tab="privacy">
+            <i class="fa-solid fa-user-shield"></i>
+            <span>Privacy</span>
+          </button>
+          <button class="profile-tab" data-tab="preferences">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Preferences</span>
+          </button>
+          <button class="profile-tab" data-tab="notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span>Notifications</span>
+          </button>
+          <button class="profile-tab" data-tab="devices">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <span>Devices</span>
+          </button>
+          <button class="profile-tab" data-tab="activity">
+            <i class="fa-solid fa-clock-rotate-left"></i>
+            <span>Activity</span>
+          </button>
+          <button class="profile-tab" data-tab="account">
+            <i class="fa-solid fa-gear"></i>
+            <span>Account</span>
+          </button>
+        </div>
+
+        <!-- TAB PANELS -->
+        <div class="tab-panels">
+
+          <!-- ========== PERSONAL INFO TAB ========== -->
+          <div class="tab-panel active" id="tab-personal">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-user"></i>
+                    Personal Information
+                  </h3>
+                  <p class="panel-subtitle">Update your personal details</p>
+                </div>
+                <button class="btn-edit-panel" id="btn-edit-personal">
+                  <i class="fa-solid fa-pen"></i>
+                  Edit
+                </button>
+              </div>
+
+              <form class="profile-form" id="personal-form">
+                <div class="form-row-2">
+                  <div class="profile-form-group">
+                    <label class="profile-label">First Name</label>
+                    <input type="text" class="profile-input" id="first-name" value="Priya" disabled />
+                  </div>
+                  <div class="profile-form-group">
+                    <label class="profile-label">Last Name</label>
+                    <input type="text" class="profile-input" id="last-name" value="Sharma" disabled />
+                  </div>
+                </div>
+
+                <div class="profile-form-group">
+                  <label class="profile-label">Email Address</label>
+                  <div class="input-with-icon">
+                    <input type="email" class="profile-input" id="email" value="priya.sharma@example.com" disabled />
+                    <span class="input-badge verified"><i class="fa-solid fa-check"></i> Verified</span>
+                  </div>
+                </div>
+
+                <div class="profile-form-group">
+                  <label class="profile-label">Phone Number</label>
+                  <div class="input-with-icon">
+                    <input type="tel" class="profile-input" id="phone" value="+91 9876543210" disabled />
+                    <span class="input-badge verified"><i class="fa-solid fa-check"></i> Verified</span>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="profile-form-group">
+                    <label class="profile-label">Date of Birth</label>
+                    <input type="date" class="profile-input" id="dob" value="1998-05-15" disabled />
+                  </div>
+                  <div class="profile-form-group">
+                    <label class="profile-label">Gender</label>
+                    <select class="profile-input" id="gender" disabled>
+                      <option value="female" selected>Female</option>
+                      <option value="male">Male</option>
+                      <option value="other">Other</option>
+                      <option value="prefer_not">Prefer not to say</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="profile-form-group">
+                  <label class="profile-label">Address</label>
+                  <textarea class="profile-input" id="address" rows="2" disabled>123 MG Road, Bangalore, Karnataka 560001</textarea>
+                </div>
+
+                <div class="form-row-3">
+                  <div class="profile-form-group">
+                    <label class="profile-label">City</label>
+                    <input type="text" class="profile-input" id="city" value="Bangalore" disabled />
+                  </div>
+                  <div class="profile-form-group">
+                    <label class="profile-label">State</label>
+                    <input type="text" class="profile-input" id="state" value="Karnataka" disabled />
+                  </div>
+                  <div class="profile-form-group">
+                    <label class="profile-label">Pincode</label>
+                    <input type="text" class="profile-input" id="pincode" value="560001" disabled />
+                  </div>
+                </div>
+
+                <div class="profile-form-group">
+                  <label class="profile-label">Bio</label>
+                  <textarea class="profile-input" id="bio" rows="3" disabled placeholder="Tell us about yourself...">Software engineer passionate about women's safety and technology. Advocate for a safer world.</textarea>
+                  <div class="char-counter"><span id="bio-count">128</span> / 200 characters</div>
+                </div>
+
+                <div class="form-actions" id="personal-actions" style="display: none;">
+                  <button type="button" class="btn-cancel-form" id="btn-cancel-personal">Cancel</button>
+                  <button type="submit" class="btn-save-form">
+                    <i class="fa-solid fa-check"></i>
+                    Save Changes
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- ========== SECURITY TAB ========== -->
+          <div class="tab-panel" id="tab-security">
+            <!-- Password -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-key"></i>
+                    Password
+                  </h3>
+                  <p class="panel-subtitle">Change your account password</p>
+                </div>
+              </div>
+
+              <form class="profile-form" id="password-form">
+                <div class="profile-form-group">
+                  <label class="profile-label">Current Password</label>
+                  <div class="input-with-icon">
+                    <input type="password" class="profile-input" id="current-password" placeholder="Enter current password" />
+                    <button type="button" class="pwd-toggle" data-target="current-password">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="profile-form-group">
+                  <label class="profile-label">New Password</label>
+                  <div class="input-with-icon">
+                    <input type="password" class="profile-input" id="new-password" placeholder="Enter new password" />
+                    <button type="button" class="pwd-toggle" data-target="new-password">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                  
+                  <div class="pwd-strength-wrapper">
+                    <div class="pwd-strength-bar">
+                      <div class="pwd-strength-fill" id="pwd-strength-fill"></div>
+                    </div>
+                    <span class="pwd-strength-text" id="pwd-strength-text">Enter password</span>
+                  </div>
+
+                  <ul class="pwd-requirements">
+                    <li data-req="length"><i class="fa-solid fa-circle"></i> At least 8 characters</li>
+                    <li data-req="uppercase"><i class="fa-solid fa-circle"></i> One uppercase letter</li>
+                    <li data-req="number"><i class="fa-solid fa-circle"></i> One number</li>
+                    <li data-req="special"><i class="fa-solid fa-circle"></i> One special character</li>
+                  </ul>
+                </div>
+
+                <div class="profile-form-group">
+                  <label class="profile-label">Confirm New Password</label>
+                  <div class="input-with-icon">
+                    <input type="password" class="profile-input" id="confirm-password" placeholder="Re-enter new password" />
+                    <button type="button" class="pwd-toggle" data-target="confirm-password">
+                      <i class="fa-solid fa-eye"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn-primary-full">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  Update Password
+                </button>
+              </form>
+            </div>
+
+            <!-- Two-Factor Authentication -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    Two-Factor Authentication
+                  </h3>
+                  <p class="panel-subtitle">Add an extra layer of security</p>
+                </div>
+                <span class="status-tag off" id="2fa-status">Disabled</span>
+              </div>
+
+              <div class="security-methods">
+                <div class="security-method">
+                  <div class="method-icon">
+                    <i class="fa-solid fa-comment-sms"></i>
+                  </div>
+                  <div class="method-info">
+                    <h4>SMS Authentication</h4>
+                    <p>Receive verification codes via SMS</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" id="2fa-sms" />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="security-method">
+                  <div class="method-icon">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div class="method-info">
+                    <h4>Email Authentication</h4>
+                    <p>Receive verification codes via email</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" id="2fa-email" />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="security-method">
+                  <div class="method-icon">
+                    <i class="fa-solid fa-fingerprint"></i>
+                  </div>
+                  <div class="method-info">
+                    <h4>Biometric Authentication</h4>
+                    <p>Use fingerprint or face recognition</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" id="2fa-biometric" />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="security-method">
+                  <div class="method-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div class="method-info">
+                    <h4>Authenticator App</h4>
+                    <p>Use Google Authenticator, Authy, etc.</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" id="2fa-app" />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Login Activity -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Recent Login Activity
+                  </h3>
+                  <p class="panel-subtitle">Monitor your account access</p>
+                </div>
+              </div>
+
+              <div class="login-history">
+                <div class="login-entry current">
+                  <div class="login-icon success">
+                    <i class="fa-solid fa-desktop"></i>
+                  </div>
+                  <div class="login-details">
+                    <p class="login-device">Chrome on Windows <span class="current-tag">Current session</span></p>
+                    <p class="login-meta">
+                      <i class="fa-solid fa-location-dot"></i> Bangalore, India
+                      <span>•</span>
+                      <i class="fa-solid fa-clock"></i> Active now
+                    </p>
+                  </div>
+                </div>
+
+                <div class="login-entry">
+                  <div class="login-icon success">
+                    <i class="fa-solid fa-mobile"></i>
+                  </div>
+                  <div class="login-details">
+                    <p class="login-device">Chrome on Android</p>
+                    <p class="login-meta">
+                      <i class="fa-solid fa-location-dot"></i> Bangalore, India
+                      <span>•</span>
+                      <i class="fa-solid fa-clock"></i> 2 hours ago
+                    </p>
+                  </div>
+                  <button class="btn-signout-device">Sign out</button>
+                </div>
+
+                <div class="login-entry">
+                  <div class="login-icon success">
+                    <i class="fa-brands fa-safari"></i>
+                  </div>
+                  <div class="login-details">
+                    <p class="login-device">Safari on iPhone</p>
+                    <p class="login-meta">
+                      <i class="fa-solid fa-location-dot"></i> Mumbai, India
+                      <span>•</span>
+                      <i class="fa-solid fa-clock"></i> Yesterday
+                    </p>
+                  </div>
+                  <button class="btn-signout-device">Sign out</button>
+                </div>
+
+                <div class="login-entry">
+                  <div class="login-icon danger">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </div>
+                  <div class="login-details">
+                    <p class="login-device">Unknown Device</p>
+                    <p class="login-meta">
+                      <i class="fa-solid fa-location-dot"></i> Delhi, India
+                      <span>•</span>
+                      <i class="fa-solid fa-clock"></i> 3 days ago
+                    </p>
+                  </div>
+                  <button class="btn-signout-device">Report</button>
+                </div>
+              </div>
+
+              <button class="btn-signout-all">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                Sign out of all other devices
+              </button>
+            </div>
+          </div>
+
+          <!-- ========== PRIVACY TAB ========== -->
+          <div class="tab-panel" id="tab-privacy">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-user-shield"></i>
+                    Privacy Settings
+                  </h3>
+                  <p class="panel-subtitle">Control who can see your information</p>
+                </div>
+              </div>
+
+              <div class="privacy-options">
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-eye"></i> Profile Visibility</h4>
+                    <p>Who can see your profile information</p>
+                  </div>
+                  <select class="profile-input" style="max-width: 200px;">
+                    <option>Public</option>
+                    <option selected>Trusted Contacts Only</option>
+                    <option>Private</option>
+                  </select>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-location-dot"></i> Location Sharing</h4>
+                    <p>Default location sharing setting</p>
+                  </div>
+                  <select class="profile-input" style="max-width: 200px;">
+                    <option>Always</option>
+                    <option selected>During SOS only</option>
+                    <option>Never</option>
+                  </select>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-magnifying-glass"></i> Searchable Profile</h4>
+                    <p>Allow others to find you by email/phone</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-chart-line"></i> Activity Tracking</h4>
+                    <p>Track your app usage for insights</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-share-nodes"></i> Anonymous Reporting</h4>
+                    <p>Report incidents anonymously by default</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-database"></i> Data Collection</h4>
+                    <p>Help improve SafeHer with anonymous data</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-cookie-bite"></i> Cookies</h4>
+                    <p>Allow cookies for personalization</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" checked />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+
+                <div class="privacy-item">
+                  <div class="privacy-info">
+                    <h4><i class="fa-solid fa-envelope"></i> Marketing Emails</h4>
+                    <p>Receive updates and safety tips</p>
+                  </div>
+                  <label class="switch-lg">
+                    <input type="checkbox" />
+                    <span class="switch-slider-lg"></span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Blocked Users -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-ban"></i>
+                    Blocked Users
+                  </h3>
+                  <p class="panel-subtitle">Manage users you've blocked</p>
+                </div>
+              </div>
+
+              <div class="empty-list">
+                <div class="empty-list-icon">
+                  <i class="fa-solid fa-user-slash"></i>
+                </div>
+                <p>No blocked users</p>
+                <small>Users you block will appear here</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========== PREFERENCES TAB ========== -->
+          <div class="tab-panel" id="tab-preferences">
+            <!-- Appearance -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-palette"></i>
+                    Appearance
+                  </h3>
+                  <p class="panel-subtitle">Customize your experience</p>
+                </div>
+              </div>
+
+              <div class="theme-options">
+                <label class="theme-option active" for="theme-dark">
+                  <input type="radio" name="theme" id="theme-dark" value="dark" checked hidden />
+                  <div class="theme-preview theme-preview-dark">
+                    <div class="preview-header"></div>
+                    <div class="preview-body">
+                      <div class="preview-sidebar"></div>
+                      <div class="preview-content"></div>
+                    </div>
+                  </div>
+                  <div class="theme-info">
+                    <i class="fa-solid fa-moon"></i>
+                    <span>Dark Mode</span>
+                  </div>
+                </label>
+
+                <label class="theme-option" for="theme-light">
+                  <input type="radio" name="theme" id="theme-light" value="light" hidden />
+                  <div class="theme-preview theme-preview-light">
+                    <div class="preview-header"></div>
+                    <div class="preview-body">
+                      <div class="preview-sidebar"></div>
+                      <div class="preview-content"></div>
+                    </div>
+                  </div>
+                  <div class="theme-info">
+                    <i class="fa-solid fa-sun"></i>
+                    <span>Light Mode</span>
+                  </div>
+                </label>
+
+                <label class="theme-option" for="theme-auto">
+                  <input type="radio" name="theme" id="theme-auto" value="auto" hidden />
+                  <div class="theme-preview theme-preview-auto">
+                    <div class="preview-header"></div>
+                    <div class="preview-body">
+                      <div class="preview-sidebar"></div>
+                      <div class="preview-content"></div>
+                    </div>
+                  </div>
+                  <div class="theme-info">
+                    <i class="fa-solid fa-circle-half-stroke"></i>
+                    <span>Auto (System)</span>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Accent Color -->
+              <div class="color-picker-section">
+                <label class="profile-label">Accent Color</label>
+                <div class="color-options">
+                  <label class="color-option active" for="color-purple" style="--color: #7C3AED;">
+                    <input type="radio" name="accent" id="color-purple" value="purple" checked hidden />
+                    <span class="color-swatch"></span>
+                    <span>Purple</span>
+                  </label>
+                  <label class="color-option" for="color-pink" style="--color: #EC4899;">
+                    <input type="radio" name="accent" id="color-pink" value="pink" hidden />
+                    <span class="color-swatch"></span>
+                    <span>Pink</span>
+                  </label>
+                  <label class="color-option" for="color-blue" style="--color: #3B82F6;">
+                    <input type="radio" name="accent" id="color-blue" value="blue" hidden />
+                    <span class="color-swatch"></span>
+                    <span>Blue</span>
+                  </label>
+                  <label class="color-option" for="color-green" style="--color: #10B981;">
+                    <input type="radio" name="accent" id="color-green" value="green" hidden />
+                    <span class="color-swatch"></span>
+                    <span>Green</span>
+                  </label>
+                  <label class="color-option" for="color-orange" style="--color: #F97316;">
+                    <input type="radio" name="accent" id="color-orange" value="orange" hidden />
+                    <span class="color-swatch"></span>
+                    <span>Orange</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <!-- Language & Region -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-globe"></i>
+                    Language & Region
+                  </h3>
+                  <p class="panel-subtitle">Set your language and regional preferences</p>
+                </div>
+              </div>
+
+              <div class="preferences-list">
+                <div class="pref-item">
+                  <label class="profile-label">Language</label>
+                  <select class="profile-input">
+                    <option>English</option>
+                    <option>हिन्दी (Hindi)</option>
+                    <option>தமிழ் (Tamil)</option>
+                    <option>తెలుగు (Telugu)</option>
+                    <option>ಕನ್ನಡ (Kannada)</option>
+                    <option>বাংলা (Bengali)</option>
+                    <option>मराठी (Marathi)</option>
+                    <option>ગુજરાતી (Gujarati)</option>
+                  </select>
+                </div>
+
+                <div class="pref-item">
+                  <label class="profile-label">Country/Region</label>
+                  <select class="profile-input">
+                    <option>🇮🇳 India</option>
+                    <option>🇺🇸 United States</option>
+                    <option>🇬🇧 United Kingdom</option>
+                    <option>🇦🇺 Australia</option>
+                    <option>🇨🇦 Canada</option>
+                  </select>
+                </div>
+
+                <div class="pref-item">
+                  <label class="profile-label">Time Zone</label>
+                  <select class="profile-input">
+                    <option>Asia/Kolkata (IST) UTC+5:30</option>
+                    <option>Asia/Dubai UTC+4:00</option>
+                    <option>America/New_York UTC-5:00</option>
+                    <option>Europe/London UTC+0:00</option>
+                  </select>
+                </div>
+
+                <div class="pref-item">
+                  <label class="profile-label">Date Format</label>
+                  <select class="profile-input">
+                    <option>DD/MM/YYYY (Indian)</option>
+                    <option>MM/DD/YYYY (US)</option>
+                    <option>YYYY-MM-DD (ISO)</option>
+                  </select>
+                </div>
+
+                <div class="pref-item">
+                  <label class="profile-label">Distance Unit</label>
+                  <div class="radio-group">
+                    <label class="radio-btn active">
+                      <input type="radio" name="distance" value="km" checked />
+                      <span>Kilometers</span>
+                    </label>
+                    <label class="radio-btn">
+                      <input type="radio" name="distance" value="miles" />
+                      <span>Miles</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========== NOTIFICATIONS TAB ========== -->
+          <div class="tab-panel" id="tab-notifications">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-bell"></i>
+                    Notification Preferences
+                  </h3>
+                  <p class="panel-subtitle">Choose what notifications you want to receive</p>
+                </div>
+                <button class="btn-mute-all" id="btn-mute-all">
+                  <i class="fa-solid fa-volume-xmark"></i>
+                  Mute All
+                </button>
+              </div>
+
+              <div class="notification-categories">
+                <!-- Emergency -->
+                <div class="notif-category">
+                  <h4 class="notif-cat-title">
+                    <i class="fa-solid fa-triangle-exclamation" style="color: var(--color-emergency);"></i>
+                    Emergency Alerts
+                  </h4>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>SOS Activated</p>
+                      <small>When SOS is triggered by you or contacts</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>Emergency Response</p>
+                      <small>Updates from emergency services</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>Nearby Alerts</p>
+                      <small>Alerts about incidents near you</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Reports -->
+                <div class="notif-category">
+                  <h4 class="notif-cat-title">
+                    <i class="fa-solid fa-file-lines" style="color: var(--color-info);"></i>
+                    Reports
+                  </h4>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>Report Status Updates</p>
+                      <small>When your report status changes</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>Report Verified</p>
+                      <small>When authorities verify your report</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>Case Resolved</p>
+                      <small>When your case is marked resolved</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Community -->
+                <div class="notif-category">
+                  <h4 class="notif-cat-title">
+                    <i class="fa-solid fa-users" style="color: var(--color-primary-light);"></i>
+                    Community
+                  </h4>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>New Unsafe Areas</p>
+                      <small>When new unsafe areas are reported nearby</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>Area Verifications</p>
+                      <small>When areas you reported get verified</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <!-- Updates -->
+                <div class="notif-category">
+                  <h4 class="notif-cat-title">
+                    <i class="fa-solid fa-book-open" style="color: var(--color-success);"></i>
+                    Updates & Resources
+                  </h4>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>New Safety Articles</p>
+                      <small>Weekly safety tips and articles</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                  <div class="notif-item">
+                    <div class="notif-info">
+                      <p>App Updates</p>
+                      <small>New features and improvements</small>
+                    </div>
+                    <label class="switch-lg">
+                      <input type="checkbox" checked />
+                      <span class="switch-slider-lg"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Delivery Method -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-paper-plane"></i>
+                    Delivery Methods
+                  </h3>
+                  <p class="panel-subtitle">How you want to receive notifications</p>
+                </div>
+              </div>
+
+              <div class="delivery-methods">
+                <label class="delivery-method">
+                  <input type="checkbox" checked />
+                  <div class="delivery-visual">
+                    <i class="fa-solid fa-bell"></i>
+                  </div>
+                  <div class="delivery-info">
+                    <p>Push Notifications</p>
+                    <small>Instant alerts on your device</small>
+                  </div>
+                  <div class="delivery-check"><i class="fa-solid fa-check"></i></div>
+                </label>
+
+                <label class="delivery-method">
+                  <input type="checkbox" checked />
+                  <div class="delivery-visual">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div class="delivery-info">
+                    <p>Email</p>
+                    <small>Daily digest to your email</small>
+                  </div>
+                  <div class="delivery-check"><i class="fa-solid fa-check"></i></div>
+                </label>
+
+                <label class="delivery-method">
+                  <input type="checkbox" />
+                  <div class="delivery-visual">
+                    <i class="fa-solid fa-comment-sms"></i>
+                  </div>
+                  <div class="delivery-info">
+                    <p>SMS</p>
+                    <small>Critical alerts via SMS</small>
+                  </div>
+                  <div class="delivery-check"><i class="fa-solid fa-check"></i></div>
+                </label>
+
+                <label class="delivery-method">
+                  <input type="checkbox" checked />
+                  <div class="delivery-visual">
+                    <i class="fa-brands fa-whatsapp"></i>
+                  </div>
+                  <div class="delivery-info">
+                    <p>WhatsApp</p>
+                    <small>Alerts via WhatsApp</small>
+                  </div>
+                  <div class="delivery-check"><i class="fa-solid fa-check"></i></div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========== DEVICES TAB ========== -->
+          <div class="tab-panel" id="tab-devices">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    Connected Devices
+                  </h3>
+                  <p class="panel-subtitle">Manage devices logged into your account</p>
+                </div>
+              </div>
+
+              <div class="devices-list">
+                <div class="device-card current">
+                  <div class="device-icon">
+                    <i class="fa-solid fa-desktop"></i>
+                  </div>
+                  <div class="device-info">
+                    <div class="device-header">
+                      <h4>Windows PC <span class="current-tag">Current</span></h4>
+                      <span class="device-status online"><span class="dot"></span> Active</span>
+                    </div>
+                    <p class="device-meta">Chrome 120 • Windows 11</p>
+                    <p class="device-location">
+                      <i class="fa-solid fa-location-dot"></i>
+                      Bangalore, India (Current location)
+                    </p>
+                    <p class="device-time">
+                      <i class="fa-solid fa-clock"></i>
+                      Signed in: Today, 9:32 AM
+                    </p>
+                  </div>
+                </div>
+
+                <div class="device-card">
+                  <div class="device-icon">
+                    <i class="fa-solid fa-mobile-screen"></i>
+                  </div>
+                  <div class="device-info">
+                    <div class="device-header">
+                      <h4>iPhone 14 Pro</h4>
+                      <span class="device-status online"><span class="dot"></span> Active</span>
+                    </div>
+                    <p class="device-meta">SafeHer App • iOS 17.2</p>
+                    <p class="device-location">
+                      <i class="fa-solid fa-location-dot"></i>
+                      Bangalore, India
+                    </p>
+                    <p class="device-time">
+                      <i class="fa-solid fa-clock"></i>
+                      Last active: 5 minutes ago
+                    </p>
+                  </div>
+                  <button class="btn-remove-device">
+                    <i class="fa-solid fa-xmark"></i>
+                    Remove
+                  </button>
+                </div>
+
+                <div class="device-card">
+                  <div class="device-icon">
+                    <i class="fa-solid fa-tablet-screen-button"></i>
+                  </div>
+                  <div class="device-info">
+                    <div class="device-header">
+                      <h4>iPad Air</h4>
+                      <span class="device-status offline"><span class="dot"></span> Offline</span>
+                    </div>
+                    <p class="device-meta">Safari • iPadOS 17.1</p>
+                    <p class="device-location">
+                      <i class="fa-solid fa-location-dot"></i>
+                      Mumbai, India
+                    </p>
+                    <p class="device-time">
+                      <i class="fa-solid fa-clock"></i>
+                      Last active: 3 days ago
+                    </p>
+                  </div>
+                  <button class="btn-remove-device">
+                    <i class="fa-solid fa-xmark"></i>
+                    Remove
+                  </button>
+                </div>
+
+                <div class="device-card">
+                  <div class="device-icon">
+                    <i class="fa-solid fa-mobile"></i>
+                  </div>
+                  <div class="device-info">
+                    <div class="device-header">
+                      <h4>Samsung Galaxy S23</h4>
+                      <span class="device-status offline"><span class="dot"></span> Offline</span>
+                    </div>
+                    <p class="device-meta">SafeHer App • Android 14</p>
+                    <p class="device-location">
+                      <i class="fa-solid fa-location-dot"></i>
+                      Delhi, India
+                    </p>
+                    <p class="device-time">
+                      <i class="fa-solid fa-clock"></i>
+                      Last active: 2 weeks ago
+                    </p>
+                  </div>
+                  <button class="btn-remove-device">
+                    <i class="fa-solid fa-xmark"></i>
+                    Remove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========== ACTIVITY TAB ========== -->
+          <div class="tab-panel" id="tab-activity">
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    Activity Log
+                  </h3>
+                  <p class="panel-subtitle">Recent actions on your account</p>
+                </div>
+                <select class="profile-input" style="max-width: 150px;">
+                  <option>All Activity</option>
+                  <option>Reports</option>
+                  <option>Security</option>
+                  <option>Settings</option>
+                </select>
+              </div>
+
+              <div class="activity-timeline">
+                <div class="timeline-item">
+                  <div class="timeline-icon success">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">Report submitted</p>
+                    <p class="timeline-desc">You submitted incident report #RPT-2024-0342</p>
+                    <p class="timeline-time">Today, 2:45 PM</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon info">
+                    <i class="fa-solid fa-user-plus"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">New contact added</p>
+                    <p class="timeline-desc">Added Rahul to emergency contacts</p>
+                    <p class="timeline-time">Today, 11:20 AM</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon warning">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">Location shared</p>
+                    <p class="timeline-desc">Shared live location with 3 contacts</p>
+                    <p class="timeline-time">Yesterday, 6:15 PM</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon primary">
+                    <i class="fa-solid fa-key"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">Password changed</p>
+                    <p class="timeline-desc">Your password was successfully updated</p>
+                    <p class="timeline-time">2 days ago</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon danger">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">SOS activated</p>
+                    <p class="timeline-desc">Emergency alert triggered - notified 5 contacts</p>
+                    <p class="timeline-time">1 week ago</p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon info">
+                    <i class="fa-solid fa-desktop"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <p class="timeline-title">New device signed in</p>
+                    <p class="timeline-desc">Chrome on Windows from Bangalore</p>
+                    <p class="timeline-time">2 weeks ago</p>
+                  </div>
+                </div>
+              </div>
+
+              <button class="btn-load-more">
+                <i class="fa-solid fa-chevron-down"></i>
+                Load more activity
+              </button>
+            </div>
+          </div>
+
+          <!-- ========== ACCOUNT TAB ========== -->
+          <div class="tab-panel" id="tab-account">
+            <!-- Export Data -->
+            <div class="panel-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-download"></i>
+                    Export Your Data
+                  </h3>
+                  <p class="panel-subtitle">Download a copy of your data</p>
+                </div>
+              </div>
+
+              <div class="account-action-info">
+                <p>You can download all your SafeHer data including profile info, reports, contacts, and activity history.</p>
+                <button class="btn-primary-full">
+                  <i class="fa-solid fa-download"></i>
+                  Request Data Export
+                </button>
+              </div>
+            </div>
+
+            <!-- Deactivate -->
+            <div class="panel-card warning-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title">
+                    <i class="fa-solid fa-pause"></i>
+                    Deactivate Account
+                  </h3>
+                  <p class="panel-subtitle">Temporarily disable your account</p>
+                </div>
+              </div>
+
+              <div class="account-action-info">
+                <p>You can deactivate your account temporarily. Your data will be preserved and you can reactivate anytime by logging in.</p>
+                <button class="btn-warning-full">
+                  <i class="fa-solid fa-pause"></i>
+                  Deactivate Account
+                </button>
+              </div>
+            </div>
+
+            <!-- Delete -->
+            <div class="panel-card danger-card">
+              <div class="panel-header">
+                <div>
+                  <h3 class="panel-title danger-title">
+                    <i class="fa-solid fa-trash"></i>
+                    Delete Account
+                  </h3>
+                  <p class="panel-subtitle">Permanently delete your account and all data</p>
+                </div>
+              </div>
+
+              <div class="account-action-info">
+                <div class="danger-warning">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                  <div>
+                    <strong>This action is permanent and cannot be undone!</strong>
+                    <p>All your data, reports, contacts, and settings will be permanently deleted.</p>
+                  </div>
+                </div>
+                <button class="btn-danger-full" id="btn-delete-account">
+                  <i class="fa-solid fa-trash"></i>
+                  Delete My Account
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="safety-tools.html" class="bottom-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety</span></a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos"><i class="fa-solid fa-triangle-exclamation"></i></button>
+      <a href="find-help.html" class="bottom-nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Help</span></a>
+      <a href="profile.html" class="bottom-nav-item active"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </nav>
+
+  </div>
+
+  <!-- DELETE ACCOUNT MODAL -->
+  <div class="modal-overlay" id="delete-account-modal">
+    <div class="modal-container delete-modal">
+      <div class="delete-modal-body">
+        <div class="delete-icon-big">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <h3>Delete Your Account?</h3>
+        <p>This will permanently delete:</p>
+        <ul class="delete-list">
+          <li><i class="fa-solid fa-xmark"></i> Your profile and personal information</li>
+          <li><i class="fa-solid fa-xmark"></i> All your incident reports</li>
+          <li><i class="fa-solid fa-xmark"></i> Emergency contacts</li>
+          <li><i class="fa-solid fa-xmark"></i> Activity history and preferences</li>
+        </ul>
+        <p class="delete-final-warning">Type <strong>DELETE</strong> to confirm</p>
+        <input type="text" class="profile-input" id="delete-confirm-input" placeholder="Type DELETE" />
+        <div class="modal-actions-row">
+          <button class="btn-cancel-form" onclick="document.getElementById('delete-account-modal').classList.remove('show')">
+            Cancel
+          </button>
+          <button class="btn-danger-full" id="btn-confirm-delete-account" disabled>
+            <i class="fa-solid fa-trash"></i>
+            Permanently Delete
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/profile.js"></script>
+</body>
+</html>

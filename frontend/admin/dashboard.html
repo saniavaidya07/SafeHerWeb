@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Admin Dashboard - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body>
+
+  <div class="admin-container">
+
+    <!-- ============================================
+         ADMIN SIDEBAR
+    ============================================ -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="dashboard.html" class="admin-sidebar-logo">
+          <div class="admin-sidebar-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <span class="admin-sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+            <p class="admin-portal-tag">Admin Portal</p>
+          </div>
+        </a>
+        <button class="admin-sidebar-close" id="admin-sidebar-close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+
+      <div class="admin-sidebar-profile">
+        <div class="admin-profile-avatar">
+          <span>A</span>
+          <div class="admin-avatar-badge"><i class="fa-solid fa-crown"></i></div>
+        </div>
+        <div class="admin-profile-info">
+          <p class="admin-profile-name">Admin User</p>
+          <p class="admin-profile-role">
+            <i class="fa-solid fa-shield-halved"></i>
+            Super Admin
+          </p>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Overview</p>
+          <ul class="admin-nav-list">
+            <li>
+              <a href="dashboard.html" class="admin-nav-item active">
+                <i class="fa-solid fa-gauge-high"></i>
+                <span>Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="analytics.html" class="admin-nav-item">
+                <i class="fa-solid fa-chart-line"></i>
+                <span>Analytics</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Management</p>
+          <ul class="admin-nav-list">
+            <li>
+              <a href="users.html" class="admin-nav-item">
+                <i class="fa-solid fa-users"></i>
+                <span>Users</span>
+                <span class="admin-nav-badge">12.4K</span>
+              </a>
+            </li>
+            <li>
+              <a href="reports.html" class="admin-nav-item">
+                <i class="fa-solid fa-file-lines"></i>
+                <span>Reports</span>
+                <span class="admin-nav-badge urgent">23</span>
+              </a>
+            </li>
+            <li>
+              <a href="unsafe-areas.html" class="admin-nav-item">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span>Unsafe Areas</span>
+              </a>
+            </li>
+            <li>
+              <a href="resources.html" class="admin-nav-item">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Resources</span>
+              </a>
+            </li>
+            <li>
+              <a href="feedback.html" class="admin-nav-item">
+                <i class="fa-solid fa-comment-dots"></i>
+                <span>Feedback</span>
+                <span class="admin-nav-badge">8</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">System</p>
+          <ul class="admin-nav-list">
+            <li>
+              <a href="#" class="admin-nav-item">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="admin-nav-item">
+                <i class="fa-solid fa-bell"></i>
+                <span>Notifications</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="admin-nav-item">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Security Logs</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button class="admin-logout-btn" id="admin-logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i>
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="admin-sidebar-overlay" id="admin-sidebar-overlay"></div>
+
+    <!-- ============================================
+         MAIN CONTENT
+    ============================================ -->
+    <main class="admin-main">
+
+      <!-- Top Bar -->
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-menu-toggle" id="admin-menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+          <div>
+            <h1 class="admin-page-title">Dashboard Overview</h1>
+            <p class="admin-breadcrumb">
+              <a href="dashboard.html">Home</a> 
+              <i class="fa-solid fa-chevron-right"></i> 
+              <span>Dashboard</span>
+            </p>
+          </div>
+        </div>
+
+        <div class="admin-topbar-right">
+          <div class="admin-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search users, reports..." />
+          </div>
+
+          <button class="admin-icon-btn" title="Notifications">
+            <i class="fa-solid fa-bell"></i>
+            <span class="admin-dot">5</span>
+          </button>
+
+          <button class="admin-icon-btn" title="Messages">
+            <i class="fa-solid fa-envelope"></i>
+            <span class="admin-dot">3</span>
+          </button>
+
+          <div class="admin-topbar-profile">
+            <div class="admin-topbar-avatar">A</div>
+            <div class="admin-topbar-info">
+              <p class="admin-topbar-name">Admin User</p>
+              <p class="admin-topbar-role">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Dashboard Content -->
+      <div class="admin-content">
+
+        <!-- Welcome Banner -->
+        <section class="admin-welcome-banner">
+          <div class="welcome-banner-content">
+            <div class="welcome-text">
+              <p class="welcome-greeting-a">Good Morning, Admin! 👋</p>
+              <h2 class="welcome-heading">Here's what's happening today</h2>
+              <p class="welcome-subtext">You have <strong>23 new reports</strong> and <strong>5 pending approvals</strong> to review.</p>
+              <div class="welcome-actions">
+  <a href="reports.html" class="btn-welcome-primary">
+    <i class="fa-solid fa-eye"></i>
+    View Reports
+  </a>
+  <a href="analytics.html" class="btn-welcome-secondary">
+    <i class="fa-solid fa-chart-line"></i>
+    View Analytics
+  </a>
+</div>
+            </div>
+            <div class="welcome-illustration">
+              <div class="welcome-icon-big">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              <div class="welcome-decor-orb"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stats Grid -->
+        <section class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-purple">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <span class="stat-trend up">
+                <i class="fa-solid fa-arrow-up"></i> 12.5%
+              </span>
+            </div>
+            <p class="stat-value-a">12,458</p>
+            <p class="stat-label-a">Total Users</p>
+            <div class="stat-footer">
+              <span>+845 this week</span>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-red">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <span class="stat-trend up urgent">
+                <i class="fa-solid fa-arrow-up"></i> 8.2%
+              </span>
+            </div>
+            <p class="stat-value-a">1,234</p>
+            <p class="stat-label-a">Total Reports</p>
+            <div class="stat-footer">
+              <span>23 pending review</span>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-orange">
+                <i class="fa-solid fa-map-location-dot"></i>
+              </div>
+              <span class="stat-trend down">
+                <i class="fa-solid fa-arrow-down"></i> 3.4%
+              </span>
+            </div>
+            <p class="stat-value-a">89</p>
+            <p class="stat-label-a">Unsafe Areas</p>
+            <div class="stat-footer">
+              <span>15 verified</span>
+            </div>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-green">
+                <i class="fa-solid fa-check-double"></i>
+              </div>
+              <span class="stat-trend up">
+                <i class="fa-solid fa-arrow-up"></i> 15.8%
+              </span>
+            </div>
+            <p class="stat-value-a">98.2%</p>
+            <p class="stat-label-a">Resolution Rate</p>
+            <div class="stat-footer">
+              <span>Response time: 2h</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Charts Row -->
+        <section class="admin-charts-grid">
+          <div class="admin-chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Reports Overview</h3>
+                <p class="chart-subtitle">Last 30 days</p>
+              </div>
+              <select class="chart-select">
+                <option>Last 7 days</option>
+                <option selected>Last 30 days</option>
+                <option>Last 90 days</option>
+              </select>
+            </div>
+            <canvas id="reportsChart" height="80"></canvas>
+          </div>
+
+          <div class="admin-chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Report Categories</h3>
+                <p class="chart-subtitle">Distribution by type</p>
+              </div>
+            </div>
+            <canvas id="categoriesChart" height="80"></canvas>
+          </div>
+        </section>
+
+        <!-- Second Charts Row -->
+        <section class="admin-charts-grid two-col">
+          <div class="admin-chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">User Growth</h3>
+                <p class="chart-subtitle">Monthly registrations</p>
+              </div>
+            </div>
+            <canvas id="userGrowthChart" height="120"></canvas>
+          </div>
+
+          <div class="admin-chart-card">
+            <div class="chart-header">
+              <div>
+                <h3 class="chart-title">Emergency Response Times</h3>
+                <p class="chart-subtitle">Average by hour</p>
+              </div>
+            </div>
+            <canvas id="responseChart" height="120"></canvas>
+          </div>
+        </section>
+
+        <!-- Recent Activity & Quick Actions -->
+        <section class="admin-bottom-grid">
+          <!-- Recent Reports -->
+          <div class="admin-panel">
+            <div class="panel-header-a">
+              <div>
+                <h3 class="panel-title-a">
+                  <i class="fa-solid fa-clock-rotate-left"></i>
+                  Recent Reports
+                </h3>
+                <p class="panel-subtitle-a">Latest incident reports</p>
+              </div>
+              <a href="reports.html" class="view-all-link-a">
+                View All <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+
+            <div class="reports-table-container">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>Report ID</th>
+                    <th>Type</th>
+                    <th>User</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="recent-reports-tbody">
+                  <!-- Populated by JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="admin-panel">
+            <div class="panel-header-a">
+              <div>
+                <h3 class="panel-title-a">
+                  <i class="fa-solid fa-bolt"></i>
+                  Quick Actions
+                </h3>
+                <p class="panel-subtitle-a">Common admin tasks</p>
+              </div>
+            </div>
+
+            <div class="quick-actions-grid-a">
+              <a href="users.html" class="quick-action-a">
+                <div class="qa-icon gradient-purple">
+                  <i class="fa-solid fa-user-plus"></i>
+                </div>
+                <div>
+                  <h4>Manage Users</h4>
+                  <p>Add, edit users</p>
+                </div>
+              </a>
+
+              <a href="reports.html" class="quick-action-a">
+                <div class="qa-icon gradient-red">
+                  <i class="fa-solid fa-file-shield"></i>
+                </div>
+                <div>
+                  <h4>Review Reports</h4>
+                  <p>23 pending</p>
+                </div>
+              </a>
+
+              <a href="unsafe-areas.html" class="quick-action-a">
+                <div class="qa-icon gradient-orange">
+                  <i class="fa-solid fa-map-marked-alt"></i>
+                </div>
+                <div>
+                  <h4>Verify Areas</h4>
+                  <p>15 to verify</p>
+                </div>
+              </a>
+
+              <a href="resources.html" class="quick-action-a">
+                <div class="qa-icon gradient-green">
+                  <i class="fa-solid fa-book"></i>
+                </div>
+                <div>
+                  <h4>Add Resource</h4>
+                  <p>Create content</p>
+                </div>
+              </a>
+
+              <a href="feedback.html" class="quick-action-a">
+                <div class="qa-icon gradient-pink">
+                  <i class="fa-solid fa-envelope-open"></i>
+                </div>
+                <div>
+                  <h4>View Feedback</h4>
+                  <p>8 new</p>
+                </div>
+              </a>
+
+              <a href="analytics.html" class="quick-action-a">
+                <div class="qa-icon gradient-blue">
+                  <i class="fa-solid fa-chart-line"></i>
+                </div>
+                <div>
+                  <h4>View Analytics</h4>
+                  <p>Detailed stats</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- Live Alerts -->
+        <section class="admin-panel">
+          <div class="panel-header-a">
+            <div>
+              <h3 class="panel-title-a">
+                <i class="fa-solid fa-satellite-dish"></i>
+                Live Emergency Alerts
+                <span class="live-indicator">LIVE</span>
+              </h3>
+              <p class="panel-subtitle-a">Real-time SOS activations</p>
+            </div>
+          </div>
+
+          <div class="alerts-list-a">
+            <div class="alert-item-a critical">
+              <div class="alert-icon-a">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div class="alert-info-a">
+                <p class="alert-title-a">SOS Alert - Priya Sharma</p>
+                <p class="alert-meta-a">
+                  <i class="fa-solid fa-location-dot"></i> MG Road, Bangalore
+                  <span>•</span>
+                  <i class="fa-solid fa-clock"></i> Just now
+                </p>
+              </div>
+              <div class="alert-actions-a">
+                <button class="btn-alert-a primary">
+                  <i class="fa-solid fa-eye"></i>
+                  View
+                </button>
+                <button class="btn-alert-a">
+                  <i class="fa-solid fa-phone"></i>
+                  Call
+                </button>
+              </div>
+            </div>
+
+            <div class="alert-item-a high">
+              <div class="alert-icon-a">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+              </div>
+              <div class="alert-info-a">
+                <p class="alert-title-a">SOS Alert - Anjali K.</p>
+                <p class="alert-meta-a">
+                  <i class="fa-solid fa-location-dot"></i> Koramangala, Bangalore
+                  <span>•</span>
+                  <i class="fa-solid fa-clock"></i> 5 mins ago
+                </p>
+              </div>
+              <div class="alert-actions-a">
+                <button class="btn-alert-a primary">
+                  <i class="fa-solid fa-eye"></i>
+                  View
+                </button>
+                <button class="btn-alert-a">
+                  <i class="fa-solid fa-phone"></i>
+                  Call
+                </button>
+              </div>
+            </div>
+
+            <div class="alert-item-a resolved">
+              <div class="alert-icon-a">
+                <i class="fa-solid fa-check-double"></i>
+              </div>
+              <div class="alert-info-a">
+                <p class="alert-title-a">Alert Resolved - Meera P.</p>
+                <p class="alert-meta-a">
+                  <i class="fa-solid fa-location-dot"></i> HSR Layout, Bangalore
+                  <span>•</span>
+                  <i class="fa-solid fa-clock"></i> 15 mins ago
+                </p>
+              </div>
+              <div class="alert-actions-a">
+                <span class="alert-status-tag">Resolved ✓</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/toast.js"></script>
+  <script src="js/admin.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Admin Login - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="css/admin-login.css" />
+</head>
+<body>
+
+  <div class="admin-login-container">
+    
+    <!-- Animated Background -->
+    <div class="admin-bg-orbs">
+      <div class="admin-orb orb-1"></div>
+      <div class="admin-orb orb-2"></div>
+      <div class="admin-orb orb-3"></div>
+    </div>
+
+    <div class="admin-particles">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <div class="admin-login-card">
+      
+      <!-- Left Panel: Branding -->
+      <div class="admin-left-panel">
+        <a href="../index.html" class="admin-logo">
+          <div class="admin-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span class="admin-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+
+        <div class="admin-badge-top">
+          <i class="fa-solid fa-user-shield"></i>
+          Admin Portal
+        </div>
+
+        <div class="admin-welcome-content">
+          <h1 class="admin-welcome-title">Welcome Back, Admin</h1>
+          <p class="admin-welcome-desc">
+            Access the SafeHer administrative dashboard to manage users, 
+            monitor reports, and maintain the safety platform.
+          </p>
+
+          <!-- Features -->
+          <div class="admin-features">
+            <div class="admin-feature">
+              <div class="feature-icon-a">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <h4>User Management</h4>
+                <p>Manage 10,000+ users</p>
+              </div>
+            </div>
+            <div class="admin-feature">
+              <div class="feature-icon-a">
+                <i class="fa-solid fa-chart-line"></i>
+              </div>
+              <div>
+                <h4>Analytics</h4>
+                <p>Real-time insights</p>
+              </div>
+            </div>
+            <div class="admin-feature">
+              <div class="feature-icon-a">
+                <i class="fa-solid fa-file-shield"></i>
+              </div>
+              <div>
+                <h4>Reports</h4>
+                <p>Handle incident reports</p>
+              </div>
+            </div>
+            <div class="admin-feature">
+              <div class="feature-icon-a">
+                <i class="fa-solid fa-shield-check"></i>
+              </div>
+              <div>
+                <h4>Security</h4>
+                <p>System monitoring</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="admin-security-note">
+          <i class="fa-solid fa-lock"></i>
+          <p>Restricted Access • Authorized Personnel Only</p>
+        </div>
+      </div>
+
+      <!-- Right Panel: Login Form -->
+      <div class="admin-right-panel">
+        <a href="../index.html" class="mobile-admin-logo">
+          <div class="admin-logo-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <span>SafeHer Admin</span>
+        </a>
+
+        <div class="admin-form-header">
+          <div class="admin-form-icon">
+            <i class="fa-solid fa-user-tie"></i>
+          </div>
+          <h2 class="admin-form-title">Admin Sign In</h2>
+          <p class="admin-form-subtitle">Enter your credentials to access dashboard</p>
+        </div>
+
+        <form class="admin-login-form" id="admin-login-form" novalidate>
+          
+          <!-- Role Selector -->
+          <div class="admin-form-group">
+            <label class="admin-label">Select Role</label>
+            <div class="role-selector">
+              <label class="role-option active" for="role-admin">
+                <input type="radio" name="role" id="role-admin" value="admin" checked hidden />
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Admin</span>
+              </label>
+              <label class="role-option" for="role-authority">
+                <input type="radio" name="role" id="role-authority" value="authority" hidden />
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Authority</span>
+              </label>
+              <label class="role-option" for="role-moderator">
+                <input type="radio" name="role" id="role-moderator" value="moderator" hidden />
+                <i class="fa-solid fa-user-check"></i>
+                <span>Moderator</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="admin-form-group">
+            <label class="admin-label" for="admin-email">
+              <i class="fa-solid fa-envelope"></i>
+              Email Address
+            </label>
+            <div class="admin-input-wrapper">
+              <input 
+                type="email" 
+                id="admin-email" 
+                class="admin-input" 
+                placeholder="admin@safeher.com"
+                value="admin@safeher.com"
+                autocomplete="email"
+                required 
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="admin-form-group">
+            <label class="admin-label" for="admin-password">
+              <i class="fa-solid fa-lock"></i>
+              Password
+            </label>
+            <div class="admin-input-wrapper">
+              <input 
+                type="password" 
+                id="admin-password" 
+                class="admin-input" 
+                placeholder="Enter your password"
+                value="admin123"
+                autocomplete="current-password"
+                required 
+              />
+              <button type="button" class="admin-pwd-toggle" id="admin-pwd-toggle">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Options -->
+          <div class="admin-form-options">
+            <label class="admin-checkbox">
+              <input type="checkbox" id="admin-remember" />
+              <span class="admin-checkbox-visual"></span>
+              <span>Keep me signed in</span>
+            </label>
+            <a href="#" class="admin-forgot">Forgot password?</a>
+          </div>
+
+          <!-- 2FA Notice -->
+          <div class="admin-2fa-notice">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <p>You may be asked for 2FA verification code</p>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn-admin-signin" id="btn-admin-signin">
+            <span class="btn-text">Sign In to Dashboard</span>
+            <span class="btn-loader hidden">
+              <i class="fa-solid fa-spinner fa-spin"></i>
+            </span>
+            <i class="fa-solid fa-arrow-right btn-arrow"></i>
+          </button>
+
+          <!-- Divider -->
+          <div class="admin-divider">
+            <span>Not an admin?</span>
+          </div>
+
+          <a href="../login.html" class="btn-user-login">
+            <i class="fa-solid fa-user"></i>
+            Go to User Login
+          </a>
+        </form>
+
+        <div class="admin-footer">
+          <p>&copy; 2024 SafeHer. Secured Administrative Portal.</p>
+          <p class="admin-version">v1.0.0 • Protected by 256-bit encryption</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="../js/toast.js"></script>
+  <script src="js/admin-login.js"></script>
+</body>
+</html>

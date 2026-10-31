@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resources - SafeHer Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/animations.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+  <link rel="stylesheet" href="css/admin-pages.css" />
+</head>
+<body>
+  <div class="admin-container">
+    
+    <aside class="admin-sidebar" id="admin-sidebar">
+      <div class="admin-sidebar-header">
+        <a href="dashboard.html" class="admin-sidebar-logo">
+          <div class="admin-sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div>
+            <span class="admin-sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+            <p class="admin-portal-tag">Admin Portal</p>
+          </div>
+        </a>
+        <button class="admin-sidebar-close" id="admin-sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="admin-sidebar-profile">
+        <div class="admin-profile-avatar"><span>A</span><div class="admin-avatar-badge"><i class="fa-solid fa-crown"></i></div></div>
+        <div class="admin-profile-info">
+          <p class="admin-profile-name">Admin User</p>
+          <p class="admin-profile-role"><i class="fa-solid fa-shield-halved"></i> Super Admin</p>
+        </div>
+      </div>
+
+      <nav class="admin-sidebar-nav">
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Overview</p>
+          <ul class="admin-nav-list">
+            <li><a href="dashboard.html" class="admin-nav-item"><i class="fa-solid fa-gauge-high"></i><span>Dashboard</span></a></li>
+            <li><a href="analytics.html" class="admin-nav-item"><i class="fa-solid fa-chart-line"></i><span>Analytics</span></a></li>
+          </ul>
+        </div>
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">Management</p>
+          <ul class="admin-nav-list">
+            <li><a href="users.html" class="admin-nav-item"><i class="fa-solid fa-users"></i><span>Users</span><span class="admin-nav-badge">12.4K</span></a></li>
+            <li><a href="reports.html" class="admin-nav-item"><i class="fa-solid fa-file-lines"></i><span>Reports</span><span class="admin-nav-badge urgent">23</span></a></li>
+            <li><a href="unsafe-areas.html" class="admin-nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="resources.html" class="admin-nav-item active"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+            <li><a href="feedback.html" class="admin-nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span><span class="admin-nav-badge">8</span></a></li>
+          </ul>
+        </div>
+        <div class="admin-nav-section">
+          <p class="admin-nav-title">System</p>
+          <ul class="admin-nav-list">
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a></li>
+            <li><a href="#" class="admin-nav-item"><i class="fa-solid fa-bell"></i><span>Notifications</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="admin-sidebar-footer">
+        <button class="admin-logout-btn" id="admin-logout-btn">
+          <i class="fa-solid fa-right-from-bracket"></i><span>Sign Out</span>
+        </button>
+      </div>
+    </aside>
+
+    <div class="admin-sidebar-overlay" id="admin-sidebar-overlay"></div>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div class="admin-topbar-left">
+          <button class="admin-menu-toggle" id="admin-menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div>
+            <h1 class="admin-page-title">Resources Management</h1>
+            <p class="admin-breadcrumb"><a href="dashboard.html">Home</a> <i class="fa-solid fa-chevron-right"></i> <span>Resources</span></p>
+          </div>
+        </div>
+        <div class="admin-topbar-right">
+          <div class="admin-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Search resources..." />
+          </div>
+          <button class="admin-icon-btn"><i class="fa-solid fa-bell"></i><span class="admin-dot">5</span></button>
+          <div class="admin-topbar-profile">
+            <div class="admin-topbar-avatar">A</div>
+            <div class="admin-topbar-info">
+              <p class="admin-topbar-name">Admin</p>
+              <p class="admin-topbar-role">Super Admin</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="admin-content">
+        <div class="page-header-admin">
+          <div>
+            <h2 class="page-heading-admin">Safety Resources</h2>
+            <p class="page-subheading-admin">Manage articles, guides and safety content</p>
+          </div>
+          <button class="btn-add-admin">
+            <i class="fa-solid fa-plus"></i>
+            Create New Resource
+          </button>
+        </div>
+
+        <section class="admin-stats-grid">
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-purple"><i class="fa-solid fa-newspaper"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 15%</span>
+            </div>
+            <p class="stat-value-a">150</p>
+            <p class="stat-label-a">Total Articles</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-blue"><i class="fa-solid fa-book"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 8%</span>
+            </div>
+            <p class="stat-value-a">25</p>
+            <p class="stat-label-a">Total Guides</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-green"><i class="fa-solid fa-eye"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 24%</span>
+            </div>
+            <p class="stat-value-a">245K</p>
+            <p class="stat-label-a">Total Views</p>
+          </div>
+
+          <div class="admin-stat-card">
+            <div class="stat-header-a">
+              <div class="stat-icon-a gradient-orange"><i class="fa-solid fa-bookmark"></i></div>
+              <span class="stat-trend up"><i class="fa-solid fa-arrow-up"></i> 18%</span>
+            </div>
+            <p class="stat-value-a">12.4K</p>
+            <p class="stat-label-a">Bookmarks</p>
+          </div>
+        </section>
+
+        <div class="admin-filters-bar">
+          <div class="filter-chips-admin">
+            <button class="filter-chip-a active">All Types</button>
+            <button class="filter-chip-a">Articles</button>
+            <button class="filter-chip-a">Guides</button>
+          </div>
+          <div class="filter-actions-a">
+            <select class="filter-select-a">
+              <option>All Categories</option>
+              <option>Self Defense</option>
+              <option>Legal Rights</option>
+              <option>Mental Health</option>
+              <option>Travel Safety</option>
+              <option>Online Safety</option>
+            </select>
+            <select class="filter-select-a">
+              <option>All Status</option>
+              <option>Published</option>
+              <option>Draft</option>
+              <option>Under Review</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="admin-panel">
+          <div class="reports-table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Resource</th>
+                  <th>Category</th>
+                  <th>Type</th>
+                  <th>Author</th>
+                  <th>Views</th>
+                  <th>Likes</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="resources-tbody"></tbody>
+            </table>
+          </div>
+
+          <div class="admin-pagination">
+            <p class="pagination-info">Showing 1-10 of 175 resources</p>
+            <div class="pagination-controls">
+              <button class="pagination-btn"><i class="fa-solid fa-chevron-left"></i></button>
+              <button class="pagination-btn active">1</button>
+              <button class="pagination-btn">2</button>
+              <button class="pagination-btn">3</button>
+              <button class="pagination-btn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div id="toast-container" class="toast-container"></div>
+  <script src="../js/toast.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    const resources = [
+      { title: 'Essential Self-Defense Techniques', category: 'Self Defense', type: 'article', author: 'Kiran Bedi', views: 24500, likes: 1234, status: 'published' },
+      { title: 'Complete Guide to Krav Maga', category: 'Self Defense', type: 'guide', author: 'Rachna Singh', views: 15800, likes: 890, status: 'published' },
+      { title: 'Understanding POSH Act', category: 'Legal Rights', type: 'article', author: 'Priya Sharma', views: 8900, likes: 445, status: 'published' },
+      { title: 'How to File an FIR', category: 'Legal Rights', type: 'guide', author: 'Adv. Rohan Mehta', views: 22400, likes: 1567, status: 'published' },
+      { title: 'Coping with Trauma', category: 'Mental Health', type: 'article', author: 'Dr. Anjali Verma', views: 19800, likes: 1890, status: 'published' },
+      { title: 'Managing Anxiety', category: 'Mental Health', type: 'article', author: 'Dr. Simran Kaur', views: 14200, likes: 923, status: 'published' },
+      { title: 'Solo Travel Safety Handbook', category: 'Travel Safety', type: 'guide', author: 'Nishtha Reddy', views: 25600, likes: 2300, status: 'published' },
+      { title: 'Cyberstalking Prevention', category: 'Online Safety', type: 'article', author: 'Prakash Kumar', views: 13400, likes: 789, status: 'draft' },
+      { title: 'Emergency First Aid Guide', category: 'Emergency', type: 'guide', author: 'Dr. Neha Gupta', views: 28700, likes: 2456, status: 'published' },
+      { title: 'Building Emotional Resilience', category: 'Mental Health', type: 'guide', author: 'Meera Patel', views: 11500, likes: 678, status: 'review' }
+    ];
+
+    const tbody = document.getElementById('resources-tbody');
+    if (tbody) {
+      tbody.innerHTML = resources.map(r => `
+        <tr>
+          <td>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #7C3AED, #EC4899); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px;">
+                <i class="fa-solid ${r.type === 'article' ? 'fa-newspaper' : 'fa-book'}"></i>
+              </div>
+              <span style="color: white; font-weight: 500;">${r.title}</span>
+            </div>
+          </td>
+          <td><span style="padding: 4px 10px; background: rgba(124, 58, 237, 0.15); color: #A78BFA; border-radius: 999px; font-size: 0.75rem;">${r.category}</span></td>
+          <td><span style="text-transform: capitalize; color: white;">${r.type}</span></td>
+          <td>${r.author}</td>
+          <td><strong>${(r.views / 1000).toFixed(1)}K</strong></td>
+          <td>${r.likes}</td>
+          <td><span class="user-status-badge user-status-${r.status === 'published' ? 'active' : r.status === 'draft' ? 'inactive' : 'suspended'}">${r.status}</span></td>
+          <td>
+            <div class="table-actions">
+              <button class="table-action-btn"><i class="fa-solid fa-eye"></i></button>
+              <button class="table-action-btn"><i class="fa-solid fa-pen"></i></button>
+              <button class="table-action-btn danger"><i class="fa-solid fa-trash"></i></button>
+            </div>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    document.querySelectorAll('.filter-chip-a').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip-a').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        Toast.info(`Filter: ${chip.textContent.trim()}`);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  <meta name="description" content="SafeHer - Your Safety, Your Strength. Women Safety & Emergency Assistance Web Portal" />
+  
+  <title>SafeHer - Your Safety. Your Strength.</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/splash.css" />
+</head>
+<body>
+
+  <!-- ============================================
+       SPLASH SCREEN
+  ============================================ -->
+  <div id="splash-screen" class="splash-screen">
+    
+    <!-- Animated Background Orbs -->
+    <div class="animated-bg">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="gradient-orb orb-4"></div>
+    </div>
+
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+
+    <!-- Floating Particles -->
+    <div class="particles">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+
+    <!-- Splash Content -->
+    <div class="splash-content">
+      
+      <!-- 3D Shield Logo -->
+      <div class="logo-container">
+        <div class="shield-3d">
+          <div class="shield-face shield-front">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+        </div>
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring pulse-ring-2"></div>
+        <div class="pulse-ring pulse-ring-3"></div>
+      </div>
+
+      <!-- Brand Name -->
+      <h1 class="brand-name">
+        <span class="letter">S</span>
+        <span class="letter">a</span>
+        <span class="letter">f</span>
+        <span class="letter">e</span>
+        <span class="letter highlight">H</span>
+        <span class="letter highlight">e</span>
+        <span class="letter highlight">r</span>
+      </h1>
+
+      <!-- Tagline -->
+      <p class="tagline">Your Safety. Your Strength.</p>
+
+      <!-- Subtitle -->
+      <p class="subtitle">Women Safety & Emergency Assistance Portal</p>
+
+      <!-- Features Icons -->
+      <div class="feature-icons">
+        <div class="feature-icon" title="SOS Emergency">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+        <div class="feature-icon" title="Live Location">
+          <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="feature-icon" title="Trusted Contacts">
+          <i class="fa-solid fa-users"></i>
+        </div>
+        <div class="feature-icon" title="Safety Resources">
+          <i class="fa-solid fa-book-open"></i>
+        </div>
+      </div>
+
+      <!-- Loading / CTA Section -->
+      <div class="splash-action" id="splash-action">
+        <!-- Loading state -->
+        <div class="loading-state" id="loading-state">
+          <div class="loading-bar">
+            <div class="loading-progress"></div>
+          </div>
+          <p class="loading-text">Initializing safety systems...</p>
+        </div>
+
+        <!-- Get Started button (hidden initially) -->
+        <button class="btn-get-started" id="btn-get-started" style="display: none;">
+          <span>Get Started</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <!-- Version Info -->
+      <div class="version-info">
+        <span><i class="fa-solid fa-shield"></i> v1.0.0 • Secure & Trusted</span>
+      </div>
+
+    </div>
+
+    <!-- Bottom Wave -->
+    <div class="bottom-wave">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path d="M0,50 C360,100 720,0 1440,50 L1440,100 L0,100 Z" fill="url(#wave-gradient)"></path>
+        <defs>
+          <linearGradient id="wave-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7C3AED" stop-opacity="0.3"/>
+            <stop offset="100%" stop-color="#EC4899" stop-opacity="0.3"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/splash.js"></script>
+</body>
+</html>

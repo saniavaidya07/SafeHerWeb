@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#7C3AED" />
+  
+  <title>Safety Resources - SafeHer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/resources.css" />
+</head>
+<body>
+
+  <div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-logo">
+          <div class="sidebar-logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <span class="sidebar-logo-text">Safe<span class="highlight">Her</span></span>
+        </a>
+        <button class="sidebar-close" id="sidebar-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="sidebar-avatar">
+          <span id="sidebar-avatar-initial">U</span>
+          <div class="avatar-status"></div>
+        </div>
+        <div class="sidebar-user-info">
+          <p class="sidebar-user-name" id="sidebar-user-name">User</p>
+          <p class="sidebar-user-status"><i class="fa-solid fa-circle-check"></i> Protected</p>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section">
+          <p class="nav-section-title">Main</p>
+          <ul class="nav-list">
+            <li><a href="dashboard.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Dashboard</span></a></li>
+            <li><a href="safety-tools.html" class="nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety Tools</span><span class="nav-badge nav-badge-emergency">SOS</span></a></li>
+            <li><a href="report-incident.html" class="nav-item"><i class="fa-solid fa-file-lines"></i><span>Report Incident</span></a></li>
+            <li><a href="find-help.html" class="nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Find Help</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Community</p>
+          <ul class="nav-list">
+            <li><a href="unsafe-areas.html" class="nav-item"><i class="fa-solid fa-triangle-exclamation"></i><span>Unsafe Areas</span></a></li>
+            <li><a href="emergency-contacts.html" class="nav-item"><i class="fa-solid fa-users"></i><span>Contacts</span></a></li>
+            <li><a href="resources.html" class="nav-item active"><i class="fa-solid fa-book-open"></i><span>Resources</span></a></li>
+          </ul>
+        </div>
+        <div class="nav-section">
+          <p class="nav-section-title">Account</p>
+          <ul class="nav-list">
+            <li><a href="profile.html" class="nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a></li>
+            <li><a href="feedback.html" class="nav-item"><i class="fa-solid fa-comment-dots"></i><span>Feedback</span></a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="sidebar-sos-btn" id="sidebar-sos-btn">
+          <div class="sos-btn-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <div class="sos-btn-text">
+            <span class="sos-btn-title">Emergency SOS</span>
+            <span class="sos-btn-subtitle">Tap for help</span>
+          </div>
+        </button>
+      </div>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <!-- TOP NAVBAR -->
+      <header class="top-navbar">
+        <div class="navbar-left">
+          <button class="navbar-menu-toggle" id="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+          <div class="page-header-info">
+            <h1 class="page-title">
+              <i class="fa-solid fa-book-open"></i>
+              Safety Resources
+            </h1>
+            <p class="page-subtitle">Knowledge is power. Stay informed, stay safe.</p>
+          </div>
+        </div>
+
+        <div class="navbar-right">
+          <button class="btn-bookmarks-header" id="btn-bookmarks-header">
+            <i class="fa-solid fa-bookmark"></i>
+            <span>My Bookmarks</span>
+            <span class="bookmark-count" id="bookmark-count">0</span>
+          </button>
+          <button class="navbar-quick-sos" id="navbar-quick-sos">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span>SOS</span>
+          </button>
+          <div class="navbar-notification-wrapper">
+            <button class="navbar-icon-btn" id="notification-btn">
+              <i class="fa-solid fa-bell"></i>
+              <span class="notification-dot">3</span>
+            </button>
+          </div>
+          <div class="navbar-profile-wrapper">
+            <button class="navbar-profile" id="profile-btn">
+              <div class="navbar-avatar"><span id="navbar-avatar-initial">U</span></div>
+              <i class="fa-solid fa-chevron-down navbar-chevron"></i>
+            </button>
+            <div class="profile-dropdown" id="profile-dropdown">
+              <div class="profile-dropdown-header">
+                <div class="dropdown-avatar"><span id="dropdown-avatar-initial">U</span></div>
+                <div>
+                  <p class="dropdown-name" id="dropdown-user-name">User</p>
+                  <p class="dropdown-email" id="dropdown-user-email">user@safeher.com</p>
+                </div>
+              </div>
+              <ul class="profile-dropdown-menu">
+                <li><a href="profile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
+                <li class="dropdown-divider"></li>
+                <li><a href="#" id="logout-btn" class="logout-link"><i class="fa-solid fa-right-from-bracket"></i> Sign Out</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- RESOURCES CONTENT -->
+      <div class="resources-content">
+
+        <!-- HERO SECTION -->
+        <section class="resources-hero">
+          <div class="hero-bg-decor">
+            <div class="hero-decor-orb decor-1"></div>
+            <div class="hero-decor-orb decor-2"></div>
+            <div class="hero-decor-shape shape-1"></div>
+            <div class="hero-decor-shape shape-2"></div>
+          </div>
+
+          <div class="hero-content-res">
+            <div class="hero-badge-res">
+              <i class="fa-solid fa-graduation-cap"></i>
+              Empowering Knowledge
+            </div>
+            <h2 class="hero-title-res">Your Safety Knowledge Hub</h2>
+            <p class="hero-desc-res">
+              Explore expert articles, comprehensive guides, legal rights information, 
+              and mental wellness resources — everything you need to stay safe and empowered.
+            </p>
+            
+            <!-- Hero Search Bar -->
+            <div class="hero-search-bar">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input 
+                type="text" 
+                id="resource-search" 
+                placeholder="Search articles, guides..." 
+              />
+              <button class="btn-search-hero">Search</button>
+            </div>
+
+            <!-- Popular Searches -->
+            <div class="popular-tags">
+              <span class="popular-label">Popular:</span>
+              <button class="popular-tag" data-search="self defense">Self Defense</button>
+              <button class="popular-tag" data-search="legal rights">Legal Rights</button>
+              <button class="popular-tag" data-search="travel safety">Travel Safety</button>
+              <button class="popular-tag" data-search="mental health">Mental Health</button>
+              <button class="popular-tag" data-search="online safety">Online Safety</button>
+            </div>
+          </div>
+
+          <!-- Hero Stats -->
+          <div class="hero-stats-res">
+            <div class="hero-stat-res">
+              <div class="stat-icon-res gradient-purple">
+                <i class="fa-solid fa-newspaper"></i>
+              </div>
+              <div>
+                <p class="stat-num-res">150+</p>
+                <p class="stat-label-res">Articles</p>
+              </div>
+            </div>
+            <div class="hero-stat-res">
+              <div class="stat-icon-res gradient-green">
+                <i class="fa-solid fa-book"></i>
+              </div>
+              <div>
+                <p class="stat-num-res">25+</p>
+                <p class="stat-label-res">Guides</p>
+              </div>
+            </div>
+            <div class="hero-stat-res">
+              <div class="stat-icon-res gradient-blue">
+                <i class="fa-solid fa-users"></i>
+              </div>
+              <div>
+                <p class="stat-num-res">12K+</p>
+                <p class="stat-label-res">Readers</p>
+              </div>
+            </div>
+            <div class="hero-stat-res">
+              <div class="stat-icon-res gradient-red">
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <div>
+                <p class="stat-num-res">4.9</p>
+                <p class="stat-label-res">Rating</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CATEGORIES -->
+        <section class="categories-section">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">
+                <i class="fa-solid fa-th-large"></i>
+                Browse by Category
+              </h2>
+              <p class="section-subtitle">Choose a category that matters to you</p>
+            </div>
+          </div>
+
+          <div class="categories-grid">
+            <button class="category-card active" data-category="all">
+              <div class="cat-card-bg gradient-purple"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <h3>All Resources</h3>
+              <p>Browse everything</p>
+              <span class="cat-count" id="cat-count-all">0</span>
+            </button>
+
+            <button class="category-card" data-category="self-defense">
+              <div class="cat-card-bg gradient-red"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-hand-fist"></i>
+              </div>
+              <h3>Self Defense</h3>
+              <p>Learn to protect yourself</p>
+              <span class="cat-count" id="cat-count-self-defense">0</span>
+            </button>
+
+            <button class="category-card" data-category="legal">
+              <div class="cat-card-bg gradient-blue"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <h3>Legal Rights</h3>
+              <p>Know your rights</p>
+              <span class="cat-count" id="cat-count-legal">0</span>
+            </button>
+
+            <button class="category-card" data-category="mental-health">
+              <div class="cat-card-bg gradient-pink"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-brain"></i>
+              </div>
+              <h3>Mental Wellness</h3>
+              <p>Care for your mind</p>
+              <span class="cat-count" id="cat-count-mental-health">0</span>
+            </button>
+
+            <button class="category-card" data-category="travel">
+              <div class="cat-card-bg gradient-green"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-plane"></i>
+              </div>
+              <h3>Travel Safety</h3>
+              <p>Safe travel tips</p>
+              <span class="cat-count" id="cat-count-travel">0</span>
+            </button>
+
+            <button class="category-card" data-category="online">
+              <div class="cat-card-bg gradient-cyan"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-shield-halved"></i>
+              </div>
+              <h3>Online Safety</h3>
+              <p>Digital security</p>
+              <span class="cat-count" id="cat-count-online">0</span>
+            </button>
+
+            <button class="category-card" data-category="public">
+              <div class="cat-card-bg gradient-orange"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-people-group"></i>
+              </div>
+              <h3>Public Places</h3>
+              <p>Stay safe outside</p>
+              <span class="cat-count" id="cat-count-public">0</span>
+            </button>
+
+            <button class="category-card" data-category="emergency">
+              <div class="cat-card-bg gradient-yellow"></div>
+              <div class="cat-icon">
+                <i class="fa-solid fa-truck-medical"></i>
+              </div>
+              <h3>Emergency</h3>
+              <p>Emergency guides</p>
+              <span class="cat-count" id="cat-count-emergency">0</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- FEATURED RESOURCE -->
+        <section class="featured-section">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">
+                <i class="fa-solid fa-star"></i>
+                Featured This Week
+              </h2>
+              <p class="section-subtitle">Editor's pick — Must read for every woman</p>
+            </div>
+            <span class="featured-badge">
+              <i class="fa-solid fa-fire"></i> Trending
+            </span>
+          </div>
+
+          <div class="featured-card">
+            <div class="featured-image">
+              <div class="featured-bg-orb"></div>
+              <div class="featured-icon-big">
+                <i class="fa-solid fa-shield-heart"></i>
+              </div>
+              <span class="featured-tag">
+                <i class="fa-solid fa-crown"></i> Editor's Pick
+              </span>
+            </div>
+            <div class="featured-content">
+              <div class="featured-meta">
+                <span class="meta-cat">Self Defense</span>
+                <span class="meta-dot">•</span>
+                <span class="meta-time"><i class="fa-solid fa-clock"></i> 12 min read</span>
+                <span class="meta-dot">•</span>
+                <span class="meta-time"><i class="fa-solid fa-eye"></i> 24.5K views</span>
+              </div>
+              <h3 class="featured-title">
+                Essential Self-Defense Techniques Every Woman Must Know
+              </h3>
+              <p class="featured-desc">
+                Learn practical, easy-to-remember self-defense moves that could save your life. 
+                Our expert instructor breaks down 10 essential techniques with step-by-step 
+                instructions for real-world situations.
+              </p>
+              <div class="featured-author">
+                <div class="author-avatar">
+                  <span>K</span>
+                </div>
+                <div>
+                  <p class="author-name">Kiran Bedi</p>
+                  <p class="author-role">Certified Self-Defense Expert</p>
+                </div>
+              </div>
+              <div class="featured-actions">
+                <button class="btn-featured-primary" onclick="Resources.openArticle(1)">
+                  <i class="fa-solid fa-book-open"></i>
+                  Read Article
+                </button>
+                <button class="btn-featured-icon" onclick="Resources.toggleBookmark(1)">
+                  <i class="fa-regular fa-bookmark"></i>
+                </button>
+                <button class="btn-featured-icon">
+                  <i class="fa-solid fa-share-nodes"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FILTERS BAR -->
+        <section class="filter-bar-res">
+          <div class="filter-left">
+            <div class="results-info">
+              <p class="results-count">Showing <span id="showing-count">0</span> resources</p>
+            </div>
+          </div>
+
+          <div class="filter-right">
+            <div class="filter-chips">
+              <button class="filter-chip-res active" data-type="all">
+                <i class="fa-solid fa-th-list"></i>
+                All Types
+              </button>
+              <button class="filter-chip-res" data-type="article">
+                <i class="fa-solid fa-newspaper"></i>
+                Articles
+              </button>
+              <button class="filter-chip-res" data-type="guide">
+                <i class="fa-solid fa-book"></i>
+                Guides
+              </button>
+            </div>
+
+            <select class="sort-select-res" id="sort-select-res">
+              <option value="latest">Latest First</option>
+              <option value="popular">Most Popular</option>
+              <option value="rated">Highest Rated</option>
+              <option value="short">Shortest Read</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- RESOURCES GRID -->
+        <section class="resources-grid" id="resources-grid">
+          <!-- Populated by JS -->
+        </section>
+
+        <!-- Empty State -->
+        <div class="empty-state-res" id="empty-state-res" style="display: none;">
+          <div class="empty-icon-res">
+            <i class="fa-solid fa-book-open-reader"></i>
+          </div>
+          <h3>No resources found</h3>
+          <p>Try adjusting your filters or search terms</p>
+        </div>
+
+        <!-- Load More -->
+        <div class="load-more-wrapper">
+          <button class="btn-load-more-res" id="btn-load-more-res">
+            <i class="fa-solid fa-refresh"></i>
+            Load More Resources
+          </button>
+        </div>
+
+        <!-- NEWSLETTER SECTION -->
+        <section class="newsletter-section">
+          <div class="newsletter-bg-decor">
+            <div class="news-orb news-orb-1"></div>
+            <div class="news-orb news-orb-2"></div>
+          </div>
+          <div class="newsletter-content">
+            <div class="newsletter-icon">
+              <i class="fa-solid fa-envelope-open-text"></i>
+            </div>
+            <h2>Get Weekly Safety Tips</h2>
+            <p>Subscribe to receive expert safety advice, latest articles, and important updates directly in your inbox.</p>
+            <form class="newsletter-form" id="newsletter-form">
+              <input type="email" placeholder="Enter your email address" required />
+              <button type="submit">
+                <span>Subscribe</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+            <div class="newsletter-features">
+              <span><i class="fa-solid fa-check"></i> Weekly digest</span>
+              <span><i class="fa-solid fa-check"></i> Expert advice</span>
+              <span><i class="fa-solid fa-check"></i> No spam</span>
+              <span><i class="fa-solid fa-check"></i> Unsubscribe anytime</span>
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+    </main>
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="bottom-nav">
+      <a href="dashboard.html" class="bottom-nav-item"><i class="fa-solid fa-house"></i><span>Home</span></a>
+      <a href="safety-tools.html" class="bottom-nav-item"><i class="fa-solid fa-shield-halved"></i><span>Safety</span></a>
+      <button class="bottom-nav-sos" id="bottom-nav-sos"><i class="fa-solid fa-triangle-exclamation"></i></button>
+      <a href="find-help.html" class="bottom-nav-item"><i class="fa-solid fa-location-crosshairs"></i><span>Help</span></a>
+      <a href="profile.html" class="bottom-nav-item"><i class="fa-solid fa-user"></i><span>Profile</span></a>
+    </nav>
+
+  </div>
+
+  <!-- ============================================
+       ARTICLE READER MODAL
+  ============================================ -->
+  <div class="modal-overlay" id="article-modal">
+    <div class="modal-container article-modal">
+      <div class="article-header" id="article-header">
+        <button class="modal-close-btn" id="btn-close-article">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="article-hero-image">
+          <div class="article-hero-icon" id="article-hero-icon">
+            <i class="fa-solid fa-shield-heart"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="article-body">
+        <div class="article-category-tag" id="article-category-tag">
+          <i class="fa-solid fa-hand-fist"></i>
+          Self Defense
+        </div>
+
+        <h1 class="article-title" id="article-title">Article Title</h1>
+
+        <div class="article-meta-bar">
+          <div class="article-author-info">
+            <div class="author-avatar-sm">
+              <span id="article-author-initial">A</span>
+            </div>
+            <div>
+              <p class="author-name-sm" id="article-author-name">Author Name</p>
+              <p class="article-date"><span id="article-date">Jan 15, 2024</span> • <span id="article-read-time">8 min read</span></p>
+            </div>
+          </div>
+
+          <div class="article-actions-top">
+            <button class="article-action-btn" id="btn-bookmark-article">
+              <i class="fa-regular fa-bookmark"></i>
+            </button>
+            <button class="article-action-btn" id="btn-share-article">
+              <i class="fa-solid fa-share-nodes"></i>
+            </button>
+            <button class="article-action-btn" id="btn-print-article">
+              <i class="fa-solid fa-print"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Article Content -->
+        <div class="article-content" id="article-content">
+          <p class="article-lead">
+            This is the article introduction paragraph. It provides an overview of what you'll learn.
+          </p>
+          <p>Full article content will be populated here...</p>
+        </div>
+
+        <!-- Article Footer -->
+        <div class="article-footer">
+          <div class="article-reactions">
+            <p class="reactions-label">Did you find this helpful?</p>
+            <div class="reactions-buttons">
+              <button class="reaction-btn" data-reaction="love">
+                <i class="fa-solid fa-heart"></i>
+                <span>245</span>
+              </button>
+              <button class="reaction-btn" data-reaction="helpful">
+                <i class="fa-solid fa-thumbs-up"></i>
+                <span>189</span>
+              </button>
+              <button class="reaction-btn" data-reaction="informative">
+                <i class="fa-solid fa-lightbulb"></i>
+                <span>134</span>
+              </button>
+              <button class="reaction-btn" data-reaction="share">
+                <i class="fa-solid fa-share"></i>
+                <span>92</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="article-tags">
+            <span class="tag-label">Tags:</span>
+            <span class="article-tag">#SafetyTips</span>
+            <span class="article-tag">#WomenSafety</span>
+            <span class="article-tag">#SelfDefense</span>
+            <span class="article-tag">#Empowerment</span>
+          </div>
+        </div>
+
+        <!-- Related Articles -->
+        <div class="related-section">
+          <h3 class="related-title">
+            <i class="fa-solid fa-lightbulb"></i>
+            Related Articles
+          </h3>
+          <div class="related-grid">
+            <div class="related-item">
+              <div class="related-icon gradient-red">
+                <i class="fa-solid fa-hand-fist"></i>
+              </div>
+              <div>
+                <h4>Basic Self Defense Moves</h4>
+                <p>5 min read</p>
+              </div>
+            </div>
+            <div class="related-item">
+              <div class="related-icon gradient-purple">
+                <i class="fa-solid fa-shield"></i>
+              </div>
+              <div>
+                <h4>Situational Awareness Guide</h4>
+                <p>7 min read</p>
+              </div>
+            </div>
+            <div class="related-item">
+              <div class="related-icon gradient-blue">
+                <i class="fa-solid fa-scale-balanced"></i>
+              </div>
+              <div>
+                <h4>Legal Protection for Women</h4>
+                <p>10 min read</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/toast.js"></script>
+  <script src="js/layout.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/resources.js"></script>
+</body>
+</html>
